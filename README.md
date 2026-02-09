@@ -1,2 +1,2 @@
-# claude-design-skills
-custom design skills for claude
+# claude design skills
+making myself obsolete

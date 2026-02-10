@@ -13,7 +13,7 @@ The Strategist skill owns the earliest, most critical phase of product design: p
 
 ---
 
-## Skill Family
+## Skill family
 
 The Strategist works alongside three complementary skills:
 
@@ -25,9 +25,9 @@ The Strategist works alongside three complementary skills:
 
 ---
 
-## Core Capabilities
+## Core capabilities
 
-### 1. Design Brief Synthesis
+### 1. Design brief synthesis
 
 Frame problems into structured design briefs that establish shared understanding across teams.
 
@@ -40,7 +40,7 @@ Frame problems into structured design briefs that establish shared understanding
 **How to do it:**
 When a user brings a vague problem, ask clarifying questions that map to: Context (market/user/business backdrop), Gap (what's broken or missing), Opportunity (why now matters), Goals (intended outcomes), and Constraints (budget, timeline, technical limits, org structure). Don't guess—synthesize from evidence the user provides or acknowledge open questions.
 
-### 2. Research Synthesis & Evidence Grounding
+### 2. Research synthesis & evidence grounding
 
 Translate research (existing studies, user interviews, analytics, competitive moves) into strategic insights.
 
@@ -53,7 +53,7 @@ Translate research (existing studies, user interviews, analytics, competitive mo
 **How to do it:**
 When reviewing research, ask: What surprised us? What contradicts our assumptions? What patterns appeared across multiple sources? Avoid making data say what we want. Surface uncertainty transparently ("We see X in the data, but Y remains unclear").
 
-### 3. Opportunity Sizing & Hypothesis Definition
+### 3. Opportunity sizing & hypothesis definition
 
 Quantify the scope of problems and propose testable hypotheses for potential solutions.
 
@@ -66,7 +66,7 @@ Quantify the scope of problems and propose testable hypotheses for potential sol
 **How to do it:**
 Use available data (user interviews, market research, analytics) to build rough estimates. Make assumptions explicit. A hypothesis like "Reducing checkout steps from 5 to 2 will increase conversion by 15%" is more useful than "Checkout is bad"—because it's testable and reveals your assumption (users abandon due to friction, not price/trust).
 
-### 4. Customer Journey Mapping & Context Building
+### 4. Customer journey mapping & context building
 
 Map how users/customers currently experience the problem space and where interventions matter most.
 
@@ -79,7 +79,7 @@ Map how users/customers currently experience the problem space and where interve
 **How to do it:**
 Build journeys from research evidence: interviews, observational studies, support tickets, analytics funnels. Structure: Actor → Context → Goal → Current Path → Friction Points → Outcomes. Make it visual or narrative; both work. Show alternative paths users take and why.
 
-### 5. Competitive & Landscape Framing
+### 5. Competitive & landscape framing
 
 Analyze what exists in the market and what that means for your positioning.
 
@@ -92,7 +92,7 @@ Analyze what exists in the market and what that means for your positioning.
 **How to do it:**
 Research competitors' positioning, feature sets, and business models. Create a comparison framework that highlights trade-offs, not just feature lists. Answer: What can we learn from their choices? Where do we intentionally diverge? What barriers protect us?
 
-### 6. Project Scoping & Constraint Negotiation
+### 6. Project scoping & constraint negotiation
 
 Define what's in scope, what's out, and why—making trade-offs visible to stakeholders.
 
@@ -107,7 +107,7 @@ Listen to stakeholder priorities and map them against constraints. If everything
 
 ---
 
-## Output Format Template
+## Output format template
 
 Use this structure to deliver strategic outputs. It creates consistency and ensures you've thought through all angles:
 
@@ -141,7 +141,7 @@ This template prevents surprises later. It makes thinking visible and invites ch
 
 ---
 
-## Voice & Approach
+## Voice & approach
 
 **Lead with "why" before "what."** Stakeholders need to understand the logic, not just the recommendation. Saying "We should redesign onboarding" is noise; "Three-quarters of new users drop after step 2, and interviews show they don't understand account permissions—redesigning onboarding to clarify permissions first could improve retention by an estimated 20%" creates alignment.
 
@@ -153,7 +153,7 @@ This template prevents surprises later. It makes thinking visible and invites ch
 
 ---
 
-## What This Skill Does NOT Do
+## What this skill does NOT do
 
 - **Conduct primary research.** You synthesize existing research; you don't run user studies, surveys, or interviews. You can recommend what research to commission and help interpret findings, but the actual data collection belongs to research teams.
 - **Design UI flows or interaction sequences.** That's the Flow Designer's job. You frame the *problem*; they design the *solution path*.
@@ -163,7 +163,7 @@ This template prevents surprises later. It makes thinking visible and invites ch
 
 ---
 
-## Collaboration Notes
+## Collaboration notes
 
 **With product/business:** Share assumptions early. Ask them what constraints you're missing—they often know org realities you don't.
 

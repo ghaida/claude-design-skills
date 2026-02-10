@@ -1,8 +1,8 @@
-# Design Agent Team — How to Use These Skills
+# Design agent team — how to use these skills
 
 This package contains four specialized Claude Project instructions, each representing a distinct design discipline from a principal level product designer's practice.
 
-## The Four Agents
+## The four agents
 
 | Agent | File | Use When... |
 |-------|------|-------------|
@@ -13,16 +13,16 @@ This package contains four specialized Claude Project instructions, each represe
 
 ---
 
-## How to Deploy
+## How to deploy
 
-### Option 1: Claude Projects (Recommended)
+### Option 1: Claude Projects (recommended)
 
 1. Create a new Claude Project
 2. Copy the contents of the relevant agent file into the Project's custom instructions
 3. Add your project context, files, or briefs to the Project
 4. Start working — Claude will operate as that specialized agent
 
-### Option 2: Direct Prompting
+### Option 2: direct prompting
 
 Paste the agent instructions at the start of a conversation:
 
@@ -34,7 +34,7 @@ Paste the agent instructions at the start of a conversation:
 Now, here's my project: [describe your project]
 ```
 
-### Option 3: Chained Workflow
+### Option 3: chained workflow
 
 For complex projects, use agents in sequence:
 
@@ -45,7 +45,7 @@ For complex projects, use agents in sequence:
 
 ---
 
-## Quick Decision Tree
+## Quick decision tree
 
 ```
 START: I have a design challenge
@@ -69,22 +69,22 @@ START: I have a design challenge
 
 ---
 
-## Project Lifecycle Examples
+## Project lifecycle examples
 
-### Small Project (2-4 weeks)
+### Small project (2-4 weeks)
 **Strategist → Flow Designer → Handoff**
 - Agent 01: Quick 2-page brief
 - Agent 03: Design the flow
 - Agent 04: Write the spec
 
-### Medium Project (6-12 weeks)
+### Medium project (6-12 weeks)
 **Strategist → Systems Architect → Flow → Handoff**
 - Agent 01: Full brief + research synthesis
 - Agent 02: Service architecture + dependency mapping
 - Agent 03: User flows across devices
 - Agent 04: Comprehensive specs
 
-### Large Project (12-26 weeks)
+### Large project (12-26 weeks)
 **All agents with iteration loops**
 - Agent 01: Brief, hypothesis, market analysis
 - Agent 02: Service blueprint, dependency analysis, scaling approach
@@ -94,7 +94,7 @@ START: I have a design challenge
 
 ---
 
-## What Each Agent Produces
+## What each agent produces
 
 ### Agent 01: The Strategist
 - Design briefs (3-5 pages)
@@ -126,7 +126,7 @@ START: I have a design challenge
 
 ---
 
-## Shared Principles (All Agents Follow)
+## Shared principles (all agents follow)
 
 1. **Evidence-grounded** — Every decision cites evidence or flags assumptions
 2. **Problem-first** — Frame the problem before proposing solutions
@@ -138,34 +138,34 @@ START: I have a design challenge
 
 ---
 
-## Tips for Best Results
+## Tips for best results
 
-### Be Specific About Context
+### Be specific about context
 Instead of: "Design a signup flow"
 Try: "Design a signup flow for users arriving from a partner referral on mobile. They may not know they have access. The goal is 80% activation within 7 days."
 
-### Provide Existing Materials
+### Provide existing materials
 Upload relevant files to your Project:
 - Prior research or briefs
 - Existing system documentation or service maps
 - Competitive examples
 - Technical constraints documents
 
-### Ask for the Right Output Format
+### Ask for the right output format
 Each agent has a default output structure. You can also ask:
 - "Give me a condensed 1-page version"
 - "Expand the edge cases section"
 - "Add more detail on the test plan"
 - "Format this as a stakeholder presentation outline"
 
-### Use Agents to Review Each Other's Work
+### Use agents to review each other's work
 - Have Agent 02 review Agent 03's flows for systems consistency
 - Have Agent 04 review Agent 01's brief for spec-readiness
 - Have Agent 01 review Agent 04's test plan for hypothesis clarity
 
 ---
 
-## Files in This Package
+## Files in this package
 
 ```
 agent-01-strategist.md        — Strategy & research synthesis
@@ -177,7 +177,7 @@ HOW-TO-USE.md                 — This file
 
 ---
 
-## Adapting for Your Practice
+## Adapting for your practice
 
 These agents are modeled on a specific design practice. To adapt:
 

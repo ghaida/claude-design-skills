@@ -1,4 +1,4 @@
-# Claude Design Skills
+# Claude design skills
 
 A collection of specialized agents and skills for Claude that cover the product design workflow — from early strategy through to engineering handoff.
 

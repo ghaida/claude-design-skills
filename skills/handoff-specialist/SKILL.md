@@ -15,7 +15,7 @@ description: >
 
 This skill transforms design work into actionable, implementation-ready documentation. It produces structured specs, asset packages, test plans, and stakeholder presentations that ensure design intent survives to production. Use this when design needs to move into engineering, when cross-functional clarity is required, or when you must document decisions in a way that prevents rework.
 
-## Skill Family
+## Skill family
 
 This skill works alongside three sibling capabilities:
 
@@ -25,9 +25,9 @@ This skill works alongside three sibling capabilities:
 
 The Handoff Specialist receives their outputs and transforms them into specifications and packages ready for implementation.
 
-## Core Capabilities
+## Core capabilities
 
-### 1. Detailed Design Specifications
+### 1. Detailed design specifications
 
 Write comprehensive, screen-by-screen (or state-by-state) specifications that document:
 - Visual design with specific measurements, colors, typography, spacing
@@ -38,7 +38,7 @@ Write comprehensive, screen-by-screen (or state-by-state) specifications that do
 
 Output should be a living spec document (HTML or markdown) that engineers can reference during implementation without guessing.
 
-### 2. Organized Engineering Handoff Packages
+### 2. Organized engineering handoff packages
 
 Structure deliverables so engineering knows exactly what to build and why:
 - Clear ownership: who decided what and when
@@ -48,7 +48,7 @@ Structure deliverables so engineering knows exactly what to build and why:
 - Assets: all files organized, named, versioned, with usage notes
 - Test criteria: success metrics and audience-specific test plans
 
-### 3. Copy and Variant Matrices
+### 3. Copy and variant matrices
 
 Document all copy variations in one place:
 - Primary copy vs. secondary copy vs. microcopy (labels, hints, errors, empty states)
@@ -56,7 +56,7 @@ Document all copy variations in one place:
 - Edge cases: character limits, long strings, very short strings, numeric edge cases
 - A/B test variations: explicit copy changes being tested, with success criteria
 
-### 4. Interactive HTML Specification Documentation
+### 4. Interactive HTML specification documentation
 
 When appropriate, produce interactive HTML specs that:
 - Show designs inline with explanatory text
@@ -64,7 +64,7 @@ When appropriate, produce interactive HTML specs that:
 - Include collapsible reference sections (component specs, copy matrices, test plans)
 - Are self-contained and viewable in any browser without external dependencies
 
-### 5. Use Case and Edge Case Documentation
+### 5. Use case and edge case documentation
 
 Write out specific, not generic use cases:
 - "First-time user creating an account" vs. "User logs in"
@@ -72,7 +72,7 @@ Write out specific, not generic use cases:
 - "User has 200+ items in cart" vs. "User has items in cart"
 - Document how the design behaves in each case, what copy appears, what happens next
 
-### 6. Stakeholder Presentations
+### 6. Stakeholder presentations
 
 Structure presentations that align cross-functional teams:
 - Problem statement (from Strategist)
@@ -82,7 +82,7 @@ Structure presentations that align cross-functional teams:
 - Open questions: what we still need to resolve
 - Timeline and dependencies
 
-### 7. Test Plans with Success Criteria
+### 7. Test plans with success criteria
 
 Write test plans that pair observations with decision-makers:
 - Who needs to see this work (PM, engineering lead, CEO?)
@@ -90,7 +90,7 @@ Write test plans that pair observations with decision-makers:
 - What we're learning and why we're learning it
 - How results feed back into design iteration
 
-## Output Format Template
+## Output format template
 
 Follow this structure for comprehensive handoffs:
 
@@ -202,7 +202,7 @@ Follow this structure for comprehensive handoffs:
 [Reference material: component specs referenced, design system tokens, brand guidelines excerpts, accessibility standards applied, etc.]
 ```
 
-## Quality Checklist
+## Quality checklist
 
 Before marking a handoff as complete, verify:
 
@@ -219,7 +219,7 @@ Before marking a handoff as complete, verify:
 - [ ] Interaction timing is specified where relevant (e.g., toast duration, animation speed, debounce intervals)
 - [ ] For A/B tests: both variants are documented side-by-side with explicit differences called out
 
-## Voice & Approach
+## Voice & approach
 
 **Structured and thorough, never bloated.**
 - Say what matters. Omit generic descriptions.
@@ -240,7 +240,7 @@ Before marking a handoff as complete, verify:
 **Treat constraints as design inputs.**
 - Performance requirements, accessibility needs, brand guidelines—these shape the spec, so make them visible.
 
-## Scope Boundaries
+## Scope boundaries
 
 ### This skill does:
 - Document design decisions (don't make them)
@@ -257,7 +257,7 @@ Before marking a handoff as complete, verify:
 - Design new features (that requires Strategist or Flow Designer)
 - Provide implementation estimates (that's engineering's role)
 
-## When to Use This Skill
+## When to use this skill
 
 Trigger the Handoff Specialist when:
 - **"Write the spec"** — Comprehensive design specification needed

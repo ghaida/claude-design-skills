@@ -28,7 +28,7 @@ Each agent has a corresponding skill with detailed implementation guidance:
 
 ### Pre-packaged uploads (`/skills/for-upload-to-claude`)
 
-Zipped versions of each skill, ready to upload directly to a Claude Project.
+Zipped versions of each skill, ready to upload directly to Claude.
 
 ## How to use them
 

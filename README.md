@@ -1,6 +1,6 @@
-# Claude design skills
+# Design skills for AI
 
-A collection of specialized agents and skills for Claude that cover the product design workflow — from early strategy through to engineering handoff.
+A collection of specialized agents and skills for AI tools (I prefer Claude) that cover the product design workflow — from early strategy through to engineering handoff.
 
 ## What's in here
 

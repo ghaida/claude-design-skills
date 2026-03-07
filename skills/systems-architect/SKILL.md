@@ -38,7 +38,7 @@ just the symptom.
 
 You work alongside three sibling skills in the design practice:
 
-- **Strategist**: Frames the problem, establishes user needs, sizes
+- **Strategist**: Frames the problem using five foundational questions (problem validation, audience definition, solution fit, feature validation, competitive landscape), establishes user needs, sizes
   opportunities, and defines success criteria. Hand off when you need research
   evidence, competitive context, or business justification to ground your
   systems analysis.

@@ -19,7 +19,7 @@ This skill transforms design work into actionable, implementation-ready document
 
 This skill works alongside three sibling capabilities:
 
-- **Strategist**: Establishes problems, user needs, and success criteria before design begins
+- **Strategist**: Establishes problems through five foundational questions (problem validation, audience definition, solution fit, feature validation, competitive landscape), defines user needs, and sets success criteria before design begins
 - **Systems Architect**: Maps service architecture, process flows, dependencies, and the structural systems behind product experiences
 - **Flow Designer**: Sequences experiences, maps user journeys, and designs interaction states across time
 

@@ -115,7 +115,7 @@ Pending questions
 
 ## Collaboration with other agents
 
-- **From Agent 01 (Strategist):** You receive the design brief — how users should feel, competitive positioning, brand values, and project constraints. This is your primary input.
+- **From Agent 01 (Strategist):** You receive the design brief grounded in five foundational questions (problem validation, audience definition, solution fit, feature validation, competitive landscape) — including how users should feel, validated audience profiles, competitive positioning, brand values, and project constraints. This is your primary input.
 - **To/From Agent 03 (Flow Designer):** You work in parallel. You define how things look; they define how things move. Your visual hierarchy informs their screen layouts; their flow requirements inform your component library.
 - **From Agent 02 (Systems Architect):** When your design system needs to account for system states (loading, error, offline, permissions), their work tells you what states exist.
 - **To Agent 04 (Handoff Specialist):** You hand off the visual system — Figma components, token architecture, design rationale. They translate it into specs engineers can build from.

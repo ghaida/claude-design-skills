@@ -6,13 +6,14 @@ A collection of specialized agents and skills for AI tools (I prefer Claude) tha
 
 ### Agents (`/agents`)
 
-Five role-based agent prompts, each focused on a distinct phase of the design process:
+Five role-based agent prompts, each focused on a distinct phase of the design process, plus a cross-cutting cognitive mode:
 
 1. **Strategist** — Frames problems before solutions exist. Pressure-tests every project against five foundational questions (problem validation, audience definition, solution fit, feature validation, competitive landscape) with decision gates. Synthesizes research, writes design briefs, sizes opportunities, defines hypotheses, scopes projects, and maps customer journeys.
 2. **Systems Architect** — Maps the structural machinery behind product experiences. Creates service blueprints, ecosystem maps, process architecture, and dependency diagrams. Analyzes how services, teams, tools, and data flows connect.
 3. **Flow Designer** — Designs user-facing experiences end-to-end: task flows, onboarding, navigation, interactions, and device-specific adaptations. Also handles typography systems — typeface selection, hierarchy, and pairing.
 4. **Handoff Specialist** — Bridges design and engineering. Produces detailed specs, organized handoff packages, copy matrices, A/B test plans, and stakeholder presentations to ensure design intent survives to production.
 5. **Creative Director** — Establishes visual identity and creative direction. Creates moodboards from diverse references, defines color systems and typography, builds visual hierarchy and vertical rhythm, and creates full Figma design systems using Atomic Design principles. Works in parallel with the Flow Designer.
+6. **Philosopher** *(cross-cutting)* — An expansive brainstorming mode that any agent can enter when the problem needs more exploration before the next move. Shifts how the team reasons — broader associative thinking, cross-domain connection-making, suppressed self-censorship, and genuine re-examination of assumptions. Not a sequential phase; a cognitive mode available at any stage of the design process.
 
 The `HOW-TO-USE.md` file in the agents folder explains how to activate them, when to use each one, and how to chain them together for small, medium, and large projects.
 
@@ -25,6 +26,7 @@ Each agent has a corresponding skill with detailed implementation guidance:
 - `flow-designer/SKILL.md` — Flow mapping, task analysis, copy specs, interaction specs, device-aware design, typography systems.
 - `handoff-specialist/SKILL.md` — Design specifications, engineering packages, copy matrices, interactive HTML specs, use case documentation, test plans.
 - `creative-director/SKILL.md` — Visual direction and moodboarding, color system definition, typography systems, visual hierarchy and vertical rhythm, Figma design system creation (Atomic Design). Includes `references/atomic-design-figma.md` for detailed component library implementation guidance.
+- `philosopher/SKILL.md` — Expansive brainstorming protocol with three phases (problem immersion, associative expansion, synthesis), intensity levels, structured check-ins, and integration guidance for every other skill. Cross-cutting — works alongside all five design skills.
 
 ### Pre-packaged uploads (`/skills/for-upload-to-claude`)
 
@@ -36,4 +38,4 @@ Zipped versions of each skill, ready to upload directly to Claude.
 
 **In Claude Code / Cowork:** Drop the skill folders into your `.skills/skills/` directory, and they'll be available automatically.
 
-**Chaining agents:** For larger projects, run them in sequence — Strategist first to frame the problem, Systems Architect to map the underlying structure, Creative Director and Flow Designer in parallel to define the visual language and user experience, and Handoff Specialist to package everything for engineering.
+**Chaining agents:** For larger projects, run them in sequence — Strategist first to frame the problem, Systems Architect to map the underlying structure, Creative Director and Flow Designer in parallel to define the visual language and user experience, and Handoff Specialist to package everything for engineering. The Philosopher can be entered from any agent at any point when the problem needs more exploration.

@@ -22,7 +22,9 @@ The Strategist works alongside four complementary skills:
 - **Creative Director**: After strategic framing, creative direction establishes the visual identity and design system. Engage when: defining visual direction, moodboards, color systems, typography, or building component libraries.
 - **Handoff Specialist**: At the end of strategic and design work, handoff documentation translates decisions into actionable briefs for development and other teams. Engage when: preparing design specs, writing technical handoff docs, or creating implementation guides.
 
-**Route intelligently:** If a user wants to understand *how a system works structurally* — the services, dependencies, and processes behind an experience — suggest Systems Architect. If they want to map *the user-facing sequence and interaction*, suggest Flow Designer. If they want to define *how the product looks and feels visually*, suggest Creative Director. If they want to *communicate decisions downstream*, suggest Handoff Specialist.
+- **Philosopher**: A cross-cutting cognitive mode — not a phase — that any skill can enter when the problem needs more exploration before the next move. Invoke when: a brief feels too tidy, the five foundational questions return obvious answers, you suspect you're asking the wrong questions, or the user says "sit with this", "brainstorm", "I'm stuck", or "what am I missing." The philosopher helps reframe assumptions, find the problem adjacent to the stated problem, and challenge whether the opportunity is where everyone thinks it is.
+
+**Route intelligently:** If a user wants to understand *how a system works structurally* — the services, dependencies, and processes behind an experience — suggest Systems Architect. If they want to map *the user-facing sequence and interaction*, suggest Flow Designer. If they want to define *how the product looks and feels visually*, suggest Creative Director. If they want to *communicate decisions downstream*, suggest Handoff Specialist. If the problem itself feels underexplored, the framing feels shallow, or the user wants to sit with the problem before moving forward — enter Philosopher mode.
 
 ---
 

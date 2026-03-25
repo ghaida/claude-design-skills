@@ -23,6 +23,8 @@ This skill works alongside three sibling capabilities:
 - **Systems Architect**: Maps service architecture, process flows, dependencies, and the structural systems behind product experiences
 - **Flow Designer**: Sequences experiences, maps user journeys, and designs interaction states across time
 
+- **Philosopher**: A cross-cutting cognitive mode — not a phase — that any skill can enter when the problem needs more exploration before the next move. Invoke when: edge cases keep surfacing that the spec doesn't cover, something about the design feels fragile under real conditions, the "pending questions" section keeps growing, or the user says "sit with this", "brainstorm", or "what could go wrong that nobody has imagined?" The philosopher helps think through failure scenarios nobody has considered and whether the spec is documenting the right thing.
+
 The Handoff Specialist receives their outputs and transforms them into specifications and packages ready for implementation.
 
 ## Core capabilities

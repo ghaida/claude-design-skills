@@ -1,8 +1,8 @@
 # Design agent team — how to use these skills
 
-This package contains five specialized Claude Project instructions, each representing a distinct design discipline from a principal level product designer's practice.
+This package contains five specialized Claude Project instructions — each representing a distinct design discipline from a principal level product designer's practice — plus a cross-cutting cognitive mode (The Philosopher) that any agent can enter.
 
-## The five agents
+## The agents
 
 | Agent | File | Use When... |
 |-------|------|-------------|
@@ -11,6 +11,7 @@ This package contains five specialized Claude Project instructions, each represe
 | **The Flow Designer** | `agent-03-flow-designer.md` | Designing user-facing experiences |
 | **The Handoff Specialist** | `agent-04-handoff-specialist.md` | Ready to hand off to engineering |
 | **The Creative Director** | `agent-05-creative-director.md` | Need to define visual direction, build a design system |
+| **The Philosopher** | `agent-06-philosopher.md` | Stuck, need to brainstorm, problem feels underexplored |
 
 ---
 
@@ -67,10 +68,16 @@ START: I have a design challenge
 │  └─ Use: AGENT 04 (Handoff Specialist)
 │     Output: Design spec, test plan, stakeholder deck
 │
-└─ "How should this look? We need a visual direction / design system"
-   └─ Use: AGENT 05 (Creative Director)
-      Output: Moodboards, color systems, typography, Figma component library
+├─ "How should this look? We need a visual direction / design system"
+│  └─ Use: AGENT 05 (Creative Director)
+│     Output: Moodboards, color systems, typography, Figma component library
+│
+└─ "I'm stuck" / "Sit with this" / "What am I missing?" / "Brainstorm"
+   └─ Use: AGENT 06 (Philosopher) — or enter philosopher mode from any agent
+      Output: Reframed problems, cross-domain connections, surfaced assumptions
 ```
+
+> **Note:** The Philosopher is a cross-cutting cognitive mode, not a sequential phase. Any agent (01–05) can enter philosopher mode mid-task when the problem needs more exploration. You can also use Agent 06 standalone for pure brainstorming.
 
 ---
 
@@ -81,6 +88,7 @@ START: I have a design challenge
 - Agent 01: Quick 2-page brief
 - Agent 03: Design the flow
 - Agent 04: Write the spec
+- Agent 06 (Philosopher): Available at any point if the team gets stuck or the framing feels shallow
 
 ### Medium project (6-12 weeks)
 **Strategist → Creative Director + Flow Designer → Handoff**
@@ -88,6 +96,7 @@ START: I have a design challenge
 - Agent 05: Visual direction, color, typography, hierarchy (parallel with Agent 03)
 - Agent 03: User flows across devices (parallel with Agent 05)
 - Agent 04: Comprehensive specs
+- Agent 06 (Philosopher): Enter from any agent when exploration is needed — e.g., when the brief feels too tidy or the visual direction isn't clicking
 
 ### Large project (12-26 weeks)
 **All agents with iteration loops**
@@ -96,6 +105,7 @@ START: I have a design challenge
 - Agent 05: Moodboards, color system, type system, Figma design system
 - Agent 03: Flows across all devices + audience contexts
 - Agent 04: Full specs, test plans, stakeholder decks
+- Agent 06 (Philosopher): Use at project kickoff, at phase transitions, or whenever the team senses the problem is being solved too quickly
 - Loop back to Agent 01 if testing reveals new insights
 
 ---
@@ -136,6 +146,13 @@ START: I have a design challenge
 - Typography systems with typeface pairings
 - Visual hierarchy and spacing specifications
 - Figma design system libraries (Atomic Design)
+
+### Agent 06: The Philosopher
+- Reframed problem statements and surfaced assumptions
+- Cross-domain connections and structural analogies
+- Open questions that change the direction of inquiry
+- Synthesized insights translated back into the active skill's language
+- Check-in summaries with threads worth pursuing
 
 ---
 
@@ -186,6 +203,7 @@ agent-02-systems-architect.md — Systems architecture & service design
 agent-03-flow-designer.md     — User flows & interaction
 agent-04-handoff-specialist.md — Specs & documentation
 agent-05-creative-director.md — Visual direction & design systems
+agent-06-philosopher.md       — Expansive brainstorming & cognitive mode
 HOW-TO-USE.md                 — This file
 ```
 

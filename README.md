@@ -1,41 +1,106 @@
-# Design skills for AI
+# Design with Intent
 
-A collection of specialized agents and skills for AI tools (I prefer Claude) that cover the product design workflow — from early strategy through to engineering handoff.
+A comprehensive UX and design strategy system for AI tools. 15 specialized skills and 6 named agents that cover the full product design practice — from early strategy and research through experience design, quality assurance, and engineering handoff.
 
-## What's in here
+Intent gives AI the context to approach design decisions with depth. Where visual design tools focus on how things look, Intent focuses on why they exist — research, strategy, systems thinking, flows, content, accessibility, ethics, and measurement.
 
-### Agents (`/agents`)
+## The agents
 
-Five role-based agent prompts, each focused on a distinct phase of the design process, plus a cross-cutting cognitive mode:
+Six named agents, each a specialist you can deploy in Claude Projects or paste as custom instructions:
 
-1. **Strategist** — Frames problems before solutions exist. Pressure-tests every project against five foundational questions (problem validation, audience definition, solution fit, feature validation, competitive landscape) with decision gates. Synthesizes research, writes design briefs, sizes opportunities, defines hypotheses, scopes projects, and maps customer journeys.
-2. **Systems Architect** — Maps the structural machinery behind product experiences. Creates service blueprints, ecosystem maps, process architecture, and dependency diagrams. Analyzes how services, teams, tools, and data flows connect.
-3. **Flow Designer** — Designs user-facing experiences end-to-end: task flows, onboarding, navigation, interactions, and device-specific adaptations. Also handles typography systems — typeface selection, hierarchy, and pairing.
-4. **Handoff Specialist** — Bridges design and engineering. Produces detailed specs, organized handoff packages, copy matrices, A/B test plans, and stakeholder presentations to ensure design intent survives to production.
-5. **Creative Director** — Establishes visual identity and creative direction. Creates moodboards from diverse references, defines color systems and typography, builds visual hierarchy and vertical rhythm, and creates full Figma design systems using Atomic Design principles. Works in parallel with the Flow Designer.
-6. **Philosopher** *(cross-cutting)* — An expansive brainstorming mode that any agent can enter when the problem needs more exploration before the next move. Shifts how the team reasons — broader associative thinking, cross-domain connection-making, suppressed self-censorship, and genuine re-examination of assumptions. Not a sequential phase; a cognitive mode available at any stage of the design process.
+| Agent | Name | What it does |
+|-------|------|-------------|
+| Entry point | **Noor** | Orients the project, holds UX principles and the anti-pattern catalog, routes to specialists |
+| Strategy + Research | **Ember** | Frames problems, demands evidence, refuses to build on assumptions |
+| Experience Design | **Wren** | Shapes user flows, structures information, designs the words |
+| Quality + Resilience | **Vigil** | Evaluates UX quality, hardens for edge cases, ensures accessibility |
+| Handoff | **Rune** | Carries design intent faithfully into engineering specs |
+| Philosopher | **Sage** | Sits with problems before solving them — a cognitive mode any agent can enter |
 
-The `HOW-TO-USE.md` file in the agents folder explains how to activate them, when to use each one, and how to chain them together for small, medium, and large projects.
+See `agents/HOW-TO-USE.md` for deployment options, decision trees, and project lifecycle examples.
 
-### Skills (`/skills`)
+## The skills
 
-Each agent has a corresponding skill with detailed implementation guidance:
+15 discipline-specific skills plus the Intent foundation, organized by what you need done:
 
-- `strategist/SKILL.md` — Five foundational questions framework, brief synthesis, research synthesis, opportunity sizing, journey mapping, competitive framing, project scoping.
-- `systems-architect/SKILL.md` — Service blueprinting, ecosystem mapping, process architecture, state and failure analysis, scalability planning.
-- `flow-designer/SKILL.md` — Flow mapping, task analysis, copy specs, interaction specs, device-aware design, typography systems.
-- `handoff-specialist/SKILL.md` — Design specifications, engineering packages, copy matrices, interactive HTML specs, use case documentation, test plans.
-- `creative-director/SKILL.md` — Visual direction and moodboarding, color system definition, typography systems, visual hierarchy and vertical rhythm, Figma design system creation (Atomic Design). Includes `references/atomic-design-figma.md` for detailed component library implementation guidance.
-- `philosopher/SKILL.md` — Expansive brainstorming protocol with three phases (problem immersion, associative expansion, synthesis), intensity levels, structured check-ins, and integration guidance for every other skill. Cross-cutting — works alongside all five design skills.
+### Intent (foundation)
 
-### Pre-packaged uploads (`/skills/for-upload-to-claude`)
+- `intent/SKILL.md` — Core UX principles, the anti-pattern catalog (72+ named deceptive, addictive, and manipulative patterns with severity ratings and regulatory context), context-gathering protocol, and skill routing logic.
+- `intent/references/` — 8 deep reference documents covering research methods, information architecture, interaction patterns, content strategy, accessibility, service design, measurement frameworks, and ethical design.
 
-Zipped versions of each skill, ready to upload directly to Claude.
+### Strategy & Research
 
-## How to use them
+- `strategize/SKILL.md` — Problem framing through the Five Foundational Questions (problem validation, audience definition, solution fit, feature validation, competitive landscape). Research synthesis, opportunity sizing, hypothesis definition, competitive analysis.
+- `investigate/SKILL.md` — Primary research execution and synthesis. Interview guide construction, usability test planning, survey design, diary studies, card sorts, tree tests. Synthesis frameworks: affinity mapping, thematic analysis, insight statements with evidence strength indicators.
+- `blueprint/SKILL.md` — Service blueprints, ecosystem maps, process architecture, dependency diagrams, system state and failure mode analysis, scalability planning.
 
-**In Claude Projects:** Upload the agent prompt as a project instruction and the matching skill zip from `for-upload-to-claude/` as project knowledge. See `agents/HOW-TO-USE.md` for the full walkthrough.
+### Experience Design
 
-**In Claude Code / Cowork:** Drop the skill folders into your `.skills/skills/` directory, and they'll be available automatically.
+- `journey/SKILL.md` — End-to-end user flow design. Task analysis, decision points, entry-to-outcome paths, device-aware design, context variation handling, multi-channel journey mapping.
+- `organize/SKILL.md` — Information architecture. Navigation patterns, taxonomy design, labeling systems, wayfinding, search and browse models, card sort and tree test methodology.
+- `articulate/SKILL.md` — UX writing and content strategy. Voice and tone frameworks, error message design, empty states, CTA hierarchy, microcopy patterns, content models, inclusive language.
 
-**Chaining agents:** For larger projects, run them in sequence — Strategist first to frame the problem, Systems Architect to map the underlying structure, Creative Director and Flow Designer in parallel to define the visual language and user experience, and Handoff Specialist to package everything for engineering. The Philosopher can be entered from any agent at any point when the problem needs more exploration.
+### Quality & Evaluation
+
+- `evaluate/SKILL.md` — Structured UX assessment. Heuristic evaluation (Nielsen's 10, scored), cognitive walkthroughs, anti-pattern detection, task success analysis. Routes findings to specific skills for resolution.
+- `fortify/SKILL.md` — Edge cases and resilience. State inventory (9 states per screen), error recovery patterns, first-run experience design, stress testing, i18n readiness, timeout and latency handling.
+- `include/SKILL.md` — Accessibility as a design discipline. WCAG 2.2 for designers, screen reader flow design, keyboard navigation, cognitive and motor accessibility, inclusive design beyond compliance, testing methodology.
+
+### Adaptation & Context
+
+- `transpose/SKILL.md` — Cross-platform UX adaptation. Context analysis, platform-specific conventions (iOS, Android, web, TV, kiosk, voice), content priority shifting, cross-device journey continuity.
+- `localize/SKILL.md` — Cultural and linguistic adaptation. Cultural dimension analysis, RTL/LTR design, content expansion/contraction, visual and symbolic adaptation, market-specific compliance, localization testing.
+
+### Measurement
+
+- `measure/SKILL.md` — Success metrics and experimentation. HEART framework, Goal-Signal-Metric mapping, A/B test design, funnel analysis, qualitative-quantitative triangulation, ethical measurement.
+
+### Cross-cutting
+
+- `philosopher/SKILL.md` — Expansive brainstorming protocol. Three strict phases (problem immersion, associative expansion, synthesis only when invited). Intensity levels, structured check-ins, and integration with every other skill. A cognitive mode, not a phase.
+
+### Handoff
+
+- `specify/SKILL.md` — Design-to-engineering bridge. Detailed specs, copy matrices, interactive HTML documentation, use case and edge case documentation, stakeholder presentations, test plans with success criteria. Includes ethical review against the anti-pattern catalog.
+
+## How to use
+
+**In Claude Projects:** Upload an agent file as the project instruction. For deeper work, also upload the matching skill files as project knowledge. Start with Noor to orient, or go directly to the specialist you need.
+
+**In Claude Code:** Drop the skill folders into your `.claude/skills/` directory. Skills are available as slash commands.
+
+**Chaining agents:** For larger projects, run agents in sequence — Ember to frame the problem, Wren to design the experience, Vigil to ensure quality and accessibility, Rune to hand off to engineering. Sage can be entered from any agent when the problem needs more exploration.
+
+**Quick decision tree:**
+
+```
+I have a design challenge
+│
+├─ "I don't know what problem we're solving"
+│  └─ Ember (strategy + research)
+│
+├─ "I need to design the experience"
+│  └─ Wren (flows + structure + content)
+│
+├─ "Does this actually work? For everyone?"
+│  └─ Vigil (evaluation + resilience + accessibility)
+│
+├─ "Ready for engineering"
+│  └─ Rune (specs + handoff)
+│
+├─ "I'm stuck / brainstorm / sit with this"
+│  └─ Sage (philosopher)
+│
+└─ "I need to set up context for the project"
+   └─ Noor (entry point)
+```
+
+## The anti-pattern catalog
+
+Intent includes a catalog of 72+ named UX anti-patterns across 9 categories — deceptive patterns, default manipulation, urgency fabrication, addictive design, attention exploitation, weaponized accessibility, vulnerable user exploitation, AI-specific dark patterns, and common UX failures. Each pattern is named, described, and rated by severity. The catalog includes regulatory context (GDPR, FTC, COPPA, California ARL, EU Digital Services Act).
+
+The catalog lives in the Intent master skill and is referenced by `/evaluate` for detection and `/specify` for ethical review before handoff.
+
+## License
+
+CC0 1.0 Universal — public domain.

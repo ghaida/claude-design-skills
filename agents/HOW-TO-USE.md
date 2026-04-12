@@ -1,17 +1,21 @@
-# Design agent team — how to use these skills
+# Intent — Design with Reason
 
-This package contains five specialized Claude Project instructions — each representing a distinct design discipline from a principal level product designer's practice — plus a cross-cutting cognitive mode (The Philosopher) that any agent can enter.
+Intent is a UX design strategy system made of six specialized agents. Each is a self-contained system prompt you paste into a Claude Project (or similar). Together they cover the full arc of design work — from framing the problem to handing off the spec.
+
+The core thesis: every design decision should have a reason, and that reason should be visible at every layer.
+
+---
 
 ## The agents
 
-| Agent | File | Use When... |
+| Agent | File | Use when... |
 |-------|------|-------------|
-| **The Strategist** | `agent-01-strategist.md` | Problem is unclear, need to frame the challenge |
-| **The Systems Architect** | `agent-02-systems-architect.md` | Need to understand or redesign how a system works |
-| **The Flow Designer** | `agent-03-flow-designer.md` | Designing user-facing experiences |
-| **The Handoff Specialist** | `agent-04-handoff-specialist.md` | Ready to hand off to engineering |
-| **The Creative Director** | `agent-05-creative-director.md` | Need to define visual direction, build a design system |
-| **The Philosopher** | `agent-06-philosopher.md` | Stuck, need to brainstorm, problem feels underexplored |
+| **Noor** (Entry Point) | `noor.md` | Starting a project, setting context, routing to specialists |
+| **Ember** (Strategy + Research) | `ember.md` | Problem is unclear, need to frame the challenge, synthesize research |
+| **Wren** (Experience Design) | `wren.md` | Designing flows, organizing information, writing interface copy |
+| **Vigil** (Quality + Resilience) | `vigil.md` | Evaluating quality, hardening for edge cases, ensuring accessibility |
+| **Rune** (Handoff) | `rune.md` | Ready to hand off to engineering |
+| **Sage** (Philosopher) | `sage.md` | Stuck, need to brainstorm, problem feels underexplored |
 
 ---
 
@@ -21,29 +25,38 @@ This package contains five specialized Claude Project instructions — each repr
 
 1. Create a new Claude Project
 2. Copy the contents of the relevant agent file into the Project's custom instructions
-3. Add your project context, files, or briefs to the Project
-4. Start working — Claude will operate as that specialized agent
+3. Add your project context — briefs, research, system documentation, constraints
+4. Start working. Claude will operate as that specialized agent.
 
-### Option 2: direct prompting
+**Tip:** For most projects, start with Noor. She will help you establish context and point you to the right specialist.
+
+### Option 2: Direct prompting
 
 Paste the agent instructions at the start of a conversation:
 
 ```
-[Paste contents of agent-01-strategist.md]
+[Paste contents of noor.md]
 
 ---
 
 Now, here's my project: [describe your project]
 ```
 
-### Option 3: chained workflow
+This works for quick sessions where you do not need a full Project setup.
 
-For complex projects, use agents in sequence:
+### Option 3: Chained workflow
 
-1. Start a Project with Agent 01 → produce a design brief
-2. Start a new Project with Agent 02 → use the brief as input, produce systems architecture
-3. Start a new Project with Agent 03 → use both as input, produce user flows
-4. Start a new Project with Agent 04 → use all prior work, produce engineering specs
+For complex projects, use agents in sequence. Each agent's output becomes the next agent's input.
+
+1. **Noor** — Establish project context (users, product, constraints, ethical stance)
+2. **Ember** — Frame the problem, synthesize research, define scope
+3. **Wren** — Design flows, structure information, write the interface copy
+4. **Vigil** — Evaluate the design, harden for edge cases, check accessibility
+5. **Rune** — Write engineering specs and handoff documentation
+
+Start a new Project (or conversation) for each agent. Carry the prior agent's output forward as context.
+
+**Sage** is not a sequential step. She is available at any point when the team needs to step back and think before moving forward.
 
 ---
 
@@ -52,173 +65,192 @@ For complex projects, use agents in sequence:
 ```
 START: I have a design challenge
 
-├─ "I don't know what problem we're solving"
-│  └─ Use: AGENT 01 (Strategist)
-│     Output: Design brief, hypothesis, research synthesis
+├── "I don't know what problem we're solving"
+│   └── Ember
+│      Frames problems, synthesizes research, defines scope
 │
-├─ "I need to understand how this system actually works"
-│  └─ Use: AGENT 02 (Systems Architect)
-│     Output: Service blueprints, dependency maps, process architecture
+├── "I need to design the experience"
+│   └── Wren
+│      Flows, navigation, information architecture, interface copy
 │
-├─ "I need to design a user-facing experience"
-│  └─ Use: AGENT 03 (Flow Designer)
-│     Output: Screen flows, copy specs, device variants
+├── "Is this actually good? Does it work for everyone?"
+│   └── Vigil
+│      Evaluates quality, hardens for real conditions, ensures access
 │
-├─ "Design is done, I need to hand off to engineering"
-│  └─ Use: AGENT 04 (Handoff Specialist)
-│     Output: Design spec, test plan, stakeholder deck
+├── "Ready for engineering"
+│   └── Rune
+│      Specs, annotations, edge case documentation, handoff packages
 │
-├─ "How should this look? We need a visual direction / design system"
-│  └─ Use: AGENT 05 (Creative Director)
-│     Output: Moodboards, color systems, typography, Figma component library
+├── "I'm stuck / brainstorm / what am I missing?"
+│   └── Sage
+│      Sits with problems, expands thinking, challenges assumptions
 │
-└─ "I'm stuck" / "Sit with this" / "What am I missing?" / "Brainstorm"
-   └─ Use: AGENT 06 (Philosopher) — or enter philosopher mode from any agent
-      Output: Reframed problems, cross-domain connections, surfaced assumptions
+└── "I need to set up the project context"
+    └── Noor
+       Orients, gathers context, holds principles, routes to specialists
 ```
 
-> **Note:** The Philosopher is a cross-cutting cognitive mode, not a sequential phase. Any agent (01–05) can enter philosopher mode mid-task when the problem needs more exploration. You can also use Agent 06 standalone for pure brainstorming.
+**Note:** Sage is a cross-cutting cognitive mode, not a sequential phase. Any agent can benefit from Sage's expansive thinking when the problem needs more exploration before the next move. You can also use Sage standalone for pure brainstorming.
 
 ---
 
 ## Project lifecycle examples
 
 ### Small project (2-4 weeks)
-**Strategist → Flow Designer → Handoff**
-- Agent 01: Quick 2-page brief
-- Agent 03: Design the flow
-- Agent 04: Write the spec
-- Agent 06 (Philosopher): Available at any point if the team gets stuck or the framing feels shallow
+
+**Noor --> Ember --> Wren --> Rune**
+
+- Noor: Establish context — users, constraints, ethical stance
+- Ember: Quick 2-page brief with problem framing and scope
+- Wren: Design the flow, write the copy
+- Rune: Write the spec
+- Sage: Available at any point if the team gets stuck or the framing feels shallow
 
 ### Medium project (6-12 weeks)
-**Strategist → Creative Director + Flow Designer → Handoff**
-- Agent 01: Full brief + research synthesis
-- Agent 05: Visual direction, color, typography, hierarchy (parallel with Agent 03)
-- Agent 03: User flows across devices (parallel with Agent 05)
-- Agent 04: Comprehensive specs
-- Agent 06 (Philosopher): Enter from any agent when exploration is needed — e.g., when the brief feels too tidy or the visual direction isn't clicking
+
+**Noor --> Ember --> Wren --> Vigil --> Rune**
+
+- Noor: Full context gathering, including competitive landscape
+- Ember: Complete brief with research synthesis, hypothesis, five foundational questions
+- Wren: User flows across devices, information architecture, content strategy
+- Vigil: Heuristic evaluation, accessibility audit, edge case hardening
+- Rune: Comprehensive specs with test plans
+- Sage: Enter from any agent when exploration is needed — when the brief feels too tidy or the direction is not clicking
 
 ### Large project (12-26 weeks)
+
 **All agents with iteration loops**
-- Agent 01: Brief, hypothesis, market analysis
-- Agent 02: Service blueprint, dependency analysis, scaling approach
-- Agent 05: Moodboards, color system, type system, Figma design system
-- Agent 03: Flows across all devices + audience contexts
-- Agent 04: Full specs, test plans, stakeholder decks
-- Agent 06 (Philosopher): Use at project kickoff, at phase transitions, or whenever the team senses the problem is being solved too quickly
-- Loop back to Agent 01 if testing reveals new insights
+
+- Noor: Context document that becomes the project's source of truth
+- Ember: Brief, hypothesis, market analysis, five foundational questions
+- Wren: Flows across all devices and audience contexts, full IA, content strategy
+- Vigil: Quality evaluation, resilience testing, accessibility audit, anti-pattern scan
+- Rune: Full specs, test plans, handoff packages
+- Sage: Use at project kickoff, at phase transitions, or whenever the team senses the problem is being solved too quickly
+- Loop back to Ember if testing reveals new insights
 
 ---
 
 ## What each agent produces
 
-### Agent 01: The Strategist
+### Noor (Entry Point)
+- Project context documents
+- Anti-pattern flags with severity and regulatory notes
+- Routing recommendations to specialists
+- Principle-grounded framing of design decisions
+
+### Ember (Strategy + Research)
 - Design briefs (3-5 pages)
-- Research synthesis (5-10 pages)
-- Opportunity assessments
-- Hypothesis statements
-- Project scoping documents
+- Research synthesis documents (5-10 pages)
+- Opportunity assessments with quantified impact
+- Hypothesis statements for A/B tests
+- Five foundational questions assessments
+- Project scoping documents (will do / will not do)
 
-### Agent 02: The Systems Architect
-- Service blueprints (frontstage/backstage/support)
-- Ecosystem and dependency maps
-- Process architecture diagrams
-- Failure mode and state analysis
-- Scalability and migration plans
-
-### Agent 03: The Flow Designer
+### Wren (Experience Design)
 - Screen-by-screen user flows
-- Device-specific variants
-- Copy specifications
-- Interaction specs
-- Audience context variations
+- Device-specific variants (mobile, web, TV)
+- Information architecture and navigation structures
+- Content strategy and voice guidelines
+- Copy specifications and microcopy
+- Interaction specs with state documentation
 
-### Agent 04: The Handoff Specialist
-- Engineering specifications
-- A/B test plans
-- Copy matrices
-- Stakeholder presentations
+### Vigil (Quality + Resilience)
+- UX health scores (0-100) with heuristic breakdowns
+- Anti-pattern verdicts with regulatory context
+- Cognitive walkthrough results (per-task, per-step)
+- Edge case and error recovery documentation
+- Accessibility audits against WCAG
+- Prioritized remediation roadmaps
+
+### Rune (Handoff)
+- Engineering specifications with interaction logic
 - Edge case documentation
+- Asset inventories and component annotations
+- Test plans with audience criteria and success metrics
+- Stakeholder presentations translating design decisions
+- Cross-functional ownership documentation
 
-### Agent 05: The Creative Director
-- Moodboards with named visual directions
-- Color systems with WCAG compliance
-- Typography systems with typeface pairings
-- Visual hierarchy and spacing specifications
-- Figma design system libraries (Atomic Design)
-
-### Agent 06: The Philosopher
-- Reframed problem statements and surfaced assumptions
+### Sage (Philosopher)
+- Reframed problem statements
+- Surfaced assumptions the team did not know it was making
 - Cross-domain connections and structural analogies
 - Open questions that change the direction of inquiry
-- Synthesized insights translated back into the active skill's language
-- Check-in summaries with threads worth pursuing
+- Synthesized insights translated back into the active agent's language
 
 ---
 
-## Shared principles (all agents follow)
+## Shared principles
 
-1. **Evidence-grounded** — Every decision cites evidence or flags assumptions
-2. **Problem-first** — Frame the problem before proposing solutions
-3. **Transparent gaps** — Always include "Pending Questions" sections
-4. **Ecosystem thinking** — Design for the full context, not just one screen
-5. **Scalability default** — Consider how this works at 10x scale
-6. **Explicit ownership** — State who owns what in cross-functional work
-7. **Document the "no"** — Explain what we chose NOT to do, and why
+Every agent in the Intent system follows these:
+
+1. **Evidence-grounded.** Every decision cites evidence or explicitly flags assumptions.
+2. **Problem-first.** Frame the problem before proposing solutions.
+3. **Transparent gaps.** Always surface what you do not know. Include "Pending Questions" sections.
+4. **Ecosystem thinking.** Design for the full context — not just the screen in front of the user.
+5. **Document the "no."** Explain what was chosen against, and why.
+
+And the six core UX principles that Noor holds:
+
+- Respect user autonomy
+- Design for real conditions
+- Make intent visible
+- Evidence over intuition
+- Systems over screens
+- Ethical defaults
 
 ---
 
 ## Tips for best results
 
 ### Be specific about context
+
 Instead of: "Design a signup flow"
+
 Try: "Design a signup flow for users arriving from a partner referral on mobile. They may not know they have access. The goal is 80% activation within 7 days."
 
+Context changes everything. The more specific you are about users, constraints, and goals, the more useful the agent's output becomes.
+
 ### Provide existing materials
+
 Upload relevant files to your Project:
+
 - Prior research or briefs
-- Existing system documentation or service maps
+- Existing system documentation
 - Competitive examples
 - Technical constraints documents
+- Brand voice or design system guidelines
 
 ### Ask for the right output format
+
 Each agent has a default output structure. You can also ask:
+
 - "Give me a condensed 1-page version"
 - "Expand the edge cases section"
-- "Add more detail on the test plan"
 - "Format this as a stakeholder presentation outline"
+- "Just give me the priority issues, skip the full audit"
 
-### Use agents to review each other's work
-- Have Agent 02 review Agent 03's flows for systems consistency
-- Have Agent 04 review Agent 01's brief for spec-readiness
-- Have Agent 01 review Agent 04's test plan for hypothesis clarity
+### Use agents to cross-review
+
+- Have Vigil review Wren's flows for quality and accessibility
+- Have Ember review Rune's specs for strategic alignment
+- Have Vigil check Ember's brief for assumption gaps
+- Have Sage question any agent's framing when it feels too tidy
 
 ---
 
 ## Files in this package
 
 ```
-agent-01-strategist.md        — Strategy & research synthesis
-agent-02-systems-architect.md — Systems architecture & service design
-agent-03-flow-designer.md     — User flows & interaction
-agent-04-handoff-specialist.md — Specs & documentation
-agent-05-creative-director.md — Visual direction & design systems
-agent-06-philosopher.md       — Expansive brainstorming & cognitive mode
-HOW-TO-USE.md                 — This file
+noor.md     — Entry point. Context, principles, anti-patterns, routing.
+ember.md    — Strategy and research. Problem framing, briefs, synthesis.
+wren.md     — Experience design. Flows, IA, content, interaction.
+vigil.md    — Quality and resilience. Evaluation, hardening, accessibility.
+rune.md     — Handoff. Engineering specs, documentation, test plans.
+sage.md     — Philosopher. Expansive thinking, assumption challenging.
+HOW-TO-USE.md — This file.
 ```
 
 ---
 
-## Adapting for your practice
-
-These agents are modeled on a specific design practice. To adapt:
-
-1. **Audit your work** — Do these four roles capture what you do?
-2. **Adjust voice** — Modify tone to match your team's style
-3. **Update outputs** — Change output formats to match your deliverables
-4. **Add examples** — Include examples from your own portfolio
-5. **Test and refine** — Use on 2-3 projects, then iterate
-
----
-
-*Based on verification of 31 portfolio projects, 180+ specification documents, and comprehensive analysis of design methodology.*
+*Intent is a design reasoning system. It does not replace your judgment — it makes the reasoning behind your judgment visible, testable, and traceable. Design with reason.*

@@ -9,6 +9,8 @@ description: >
   microcopy patterns, inclusive language guidance, or asking "what should this say?" and
   "how should we sound?" Use this skill any time the words in an interface are the problem —
   not the flow they live in, not the structure they navigate, not the visual presentation.
+version: 1.0.0
+user-invocable: true
 ---
 
 # Articulate
@@ -247,3 +249,9 @@ Structure your content deliverable as needed for the problem at hand. Not every 
 - Would this make sense to someone reading it on a phone while walking?
 - Will this translate? (If not, rewrite it so it will.)
 - Are we using the user's language, or ours?
+
+## Working with this skill
+
+Bring examples of your current copy — screens, error messages, onboarding flows, empty states. Share your brand voice guidelines if you have them, even rough ones. If you have user research showing where people get confused, what support tickets say, or what users call things in their own words, that's the most valuable input.
+
+Expect your copy to be questioned on clarity, not cleverness. If something sounds great but a stressed user on a phone wouldn't parse it in two seconds, it gets rewritten.

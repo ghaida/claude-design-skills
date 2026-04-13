@@ -1,4 +1,4 @@
-# Intent — Design with Reason
+# Design with Intent
 
 Intent is a UX design strategy system made of six specialized agents. Each is a self-contained system prompt you paste into a Claude Project (or similar). Together they cover the full arc of design work — from framing the problem to handing off the spec.
 
@@ -253,4 +253,4 @@ HOW-TO-USE.md — This file.
 
 ---
 
-*Intent is a design reasoning system. It does not replace your judgment — it makes the reasoning behind your judgment visible, testable, and traceable. Design with reason.*
+*Intent is a design reasoning system. It does not replace your judgment — it makes the reasoning behind your judgment visible, testable, and traceable. Design with intent.*

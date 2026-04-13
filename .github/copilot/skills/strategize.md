@@ -1,6 +1,8 @@
 ---
 name: strategize
 description: Frames product design problems before solutions exist. Synthesizes research, sizes opportunities, defines hypotheses, scopes projects, and maps customer journeys. Use this skill for new project kickoffs, ambiguous business asks, translating research into briefs, strategic framing sessions, opportunity assessments, project scoping, stakeholder alignment, and competitive analysis—even if the user doesn't explicitly say "strategize."
+version: 1.0.0
+user-invocable: true
 ---
 
 # Strategize — Frame the Problem

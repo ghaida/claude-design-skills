@@ -14,6 +14,8 @@ description: >
   operate, understand, and benefit from the experience. One billion people
   worldwide have a disability. Everyone experiences situational impairment.
   Designing inclusively makes the experience better for everyone.
+version: 1.0.0
+user-invocable: true
 ---
 
 # Include — Design for Everyone

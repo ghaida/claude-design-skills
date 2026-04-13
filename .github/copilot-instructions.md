@@ -1,4 +1,4 @@
-# Intent — Design with Reason
+# Design with Intent
 
 This project uses the Intent UX design strategy system. When working on design decisions, UX strategy, user research, information architecture, content strategy, accessibility, or engineering handoff, follow these principles and use the specialized skill files in .github/copilot/skills/.
 

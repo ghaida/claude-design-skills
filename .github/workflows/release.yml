@@ -1,0 +1,75 @@
+name: Release
+
+on:
+  push:
+    tags:
+      - 'v*'
+
+permissions:
+  contents: write
+
+jobs:
+  release:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+
+      - name: Build distributions
+        run: chmod +x build.sh && ./build.sh
+
+      - name: Create zip archives
+        env:
+          TAG: ${{ github.ref_name }}
+        run: |
+          # Full plugin (Claude Code)
+          zip -r "intent-plugin-${TAG}.zip" \
+            .claude-plugin/ \
+            .claude/skills/ \
+            agents/ \
+            README.md \
+            LICENSE
+
+          # Cursor rules
+          zip -r "intent-cursor-${TAG}.zip" \
+            .cursor/rules/
+
+          # VS Code Copilot
+          zip -r "intent-copilot-${TAG}.zip" \
+            .github/copilot/ \
+            .github/copilot-instructions.md \
+            .github/AGENTS.md
+
+          # Agents only (for Claude Projects)
+          zip -r "intent-agents-${TAG}.zip" \
+            agents/
+
+          # Source skills (for manual installation)
+          zip -r "intent-skills-${TAG}.zip" \
+            skills/
+
+      - name: Create GitHub Release
+        uses: softprops/action-gh-release@v2
+        with:
+          generate_release_notes: true
+          files: |
+            intent-plugin-*.zip
+            intent-cursor-*.zip
+            intent-copilot-*.zip
+            intent-agents-*.zip
+            intent-skills-*.zip
+          body: |
+            ## Install
+
+            **Claude Code (plugin):**
+            ```
+            /plugin marketplace add ghaida/claude-design-skills
+            ```
+            Then open `/plugin` in Claude Code to install.
+
+            **Cursor:** Download the cursor zip and extract to your project root.
+
+            **VS Code Copilot:** Download the copilot zip and extract to your project root.
+
+            **Claude Projects:** Download the agents zip and paste agent files as custom instructions.
+
+            See [README](https://github.com/ghaida/claude-design-skills#readme) for full documentation.

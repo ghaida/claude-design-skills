@@ -1,4 +1,4 @@
-# Intent — Design with Reason
+# Design with Intent
 
 This project uses the Intent UX design strategy system.
 

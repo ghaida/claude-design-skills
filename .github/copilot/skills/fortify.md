@@ -12,6 +12,8 @@ description: >
   modes", zero states, timeout handling, or any question about how a design
   behaves outside ideal conditions. The happy path is a fantasy — this skill
   designs for the world your users actually live in.
+version: 1.0.0
+user-invocable: true
 ---
 
 # Fortify — Harden for Real-World Use
@@ -75,6 +77,18 @@ Every screen, component, and flow has states beyond "default." Most designs only
 **Overflow** — Too much data. 10,000 items in a list that was designed for 50. A username that's 200 characters. 500 unread notifications. A table with 40 columns. Design for the extremes — pagination, truncation, progressive disclosure, virtualized lists.
 
 **For each state, answer three questions:** What does the user see? What can the user do? How does the user recover or progress?
+
+**Example: State inventory for a file upload component**
+
+| State | What the user sees | What they can do | Recovery/progress |
+|---|---|---|---|
+| Default | Drop zone with "Drag files or click to browse" | Drag files or click to open file picker | — |
+| Loading | File name, progress bar at 43%, cancel button | Cancel the upload | Cancel returns to default |
+| Partial | 2 of 3 files uploaded, 1 still in progress | Cancel remaining, remove completed, add more | Cancel or wait |
+| Success | 3 files listed with checkmarks, "Done" button | Remove individual files, add more, proceed | Click "Done" to continue |
+| Error | File name in red, "File too large (max 25 MB)", retry icon | Retry, remove, or choose a different file | Retry or remove and continue with other files |
+| Disabled | Grayed drop zone, "Upload limit reached (10 files)" | Nothing — must remove existing files first | Tooltip explains: "Remove a file to upload more" |
+| Offline | Last uploaded files visible, banner "Uploads paused — no connection" | View already-uploaded files, queue new files | Queued uploads resume automatically when connection returns |
 
 ### 2. Error recovery design
 

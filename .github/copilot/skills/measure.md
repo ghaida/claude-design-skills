@@ -11,6 +11,8 @@ description: >
   says "how do we know if this worked," "what should we measure,"
   "let's run a test," or "the numbers look good but something feels off."
   Also trigger for ethical measurement reviews and counter-metric definition.
+version: 1.0.0
+user-invocable: true
 ---
 
 # Measure — Define and Track Success
@@ -109,7 +111,19 @@ Example: "If we move the search bar from the header to the hero section, then se
 What's the smallest change worth detecting? A 0.1% improvement in conversion may not be worth the engineering effort. A 5% improvement would be. Set the MDE before the test, not after. This determines your required sample size.
 
 **Sample size calculation:**
-Depends on: baseline conversion rate, MDE, statistical power (typically 80%), significance level (typically 95% / alpha = 0.05). Use a sample size calculator — don't guess. Underpowered tests produce inconclusive results that waste time.
+Depends on: baseline conversion rate, MDE, statistical power (typically 80%), significance level (typically 95% / alpha = 0.05). Don't guess — use the formula or a calculator.
+
+**Quick reference for common scenarios** (two-sided test, 80% power, 95% significance, two variants):
+
+| Baseline rate | MDE (relative) | Sample size per variant |
+|---|---|---|
+| 5% | 20% (5% → 6%) | ~25,000 |
+| 10% | 10% (10% → 11%) | ~14,500 |
+| 10% | 20% (10% → 12%) | ~3,800 |
+| 25% | 10% (25% → 27.5%) | ~4,800 |
+| 50% | 5% (50% → 52.5%) | ~6,000 |
+
+Lower baseline rates and smaller MDEs require dramatically more traffic. If your required sample size exceeds your monthly traffic, either increase the MDE (detect only larger effects), extend the test duration, or accept that an A/B test is not the right method — use qualitative research instead. Underpowered tests produce inconclusive results that waste time.
 
 **Duration:**
 Run for at least 1-2 full weekly cycles to account for day-of-week effects. Longer for seasonal businesses. Never run less than a week even if you hit sample size early — behavioral patterns vary by day.

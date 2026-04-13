@@ -63,11 +63,27 @@ See `agents/HOW-TO-USE.md` for deployment options, decision trees, and project l
 
 - `specify/SKILL.md` — Design-to-engineering bridge. Detailed specs, copy matrices, interactive HTML documentation, use case and edge case documentation, stakeholder presentations, test plans with success criteria. Includes ethical review against the anti-pattern catalog.
 
+## Install
+
+**Claude Code (plugin):**
+```
+/plugin marketplace add ghaida/claude-design-skills
+```
+Then open `/plugin` in Claude Code to install. Skills become available as `/intent:strategize`, `/intent:evaluate`, etc.
+
+**Cursor:** Download the latest [Cursor release zip](https://github.com/ghaida/claude-design-skills/releases) and extract `.cursor/rules/` to your project root.
+
+**VS Code Copilot:** Download the latest [Copilot release zip](https://github.com/ghaida/claude-design-skills/releases) and extract `.github/` to your project root.
+
+**Claude Projects:** Download individual agent files from `agents/` and paste as project custom instructions.
+
+**Manual (any platform):** Clone the repo and run `./build.sh` to generate distributions for all platforms.
+
 ## How to use
 
 **In Claude Projects:** Upload an agent file as the project instruction. For deeper work, also upload the matching skill files as project knowledge. Start with Noor to orient, or go directly to the specialist you need.
 
-**In Claude Code:** Drop the skill folders into your `.claude/skills/` directory. Skills are available as slash commands.
+**In Claude Code:** After installing the plugin, skills are available as slash commands — `/intent:strategize`, `/intent:journey`, `/intent:evaluate`, etc.
 
 **Chaining agents:** For larger projects, run agents in sequence — Ember to frame the problem, Wren to design the experience, Vigil to ensure quality and accessibility, Rune to hand off to engineering. Sage can be entered from any agent when the problem needs more exploration.
 

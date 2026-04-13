@@ -1,5 +1,5 @@
 #!/bin/bash
-# Intent — Design with Reason
+# Design with Intent
 # Build script: generates platform-specific distributions from source skills
 #
 # Platforms:
@@ -19,7 +19,7 @@ BLUE='\033[0;34m'
 YELLOW='\033[1;33m'
 NC='\033[0m' # No Color
 
-echo -e "${BLUE}Intent — Design with Reason${NC}"
+echo -e "${BLUE}Design with Intent${NC}"
 echo "Building platform distributions..."
 echo ""
 
@@ -142,8 +142,15 @@ echo -e "${GREEN}[3/3] VS Code Copilot (.github/)${NC}"
 
 GITHUB_DIR="$SCRIPT_DIR/.github"
 COPILOT_SKILLS_DIR="$GITHUB_DIR/copilot/skills"
+# Preserve workflows directory during rebuild
+if [ -d "$GITHUB_DIR/workflows" ]; then
+    cp -r "$GITHUB_DIR/workflows" /tmp/_intent_workflows_backup
+fi
 rm -rf "$GITHUB_DIR"
 mkdir -p "$COPILOT_SKILLS_DIR"
+if [ -d /tmp/_intent_workflows_backup ]; then
+    mv /tmp/_intent_workflows_backup "$GITHUB_DIR/workflows"
+fi
 
 # Generate the main copilot-instructions.md from the intent skill
 # This is the always-loaded file — contains core principles and routing
@@ -154,7 +161,7 @@ intent_content=$(awk '
 ' "$SKILLS_DIR/intent/SKILL.md")
 
 cat > "$GITHUB_DIR/copilot-instructions.md" << ENDOFCOPILOT
-# Intent — Design with Reason
+# Design with Intent
 
 This project uses the Intent UX design strategy system. When working on design decisions, UX strategy, user research, information architecture, content strategy, accessibility, or engineering handoff, follow these principles and use the specialized skill files in .github/copilot/skills/.
 
@@ -182,7 +189,7 @@ done
 
 # Also generate AGENTS.md for Copilot agent mode
 cat > "$GITHUB_DIR/AGENTS.md" << ENDOFAGENTS
-# Intent — Design with Reason
+# Design with Intent
 
 This project uses the Intent UX design strategy system.
 

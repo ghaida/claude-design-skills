@@ -13,6 +13,8 @@ description: >
   request to systematically assess the quality of a user experience. This is
   the diagnostic entry point of the Intent system — the UX doctor that
   diagnoses issues and refers to specialists.
+version: 1.0.0
+user-invocable: true
 ---
 
 # Evaluate — Assess UX Quality
@@ -182,6 +184,25 @@ Every finding maps to a specific Intent skill. This is what makes evaluation act
 | Vague unease, qualitative wrongness | `/philosopher` | "Something feels off but I can't name it" |
 
 **Priority mapping:** P0 issues get addressed first regardless of category. Within the same priority tier, address issues that affect the most users or the most critical tasks first. Group issues by skill when possible — it's more efficient to engage `/fortify` once for 5 edge case issues than 5 times for 1 issue each.
+
+**Example: Annotated evaluation excerpt (signup flow)**
+
+> **H1: Visibility of system status — Score: 3 (Major)**
+> After clicking "Create account," the button disables but there is no loading indicator, progress message, or spinner. On slow connections, users wait 3-8 seconds with no feedback, leading to double-clicks and duplicate submissions. The success state redirects silently — no confirmation that the account was created.
+> → Route to `/fortify` (missing loading and success states) and `/articulate` (confirmation copy needed)
+>
+> **H5: Error prevention — Score: 2 (Minor)**
+> Password field shows requirements only after first failed validation ("Must include uppercase, number, and symbol"). Requirements should be visible before the user types, not after they fail. Email field accepts input but validates only on submit — inline validation on blur would catch typos early.
+> → Route to `/fortify` (inline validation patterns) and `/articulate` (password requirements copy)
+>
+> **Anti-pattern: Asymmetric consent — Severity: High**
+> Newsletter opt-in is prechecked during signup. Opting out requires noticing a small checkbox below the fold. The checkbox label reads "Keep me updated" rather than "Subscribe to marketing emails." This is a prechecked consent pattern with a disguised label — potential GDPR violation in EU markets.
+> → Flag as P0. Route to `/articulate` (honest label) and flag for legal review.
+>
+> **Cognitive walkthrough: "Create account and reach dashboard" — Step 3 of 5: Verify email**
+> Q1 (Motivation): Yes — user understands they need to verify. Q2 (Visibility): No — verification email takes 30-60 seconds but the screen says "Check your inbox" immediately, so users check before it arrives and assume it failed. Q3 (Understanding): Yes — "Click the link in the email" is clear. Q4 (Feedback): No — after clicking the email link, the redirect is slow and shows a blank page for 2 seconds before the dashboard loads.
+> Rating: Failure (two "no" answers). Users abandon or request re-send unnecessarily.
+> → Route to `/fortify` (timing expectations, redirect loading state) and `/articulate` ("Email arrives within 60 seconds" copy)
 
 ---
 

@@ -1,0 +1,212 @@
+# Ethical Design
+
+## Anti-Pattern Remediation Guide
+
+The master skill catalogs anti-patterns. This document explains how to fix them — and how to design the ethical alternative from the start.
+
+### Deceptive Patterns → Honest Alternatives
+
+**Bait and Switch → Consistent Delivery.** What you show is what you deliver. If a button says "Download," it downloads. If a link says "Learn more," it teaches. Test by asking: if a user described what just happened, would their description match the label they clicked?
+
+**Trick Questions → Plain Language Choices.** Every option should be stateable as an affirmative: "Yes, send me emails" / "No, don't send me emails." Never use double negatives ("Uncheck to not receive..."). Never combine multiple consents into one checkbox. Test by reading the question aloud — if a colleague gets confused, users will too.
+
+**Visual Misdirection → Equal Visual Weight.** When presenting choices, the "decline" or "opt-out" option should be equally visible — same size, same visual weight, same position prominence. The user's preferred choice, not the business's preferred choice, should determine which option they pick. Test: cover the page with your hand and peek — can you see both options equally?
+
+**Hidden Costs → Upfront Pricing.** Show the total cost, including taxes, fees, and shipping, before the user enters any personal information. The Baymard Institute found that 48% of cart abandonment is caused by extra costs shown too late. The fix isn't just ethical — it converts better.
+
+**Confirmshaming → Neutral Opt-Out.** Opt-out text should be factual, not emotional. "No thanks" is fine. "No thanks, I hate saving money" is manipulation. The test is simple: would you say the opt-out text to someone's face without feeling embarrassed?
+
+**Sneak into Basket → Explicit Additions Only.** Nothing enters a cart, plan, or order without a deliberate user action. Pre-selected add-ons, bundled insurance, and automatic upsells all fail this test. If the user didn't click "add," it shouldn't be there.
+
+### Default Manipulation → Respectful Defaults
+
+**Prechecked Consent → Unchecked by Default.** GDPR requires this explicitly. But beyond regulation — consent means nothing if it's pre-selected. Every consent checkbox should start unchecked. Every permission should start un-granted. The user's first interaction should be a choice, not an override.
+
+**Opt-Out Burden → Symmetrical Effort.** The effort to leave should mirror the effort to join. If signing up takes one click, cancellation should take one click. The FTC's "click to cancel" rule codifies this, but the principle predates the rule: asymmetric friction is manipulation.
+
+**Forced Continuity → Clear Trial Endings.** Before a trial ends: notify the user (email and in-app, not just email). On the transition day: require explicit confirmation before charging. After charging: provide easy refund for the first billing period. Making cancellation hard doesn't create loyal customers — it creates resentful ones who warn others.
+
+### Urgency Fabrication → Honest Scarcity
+
+**Fake Timers → Real Deadlines Only.** If a deadline is real (event starts at 8pm, sale ends Sunday), show it. If there's no real deadline, don't invent one. A timer that resets when the page refreshes is not a deadline — it's a lie.
+
+**Fabricated Scarcity → Actual Inventory.** If you show stock levels, they should be real. "Only 2 left" when you have 2,000 in the warehouse is fraud by implication. If demand genuinely fluctuates, show real-time data. Otherwise, don't show numbers at all.
+
+**Fake Social Proof → Real Activity.** "15 people are viewing this" should reflect actual concurrent viewers, not a random number generator. Fabricated social proof is straightforward deception. Real social proof (verified reviews, actual purchase counts) builds genuine trust.
+
+### Addictive Design → Respectful Engagement
+
+**Infinite Scroll → Natural Boundaries.** Pagination, "load more" buttons, or session summaries create natural stopping points. This doesn't reduce engagement — it shifts it from compulsive to intentional. Instagram's "You're all caught up" is a partial fix; actual pagination is more honest.
+
+**Variable Ratio Reinforcement → Predictable Value.** Notifications should arrive because something meaningful happened, not because the algorithm determined this is the optimal moment to re-engage. Content should be organized, not randomly dispensed. The value should be in the content, not in the unpredictability of its delivery.
+
+**Streak Manipulation → Progress Without Punishment.** If you track streaks, breaking one should carry no penalty. "You had a 30-day streak! Start a new one?" is fine. "You lost your 30-day streak forever" is manufactured loss aversion. Duolingo's streak freeze is an admission that their streak mechanic creates unhealthy obligation.
+
+---
+
+## Regulatory Landscape
+
+### GDPR (EU, 2018)
+
+The General Data Protection Regulation is the most comprehensive privacy regulation in force. Key requirements for designers:
+
+**Consent (Article 7, Recitals 32, 42, 43):**
+- Must be freely given — no bundling consent with service access unless data processing is genuinely necessary for the service
+- Must be specific — separate consent for separate purposes
+- Must be informed — plain language, no legalese
+- Must be unambiguous — affirmative action required; silence, pre-ticked boxes, and inactivity do not constitute consent
+- Withdrawal must be as easy as giving consent — no asymmetric flows
+
+**Data Minimization (Article 5(1)(c)):**
+- Collect only what's necessary for the stated purpose
+- Don't collect data "in case we need it later"
+- Design forms to request minimum required fields
+
+**Right to Erasure (Article 17):**
+- Users can request deletion of their data
+- Deletion must be actual, not just hiding the record
+- Design systems need real deletion capabilities, not just soft deletes
+
+**Privacy by Design (Article 25):**
+- Data protection must be built into the design of systems, not bolted on
+- Default settings must be the most privacy-protective option
+- This is a legal requirement, not a best practice
+
+**Enforcement reality:** Fines up to 4% of global annual revenue or 20 million euros, whichever is higher. As of 2024, cumulative GDPR fines exceed 4 billion euros. Meta alone has been fined over 2 billion euros.
+
+### FTC (United States)
+
+The Federal Trade Commission uses its authority under Section 5 (unfair or deceptive acts) to pursue dark patterns.
+
+**Key enforcement actions:**
+- Epic Games / Fortnite (2022): $520M settlement for dark patterns targeting children, including confusing purchase flows and unauthorized charges
+- Amazon Prime (2023): FTC sued over "Iliad" — Amazon's internal name for a cancellation flow deliberately designed to be confusing
+- Age of Empires / Microsoft (2023): Enforcement against manipulative subscription practices
+
+**"Click to Cancel" Rule (2024):**
+- Businesses must make cancellation as easy as sign-up
+- Must get affirmative consent before charging
+- Must provide clear annual reminders for negative-option programs
+- Applies to all negative-option marketing
+
+**FTC approach:** Pattern-based enforcement. If a design practice is widespread and harmful, the FTC may issue a rule. Designers should treat FTC enforcement actions as de facto design standards.
+
+### COPPA (United States, 1998 / Updated 2013)
+
+The Children's Online Privacy Protection Act applies to services directed at children under 13, or services that knowingly collect data from children under 13.
+
+**Design requirements:**
+- Verifiable parental consent before collecting personal information from children
+- No behavioral advertising to children
+- No conditioning participation on data collection beyond what's necessary
+- Clear, prominent, and understandable privacy policies
+- Data retention limits — delete when no longer needed
+
+**Design implication:** If your product might have child users, design the entire data collection pipeline with COPPA in mind from the start. Retrofitting COPPA compliance is far more expensive than building it in.
+
+### California CPRA (2023) and Automated Decision-Making
+
+**Symmetry requirement:** The means by which a consumer opts out of data sale/sharing must be symmetric with the means by which they opted in. If opt-in is one click, opt-out must be one click.
+
+**Do Not Sell/Share:** Must provide a "Do Not Sell or Share My Personal Information" link on the homepage. This is a design requirement — the link must be visible, clear, and functional.
+
+**Automated decision-making:** Consumers have the right to opt out of automated decision-making technology, including profiling. If your product uses algorithms to make decisions about users, they have the right to know and the right to opt out.
+
+### EU Digital Services Act (2024)
+
+**Dark pattern prohibition (Article 25):**
+- Online platforms must not design, organize, or operate interfaces in a way that deceives, manipulates, or materially distorts users' ability to make free and informed decisions
+- Specific prohibition on: giving more prominence to certain choices, repeatedly requesting users to make choices they've already made, making cancellation harder than sign-up, and making choices non-neutral by default
+
+**Minor protection (Article 28):**
+- Platforms accessible to minors must implement appropriate measures to ensure a high level of privacy, safety, and security
+- No targeted advertising based on profiling when the platform is aware the user is a minor
+
+**Algorithmic transparency (Articles 27, 38):**
+- Recommendation systems must explain the main parameters used
+- Users must have at least one option not based on profiling
+
+---
+
+## Design Ethics Frameworks
+
+### Values Sensitive Design (VSD)
+
+Developed by Batya Friedman and colleagues at the University of Washington, VSD is a theoretically grounded approach to the design of technology that accounts for human values in a principled and comprehensive manner throughout the design process.
+
+**Three investigations:**
+1. **Conceptual** — Identify stakeholders (direct and indirect), identify values at stake, investigate how values might conflict
+2. **Empirical** — Study how stakeholders actually apprehend and experience the technology and the values at stake
+3. **Technical** — Analyze how specific technical properties support or hinder stakeholder values
+
+**Key values VSD investigates:** Human welfare, ownership and property, privacy, freedom from bias, universal usability, trust, autonomy, informed consent, accountability, courtesy, identity, calmness, environmental sustainability.
+
+**Application to design:** When making a design decision, identify which human values are at stake, who is affected (including non-users), and how the technical implementation supports or undermines those values. VSD doesn't tell you what to decide — it tells you what to consider.
+
+### Design Justice (Costanza-Chock, 2020)
+
+Design Justice rethinks design processes by centering the people who are most impacted by design decisions, rather than the most powerful stakeholders.
+
+**Core principles:**
+1. Design to sustain, heal, and empower communities — prioritize impact on the most marginalized
+2. Center the voices of those who are directly impacted by design outcomes
+3. Prioritize design's impact on the community over the designer's intent
+4. View change as emergent from accountable, accessible, and collaborative processes
+5. See the role of the designer as a facilitator rather than an expert
+
+**Application:** When your user research doesn't include the most vulnerable users of your product, your design will fail them. When your design team doesn't include diverse perspectives, your assumptions will go unchallenged. Design Justice argues that who participates in the design process determines who benefits from the design outcome.
+
+### Consequence Scanning
+
+Developed by Doteveryone (now the Responsible Technology Institute), Consequence Scanning is a lightweight practice for identifying potential consequences of a product or feature.
+
+**Process:**
+1. **Describe** the product/feature in plain terms — what it does, who uses it, what data it touches
+2. **Brainstorm consequences** across three dimensions:
+   - Intended consequences (what you're trying to achieve)
+   - Unintended but foreseeable consequences (what might happen that you didn't plan for)
+   - Unintended and unforeseeable consequences (what could happen that nobody predicted)
+3. **Categorize** each consequence: positive, negative, or unclear
+4. **Decide** for each negative consequence: mitigate (design around it), accept (document and monitor), or stop (don't build this)
+
+**When to use it:** Before building new features, during design critiques, when expanding to new markets or user groups, when adding data collection, when changing algorithms or recommendation systems.
+
+---
+
+## Consent Design Patterns
+
+Consent is not a checkbox. It's a design system.
+
+### Principles of meaningful consent
+
+**Informed:** The user understands what they're consenting to. This means plain language, specific descriptions, and concrete examples — not legal abstracts or blanket permissions. "We'll use your location to show nearby restaurants" is informed. "We process data to improve our services" is not.
+
+**Specific:** Each consent is for one specific purpose. Bundled consent ("By using this service you agree to X, Y, Z, and also W") is not meaningful consent. Separate purposes get separate choices.
+
+**Freely given:** The user can say no without losing access to the core service. If saying no makes the product unusable, consent wasn't free — it was coerced. The exception: when data processing is genuinely necessary for the service (you can't use a mapping app without sharing your location).
+
+**Revocable:** The user can withdraw consent as easily as they gave it. A consent given with one toggle should be revocable with one toggle, in the same location, with the same effort.
+
+**Timely:** Consent is requested at the moment it's relevant, not in a batch during onboarding. Ask for location permission when the user first accesses a location feature, not during account creation.
+
+### Consent interface patterns
+
+**Layered disclosure:** Present a summary first ("We'd like to use your location to show nearby restaurants"), with a path to full detail ("Learn more about how we use location data"). The summary must be accurate and complete enough to make a real decision; the detail is for those who want it.
+
+**Granular controls:** Separate toggles for separate purposes. Cookie consent should offer granular choices (analytics, marketing, personalization), not just "accept all / reject all." Permission dashboards should show each permission individually with clear descriptions.
+
+**Just-in-time consent:** Request permissions when the user encounters the feature that needs them, with context that explains why. "To save your route, we need access to your location" at the moment of saving is far more meaningful than a bare permission prompt during onboarding.
+
+**Consent receipts:** Show the user what they've consented to, when, and how to change it. A privacy dashboard that lists active consents with modification dates and one-click revocation is the gold standard.
+
+**Re-consent for material changes:** When you change how you use data, don't bury it in a terms-of-service update. Re-request consent for the specific change, with clear explanation of what changed and why.
+
+### Common consent failures
+
+- Consent walls that block the entire service until the user agrees to non-essential data processing
+- "Accept all" buttons that are visually dominant while "Manage preferences" is small and gray
+- Consent flows that take one click to accept but seven clicks to customize
+- Withdrawal paths hidden in account settings behind three layers of navigation
+- Pre-checked consent boxes (illegal under GDPR, deceptive everywhere)
+- Bundled consent that combines essential service terms with optional marketing consent
+- Consent prompts that appear on every visit because rejection isn't stored (deliberately or through incompetence)

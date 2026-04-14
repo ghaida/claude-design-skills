@@ -602,9 +602,10 @@ details[open] > summary::after {
 
 .nav-brand {
   display: flex;
-  align-items: baseline;
+  align-items: last baseline;
   gap: var(--s3);
   margin-right: auto;
+  line-height: 1;
 }
 
 .nav-wordmark {
@@ -632,10 +633,6 @@ details[open] > summary::after {
   font-weight: 500;
   color: var(--fg-muted);
   transition: color var(--duration) var(--ease-out);
-  padding: var(--s2) 0;
-  min-height: 40px;
-  display: inline-flex;
-  align-items: center;
 }
 
 .nav-links a:hover {
@@ -684,9 +681,6 @@ details[open] > summary::after {
   border-radius: 4px;
 }
 
-.nav-actions svg {
-  transform: translateY(1px);
-}
 
 .theme-toggle:hover {
   color: var(--fg);

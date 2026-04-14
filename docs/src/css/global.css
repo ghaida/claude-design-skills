@@ -596,8 +596,13 @@ details[open] > summary::after {
 
 .nav-inner {
   display: flex;
-  align-items: center;
+  align-items: stretch;
   height: 56px;
+}
+
+.nav-inner > * {
+  display: flex;
+  align-items: center;
 }
 
 .nav-brand {

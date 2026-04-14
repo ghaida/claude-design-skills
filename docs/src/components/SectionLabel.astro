@@ -21,11 +21,11 @@ const iconSvg = icon && icons[icon] ? icons[icon] : null;
 
 <div class="section-label" aria-hidden="true">
   {iconSvg && (
-    <span class="section-label__icon">
+    <span class="section-label-icon">
       <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" set:html={iconSvg} />
       <span>{label}</span>
     </span>
   )}
   {!iconSvg && <span>{label}</span>}
-  {annotation && <span class="section-label__annotation">{annotation}</span>}
+  {annotation && <span class="section-label-annotation">{annotation}</span>}
 </div>

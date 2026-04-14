@@ -37,18 +37,18 @@ const principles = [
     <!-- Hero -->
     <section class="hero" aria-labelledby="hero-heading">
       <h1 id="hero-heading">
-        Design with <span class="hero__accent">Intent</span>
+        Design with <span class="hero-accent">Intent</span>
       </h1>
-      <p class="hero__lede subtext">
+      <p class="hero-lede subtext">
         A UX strategy system for AI tools. {skills.length} skills covering research,
         strategy, flows, content, accessibility, ethics, and measurement.
       </p>
-      <div class="hero__install-group">
-        <div class="code-block hero__install">
-          <span class="code-block__hint">Claude Code</span>
+      <div class="hero-install-group">
+        <div class="code-block hero-install">
+          <span class="code-block-hint">Claude Code</span>
           <code>claude install-skill ghaida/intent</code>
         </div>
-        <p class="hero__platforms muted small mono">
+        <p class="hero-platforms muted small mono">
           Also available for <a href="#install" class="link">Cursor, VS Code Copilot, and manual install</a>
         </p>
       </div>
@@ -62,9 +62,12 @@ const principles = [
         <p class="lead">
           Every design decision should have a reason.
         </p>
-        <p class="philosophy__body">
-          The people who use what you build deserve that rigor. Intent
-          gives AI the methodology to deliver it.
+        <p class="philosophy-body">
+          A reason grounded in evidence about the people who will use what
+          you build. One that holds up when you ask who benefits, who's
+          harmed, and what happens at scale. Design without that rigor
+          produces products that work for their makers but fail their users.
+          Intent brings that rigor to AI tools.
         </p>
       </div>
     </section>
@@ -77,8 +80,8 @@ const principles = [
         <div class="principles-grid">
           {principles.map((p) => (
             <div class="principle">
-              <h3 class="principle__title">{p.title}</h3>
-              <p class="principle__desc muted">{p.desc}</p>
+              <h3 class="principle-title">{p.title}</h3>
+              <p class="principle-desc muted">{p.desc}</p>
             </div>
           ))}
         </div>
@@ -93,8 +96,8 @@ const principles = [
         <div class="skill-categories">
           {categories.map((cat) => (
             <div class="skill-category">
-              <span class="skill-category__label mono">{cat.label}</span>
-              <div class="skill-category__tags">
+              <span class="skill-category-label mono">{cat.label}</span>
+              <div class="skill-category-tags">
                 {cat.skills.map((s) => (
                   <a href={`${base}skills/#${s.slug}`} class="skill-tag">/{s.slug}</a>
                 ))}
@@ -154,25 +157,25 @@ const principles = [
         <h2 id="install-heading" class="visually-hidden">Install</h2>
         <div class="install-methods">
           <div class="install-method">
-            <h3 class="install-method__name mono">Claude Code</h3>
+            <h3 class="install-method-name mono">Claude Code</h3>
             <div class="code-block">
               <code>claude install-skill ghaida/intent</code>
             </div>
           </div>
           <div class="install-method">
-            <h3 class="install-method__name mono">Cursor</h3>
+            <h3 class="install-method-name mono">Cursor</h3>
             <p class="muted">
               Download the <a href="https://github.com/ghaida/intent/releases" class="link">.cursor rules</a> and add to your project's <code class="mono">.cursor/rules/</code> directory.
             </p>
           </div>
           <div class="install-method">
-            <h3 class="install-method__name mono">VS Code Copilot</h3>
+            <h3 class="install-method-name mono">VS Code Copilot</h3>
             <p class="muted">
               Download the <a href="https://github.com/ghaida/intent/releases" class="link">copilot instructions</a> and add to <code class="mono">.github/copilot/</code>.
             </p>
           </div>
           <div class="install-method">
-            <h3 class="install-method__name mono">Manual</h3>
+            <h3 class="install-method-name mono">Manual</h3>
             <p class="muted">
               Clone the repo and copy <code class="mono">skills/</code> into your project. Each skill is a standalone markdown file.
             </p>

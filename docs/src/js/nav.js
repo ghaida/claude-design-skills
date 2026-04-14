@@ -8,8 +8,8 @@ document.querySelector('.theme-toggle')?.addEventListener('click', () => {
 });
 
 // Mobile menu
-const hamburger = document.querySelector('.nav__hamburger');
-const mobileMenu = document.querySelector('.nav__mobile-menu');
+const hamburger = document.querySelector('.nav-hamburger');
+const mobileMenu = document.querySelector('.nav-mobile-menu');
 hamburger?.addEventListener('click', () => {
   const expanded = hamburger.getAttribute('aria-expanded') === 'true';
   hamburger.setAttribute('aria-expanded', String(!expanded));

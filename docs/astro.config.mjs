@@ -5,6 +5,6 @@ export default defineConfig({
   base: '/intent',
   trailingSlash: 'always',
   build: {
-    assets: '_assets',
+    assets: 'assets',
   },
 });

@@ -1,36 +1,36 @@
-// Category filter
-const tabs = document.querySelectorAll('.filter-tab');
-const rows = document.querySelectorAll('tbody tr[data-category]');
+document.addEventListener('DOMContentLoaded', () => {
+  const tabs = document.querySelectorAll('.filter-tab');
+  const rows = document.querySelectorAll('tbody tr[data-category]');
 
-function filterByCategory(slug) {
-  tabs.forEach(t => {
-    t.classList.toggle('active', t.dataset.category === slug);
-    t.setAttribute('aria-pressed', String(t.dataset.category === slug));
-  });
+  function filterByCategory(slug) {
+    tabs.forEach(t => {
+      t.classList.toggle('active', t.dataset.category === slug);
+      t.setAttribute('aria-pressed', String(t.dataset.category === slug));
+    });
 
-  rows.forEach(row => {
-    if (slug === 'all' || row.dataset.category === slug) {
-      row.removeAttribute('hidden');
+    rows.forEach(row => {
+      if (slug === 'all' || row.dataset.category === slug) {
+        row.removeAttribute('hidden');
+      } else {
+        row.setAttribute('hidden', '');
+      }
+    });
+
+    if (slug === 'all') {
+      history.replaceState(null, '', location.pathname);
     } else {
-      row.setAttribute('hidden', '');
+      history.replaceState(null, '', '#' + slug);
     }
+  }
+
+  tabs.forEach(tab => {
+    tab.addEventListener('click', () => filterByCategory(tab.dataset.category));
   });
 
-  // Update URL hash
-  if (slug === 'all') {
-    history.replaceState(null, '', location.pathname);
-  } else {
-    history.replaceState(null, '', '#' + slug);
+  // Apply hash filter on load
+  const hash = location.hash.replace('#', '');
+  if (hash) {
+    const matchingTab = [...tabs].find(t => t.dataset.category === hash);
+    if (matchingTab) filterByCategory(hash);
   }
-}
-
-tabs.forEach(tab => {
-  tab.addEventListener('click', () => filterByCategory(tab.dataset.category));
 });
-
-// Apply hash filter on load
-const hash = location.hash.replace('#', '');
-if (hash) {
-  const matchingTab = [...tabs].find(t => t.dataset.category === hash);
-  if (matchingTab) filterByCategory(hash);
-}

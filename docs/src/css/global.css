@@ -630,6 +630,7 @@ details[open] > summary::after {
   display: flex;
   align-items: center;
   gap: 0;
+  margin-left: var(--s8);
 }
 
 .theme-toggle {

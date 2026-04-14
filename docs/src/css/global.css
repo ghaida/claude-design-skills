@@ -600,14 +600,9 @@ details[open] > summary::after {
   height: 56px;
 }
 
-.nav-inner > * {
-  display: flex;
-  align-items: center;
-}
-
 .nav-brand {
-  display: flex;
-  align-items: center;
+  display: inline-flex;
+  align-items: baseline;
   gap: var(--s3);
   margin-right: auto;
 }
@@ -623,7 +618,6 @@ details[open] > summary::after {
 .nav-tagline {
   font-size: var(--text-xs);
   color: var(--fg-muted);
-  margin-top: 3px;
 }
 
 .nav-links {

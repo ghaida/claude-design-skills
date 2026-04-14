@@ -273,6 +273,7 @@ a.link {
   text-underline-offset: 3px;
   text-decoration-thickness: 1px;
   transition: color var(--duration) var(--ease-out);
+  padding: var(--s1) 0;
 }
 
 a.link:hover {
@@ -311,10 +312,12 @@ a.link:hover {
 /* --- Skill Tag Chips --- */
 
 .skill-tag {
-  display: inline-block;
+  display: inline-flex;
+  align-items: center;
   font-family: var(--mono);
   font-size: var(--text-xs);
-  padding: var(--s1) var(--s3);
+  padding: var(--s2) var(--s3);
+  min-height: 40px;
   border: 1px solid var(--border);
   border-radius: 4px;
   transition: all var(--duration) var(--ease-out);
@@ -598,6 +601,10 @@ details[open] > summary::after {
   font-weight: 500;
   color: var(--fg-muted);
   transition: color var(--duration) var(--ease-out);
+  padding: var(--s2) 0;
+  min-height: 40px;
+  display: inline-flex;
+  align-items: center;
 }
 
 .nav-links a:hover {

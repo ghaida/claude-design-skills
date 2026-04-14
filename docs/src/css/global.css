@@ -321,7 +321,7 @@ a.link:hover {
   border: 1px solid var(--border);
   border-radius: 4px;
   transition: all var(--duration) var(--ease-out);
-  cursor: default;
+  cursor: pointer;
   color: var(--fg);
   line-height: var(--lh-small);
 }
@@ -571,7 +571,7 @@ details[open] > summary::after {
 
 .nav-inner {
   display: flex;
-  align-items: center;
+  align-items: baseline;
   height: 56px;
   gap: var(--s8);
 }
@@ -582,6 +582,7 @@ details[open] > summary::after {
   font-size: var(--text-lg);
   letter-spacing: -0.03em;
   color: var(--fg);
+  margin-right: var(--s3);
 }
 
 .nav-tagline {
@@ -623,7 +624,7 @@ details[open] > summary::after {
 .nav-actions {
   display: flex;
   align-items: center;
-  gap: var(--s4);
+  gap: 0;
 }
 
 .theme-toggle {

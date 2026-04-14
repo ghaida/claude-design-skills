@@ -120,7 +120,7 @@ ul, ol {
 
   /* Layout */
   --page-max:  1200px;
-  --page-pad:  48px;
+  --page-pad:  24px;
   --label-col: 180px;
   --col-gap:   48px;
 
@@ -212,12 +212,12 @@ h1, h2, h3 {
   padding: 0 var(--page-pad);
 }
 
-/* Two-column grid: label | content */
+/* Two-column grid: label | content (mobile-first: single column base) */
 .section {
   display: grid;
-  grid-template-columns: var(--label-col) 1fr;
-  gap: 0 var(--col-gap);
-  padding: var(--s16) 0;
+  grid-template-columns: 1fr;
+  gap: var(--s4);
+  padding: var(--s12) 0;
   border-top: 1px solid var(--border);
 }
 
@@ -596,7 +596,7 @@ details[open] > summary::after {
 }
 
 .nav-links {
-  display: flex;
+  display: none;
   align-items: center;
   gap: var(--s8);
   margin-left: var(--s8);
@@ -646,7 +646,6 @@ details[open] > summary::after {
 .nav-actions svg {
   transform: translateY(1px);
 }
-}
 
 .theme-toggle:hover {
   color: var(--fg);
@@ -658,7 +657,7 @@ details[open] > summary::after {
 [data-theme="dark"] .theme-toggle-moon { display: block; }
 
 .nav-hamburger {
-  display: none;
+  display: flex;
   align-items: center;
   justify-content: center;
   width: 40px;
@@ -719,7 +718,7 @@ details[open] > summary::after {
 /* --- Shared Page Styles --- */
 
 .hide-mobile {
-  display: table-cell;
+  display: none;
 }
 
 .install-methods {
@@ -747,8 +746,7 @@ details[open] > summary::after {
 /* --- Home --- */
 
 .hero {
-  padding: var(--s24) 0 var(--s16);
-  padding-left: calc(var(--label-col) + var(--col-gap));
+  padding: var(--s16) 0 var(--s12);
 }
 
 .hero h1 {
@@ -790,8 +788,8 @@ details[open] > summary::after {
 
 .principles-grid {
   display: grid;
-  grid-template-columns: repeat(2, 1fr);
-  gap: var(--s8) var(--s12);
+  grid-template-columns: 1fr;
+  gap: var(--s8);
 }
 
 .principle-title {
@@ -814,8 +812,8 @@ details[open] > summary::after {
 
 .skill-category {
   display: flex;
-  align-items: baseline;
-  gap: var(--s6);
+  flex-direction: column;
+  gap: var(--s2);
 }
 
 .skill-category-label {
@@ -835,7 +833,6 @@ details[open] > summary::after {
 
 .skills-hero {
   padding: var(--s16) 0 var(--s8);
-  padding-left: calc(var(--label-col) + var(--col-gap));
 }
 
 .skills-hero h1 {
@@ -1081,83 +1078,74 @@ tr[hidden] {
 
 
 /* ============================================================
-   Responsive
+   Responsive (mobile-first: base is mobile, min-width for desktop)
    ============================================================ */
 
-@media (max-width: 768px) {
-  /* Global */
+@media (min-width: 769px) {
   :root {
-    --page-pad: 24px;
+    --page-pad: 48px;
   }
 
+  /* Layout */
   .section {
-    grid-template-columns: 1fr;
-    gap: var(--s4);
-    padding: var(--s12) 0;
+    grid-template-columns: var(--label-col) 1fr;
+    gap: 0 var(--col-gap);
+    padding: var(--s16) 0;
   }
 
   .section-label {
-    padding-top: 0;
+    padding-top: var(--s1);
   }
 
   .section-label-annotation {
-    display: none;
+    display: block;
   }
 
   /* Nav */
-  .nav-links { display: none; }
-  .nav-hamburger { display: flex; }
+  .nav-links { display: flex; }
+  .nav-hamburger { display: none; }
+  .nav-mobile-menu { display: none !important; }
+  .nav-actions { gap: var(--s8); }
 
   /* Shared */
   .hide-mobile {
-    display: none;
+    display: table-cell;
   }
 
   /* Home */
   .hero {
-    padding-left: 0;
-    padding-top: var(--s16);
-    padding-bottom: var(--s12);
+    padding: var(--s24) 0 var(--s16);
+    padding-left: calc(var(--label-col) + var(--col-gap));
   }
 
   .principles-grid {
-    grid-template-columns: 1fr;
+    grid-template-columns: repeat(2, 1fr);
+    gap: var(--s8) var(--s12);
   }
 
   .skill-category {
-    flex-direction: column;
-    gap: var(--s2);
+    flex-direction: row;
+    align-items: baseline;
+    gap: var(--s6);
   }
 
   /* Skills */
   .skills-hero {
-    padding-left: 0;
+    padding-left: calc(var(--label-col) + var(--col-gap));
   }
 
   /* Patterns */
-  .pattern-desc {
-    max-width: none;
-  }
-
   .pattern-name {
-    white-space: normal;
+    white-space: nowrap;
   }
 
   /* Agents */
   .lifecycle-flow {
-    gap: var(--s2);
+    gap: var(--s4);
   }
 
   .lifecycle-node {
-    padding: var(--s3) var(--s4);
-    min-width: 72px;
+    padding: var(--s4) var(--s6);
+    min-width: 88px;
   }
-
-  .lifecycle-arrow {
-    font-size: var(--text-sm);
-  }
-}
-
-@media (min-width: 769px) {
-  .nav-mobile-menu { display: none !important; }
 }

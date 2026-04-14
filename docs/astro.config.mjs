@@ -1,8 +1,8 @@
 import { defineConfig } from 'astro/config';
 
 export default defineConfig({
-  site: 'https://ghaida.github.io',
-  base: '/intent',
+  site: 'https://designwithintent.ai',
+  base: '/',
   trailingSlash: 'always',
   build: {
     assets: 'assets',

@@ -571,8 +571,15 @@ details[open] > summary::after {
 
 .nav-inner {
   display: flex;
-  align-items: baseline;
+  align-items: center;
   height: 56px;
+}
+
+.nav-brand {
+  display: flex;
+  align-items: baseline;
+  gap: var(--s3);
+  margin-right: auto;
 }
 
 .nav-wordmark {
@@ -581,13 +588,11 @@ details[open] > summary::after {
   font-size: var(--text-lg);
   letter-spacing: -0.03em;
   color: var(--fg);
-  margin-right: var(--s3);
 }
 
 .nav-tagline {
   font-size: var(--text-xs);
   color: var(--fg-muted);
-  margin-right: auto;
 }
 
 .nav-links {
@@ -624,7 +629,6 @@ details[open] > summary::after {
 .nav-actions {
   display: flex;
   align-items: center;
-  align-self: center;
   gap: 0;
 }
 

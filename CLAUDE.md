@@ -11,7 +11,9 @@ Skills system complete (Phases 0-5). Website built and audited (Phase 7). Next: 
 - **Project plan:** `project-plan.md` — full phase breakdown and progress
 - **Website spec:** `design-docs/superpowers/specs/2026-04-13-website-design.md`
 - **Website source:** `docs/` — Astro static site, 4 pages, mobile-first responsive, light/dark mode
-- **Next:** GitHub Pages deployment workflow, custom domain
+- **Live site:** https://designwithintent.ai
+- **Open issue:** Nav vertical alignment — text baseline and icon centering not matching. Current approach: nav-inner centers, nav-brand baseline-aligns text. Icons still ~2px off from text.
+- **Next:** Fix nav alignment, then visual polish pass
 
 ## Build
 

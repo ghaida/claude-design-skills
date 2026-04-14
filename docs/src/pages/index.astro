@@ -42,9 +42,14 @@ const principles = [
         A UX strategy system for AI tools. {skills.length} skills covering research,
         strategy, flows, content, accessibility, ethics, and measurement.
       </p>
-      <div class="code-block hero__install">
-        <span class="code-block__hint">Claude Code</span>
-        <code>claude install-skill ghaida/intent</code>
+      <div class="hero__install-group">
+        <div class="code-block hero__install">
+          <span class="code-block__hint">Claude Code</span>
+          <code>claude install-skill ghaida/intent</code>
+        </div>
+        <p class="hero__platforms muted small mono">
+          Also available for <a href="#install" class="link">Cursor, VS Code Copilot, and manual install</a>
+        </p>
       </div>
     </section>
 
@@ -57,10 +62,11 @@ const principles = [
           Every design decision should have a reason.
         </p>
         <p class="philosophy__body">
-          That means doing the research. Talking to users. Understanding
-          the system you're designing within. Checking whether your design
-          respects the people who'll use it. Intent gives AI the methodology
-          to do all of that, across the full design process.
+          The reason comes from research about the people who will use what
+          you build, and it holds up when you ask whether the design serves
+          them honestly. Intent gives AI that discipline: fifteen skills
+          covering problem framing, user research, information architecture,
+          content, accessibility, ethics, and engineering handoff.
         </p>
       </div>
     </section>
@@ -203,8 +209,19 @@ const principles = [
     margin-bottom: var(--s8);
   }
 
+  .hero__install-group {
+    display: flex;
+    flex-direction: column;
+    gap: var(--s2);
+    align-items: flex-start;
+  }
+
   .hero__install {
     display: inline-block;
+  }
+
+  .hero__platforms {
+    font-size: 0.75rem;
   }
 
   /* Philosophy */

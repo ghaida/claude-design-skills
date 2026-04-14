@@ -596,14 +596,18 @@ details[open] > summary::after {
 
 .nav-inner {
   display: flex;
-  align-items: baseline;
+  align-items: center;
   height: 56px;
-  padding-top: 18px;
+}
+
+.nav-inner > * {
+  display: flex;
+  align-items: center;
 }
 
 .nav-brand {
   display: flex;
-  align-items: baseline;
+  align-items: center;
   gap: var(--s3);
   margin-right: auto;
 }
@@ -619,6 +623,7 @@ details[open] > summary::after {
 .nav-tagline {
   font-size: var(--text-xs);
   color: var(--fg-muted);
+  margin-top: 3px;
 }
 
 .nav-links {
@@ -651,7 +656,6 @@ details[open] > summary::after {
 .nav-actions {
   display: flex;
   align-items: center;
-  align-self: center;
   gap: 0;
   margin-left: var(--s8);
 }

@@ -1,0 +1,313 @@
+---
+import Base from '../layouts/Base.astro';
+import SectionLabel from '../components/SectionLabel.astro';
+import { loadSkills, groupByCategory } from '../lib/skills';
+import { loadPatterns, patternStats } from '../lib/patterns';
+
+const skills = loadSkills();
+const categories = groupByCategory(skills);
+const patternCategories = loadPatterns();
+const pStats = patternStats(patternCategories);
+
+const base = import.meta.env.BASE_URL;
+
+// Sample patterns for preview (mix of severities)
+const samplePatterns = [
+  patternCategories.flatMap(c => c.patterns).find(p => p.name === 'Bait and Switch'),
+  patternCategories.flatMap(c => c.patterns).find(p => p.name === 'Fake Countdown Timers'),
+  patternCategories.flatMap(c => c.patterns).find(p => p.name === 'Infinite Scroll'),
+  patternCategories.flatMap(c => c.patterns).find(p => p.name === 'Anthropomorphic Manipulation'),
+  patternCategories.flatMap(c => c.patterns).find(p => p.name === 'Prechecked Consent'),
+  patternCategories.flatMap(c => c.patterns).find(p => p.name === 'Dead Ends'),
+].filter(Boolean);
+
+const principles = [
+  { title: 'Strategy before pixels', desc: 'Understand the problem before designing the solution.' },
+  { title: 'Ethics as architecture', desc: 'Dark patterns are structural failures, not cosmetic ones.' },
+  { title: 'Research is a skill', desc: 'Don\'t assume. Investigate. Let evidence lead.' },
+  { title: 'Systems over screens', desc: 'Design the machinery, not just the interface.' },
+  { title: 'Depth over breadth', desc: 'Every skill should be deep enough to teach from.' },
+  { title: 'The intent carries through', desc: 'If you can\'t articulate the intent, the design is unexamined.' },
+];
+---
+
+<Base title="Intent — Design with Intent">
+  <div class="page">
+    <!-- Hero -->
+    <section class="hero" aria-labelledby="hero-heading">
+      <h1 id="hero-heading">
+        Design with <span class="hero__accent">Intent</span>
+      </h1>
+      <p class="hero__lede subtext">
+        A UX strategy system for AI tools. {skills.length} specialized skills
+        that give AI the context to approach design decisions with depth — research,
+        strategy, systems, flows, content, ethics, and measurement.
+      </p>
+      <div class="code-block hero__install">
+        <span class="code-block__hint">Claude Code</span>
+        <code>claude install-skill ghaida/intent</code>
+      </div>
+    </section>
+
+    <!-- Philosophy -->
+    <section class="section" aria-labelledby="philosophy-heading">
+      <SectionLabel label="PHILOSOPHY" annotation="Core thesis" icon="brain" />
+      <div class="section-content">
+        <h2 id="philosophy-heading" class="visually-hidden">Philosophy</h2>
+        <p class="lead">
+          Every design decision should have a reason. Not a guess, not a trend,
+          not "best practice" — a reason grounded in evidence, examined through
+          ethics, and carried through every layer of the experience.
+        </p>
+        <p class="philosophy__body">
+          Intent doesn't make things look good. It makes things work right — for
+          the people who use them, not just the people who ship them. It's the
+          difference between decoration and design, between following patterns
+          and understanding why patterns exist.
+        </p>
+      </div>
+    </section>
+
+    <!-- Principles -->
+    <section class="section" aria-labelledby="principles-heading">
+      <SectionLabel label="PRINCIPLES" annotation="6 core positions" icon="shield" />
+      <div class="section-content">
+        <h2 id="principles-heading" class="visually-hidden">Principles</h2>
+        <div class="principles-grid">
+          {principles.map((p) => (
+            <div class="principle">
+              <h3 class="principle__title">{p.title}</h3>
+              <p class="principle__desc muted">{p.desc}</p>
+            </div>
+          ))}
+        </div>
+      </div>
+    </section>
+
+    <!-- Skills -->
+    <section class="section" aria-labelledby="skills-heading">
+      <SectionLabel label={`${skills.length} SKILLS`} annotation="7 categories" icon="grid" />
+      <div class="section-content">
+        <h2 id="skills-heading" class="visually-hidden">Skills</h2>
+        <div class="skill-categories">
+          {categories.map((cat) => (
+            <div class="skill-category">
+              <span class="skill-category__label mono">{cat.label}</span>
+              <div class="skill-category__tags">
+                {cat.skills.map((s) => (
+                  <a href={`${base}skills#${s.slug}`} class="skill-tag">/{s.slug}</a>
+                ))}
+              </div>
+            </div>
+          ))}
+        </div>
+        <p class="section-footer muted small">
+          <a href={`${base}skills`} class="link">View all skills with details →</a>
+        </p>
+      </div>
+    </section>
+
+    <!-- Anti-Patterns -->
+    <section class="section" aria-labelledby="patterns-heading">
+      <SectionLabel
+        label="ANTI-PATTERNS"
+        annotation={`${pStats.categories} categories · ${pStats.total}+ patterns`}
+        icon="warning"
+      />
+      <div class="section-content">
+        <h2 id="patterns-heading" class="visually-hidden">Anti-Patterns</h2>
+        <div class="table-wrap">
+          <table>
+            <thead>
+              <tr>
+                <th>Severity</th>
+                <th>Pattern</th>
+                <th class="hide-mobile">Category</th>
+              </tr>
+            </thead>
+            <tbody>
+              {samplePatterns.map((p) => (
+                <tr>
+                  <td>
+                    <span class={`severity severity--${p!.severity.toLowerCase()}`}>
+                      {p!.severity}
+                    </span>
+                  </td>
+                  <td>{p!.name}</td>
+                  <td class="hide-mobile muted small">{p!.category}</td>
+                </tr>
+              ))}
+            </tbody>
+          </table>
+        </div>
+        <p class="section-footer muted small">
+          <a href={`${base}patterns`} class="link">Browse the full catalog →</a>
+        </p>
+      </div>
+    </section>
+
+    <!-- Install -->
+    <section class="section" id="install" aria-labelledby="install-heading">
+      <SectionLabel label="INSTALL" annotation="4 platforms" icon="terminal" />
+      <div class="section-content">
+        <h2 id="install-heading" class="visually-hidden">Install</h2>
+        <div class="install-methods">
+          <div class="install-method">
+            <h3 class="install-method__name mono">Claude Code</h3>
+            <div class="code-block">
+              <code>claude install-skill ghaida/intent</code>
+            </div>
+          </div>
+          <div class="install-method">
+            <h3 class="install-method__name mono">Cursor</h3>
+            <p class="muted">
+              Download the <a href="https://github.com/ghaida/intent/releases" class="link">.cursor rules</a> and add to your project's <code class="mono">.cursor/rules/</code> directory.
+            </p>
+          </div>
+          <div class="install-method">
+            <h3 class="install-method__name mono">VS Code Copilot</h3>
+            <p class="muted">
+              Download the <a href="https://github.com/ghaida/intent/releases" class="link">copilot instructions</a> and add to <code class="mono">.github/copilot/</code>.
+            </p>
+          </div>
+          <div class="install-method">
+            <h3 class="install-method__name mono">Manual</h3>
+            <p class="muted">
+              Clone the repo and copy <code class="mono">skills/</code> into your project. Each skill is a standalone markdown file.
+            </p>
+          </div>
+        </div>
+      </div>
+    </section>
+  </div>
+</Base>
+
+<style>
+  /* Hero */
+  .hero {
+    padding: var(--s24) 0 var(--s16);
+    /* Align with content column */
+    padding-left: calc(var(--label-col) + var(--col-gap));
+  }
+
+  .hero h1 {
+    font-size: clamp(2.75rem, 6vw, 4.5rem);
+    letter-spacing: -0.03em;
+    margin-bottom: var(--s6);
+  }
+
+  .hero__accent {
+    color: var(--accent);
+  }
+
+  .hero__lede {
+    max-width: 55ch;
+    color: var(--fg-muted);
+    margin-bottom: var(--s8);
+  }
+
+  .hero__install {
+    display: inline-block;
+  }
+
+  /* Philosophy */
+  .philosophy__body {
+    margin-top: var(--s4);
+    max-width: 60ch;
+    color: var(--fg-muted);
+  }
+
+  /* Principles Grid */
+  .principles-grid {
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    gap: var(--s8) var(--s12);
+  }
+
+  .principle__title {
+    font-family: var(--display);
+    font-size: var(--text-sm);
+    font-weight: 700;
+    margin-bottom: var(--s1);
+  }
+
+  .principle__desc {
+    font-size: var(--text-xs);
+    line-height: var(--lh-small);
+  }
+
+  /* Skills Categories */
+  .skill-categories {
+    display: flex;
+    flex-direction: column;
+    gap: var(--s6);
+  }
+
+  .skill-category {
+    display: flex;
+    align-items: baseline;
+    gap: var(--s6);
+  }
+
+  .skill-category__label {
+    font-size: var(--text-xs);
+    color: var(--accent);
+    min-width: 160px;
+    flex-shrink: 0;
+  }
+
+  .skill-category__tags {
+    display: flex;
+    flex-wrap: wrap;
+    gap: var(--s2);
+  }
+
+  .section-footer {
+    margin-top: var(--s6);
+  }
+
+  /* Install */
+  .install-methods {
+    display: flex;
+    flex-direction: column;
+    gap: var(--s8);
+  }
+
+  .install-method__name {
+    font-size: var(--text-xs);
+    color: var(--accent);
+    margin-bottom: var(--s2);
+    font-weight: 600;
+  }
+
+  .install-method p {
+    font-size: var(--text-xs);
+    line-height: var(--lh-body);
+  }
+
+  /* Responsive */
+  .hide-mobile {
+    display: table-cell;
+  }
+
+  @media (max-width: 768px) {
+    .hero {
+      padding-left: 0;
+      padding-top: var(--s16);
+      padding-bottom: var(--s12);
+    }
+
+    .principles-grid {
+      grid-template-columns: 1fr;
+    }
+
+    .skill-category {
+      flex-direction: column;
+      gap: var(--s2);
+    }
+
+    .hide-mobile {
+      display: none;
+    }
+  }
+</style>

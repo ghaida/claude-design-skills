@@ -1,12 +1,12 @@
 {
   "name": "intent",
-  "description": "Design with Intent. A comprehensive UX and design strategy system — 15 specialized skills covering strategy, research, experience design, quality assurance, accessibility, measurement, and engineering handoff. Plus 6 named agents for Claude Projects.",
+  "description": "Design with Intent. A comprehensive UX and design strategy system — 15 specialized skills and 6 named agents covering strategy, research, experience design, quality assurance, accessibility, measurement, and engineering handoff.",
   "version": "1.0.0",
   "author": {
     "name": "Ghaida Zahran"
   },
-  "homepage": "https://github.com/ghaida/claude-design-skills",
-  "repository": "https://github.com/ghaida/claude-design-skills",
+  "homepage": "https://github.com/ghaida/intent",
+  "repository": "https://github.com/ghaida/intent",
   "license": "CC0-1.0",
   "keywords": [
     "design",

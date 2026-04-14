@@ -1,0 +1,235 @@
+---
+description: Intent reference: form design, state management, validation patterns, feedback loops, progressive disclosure, error recovery, undo/redo. Load when designing forms, interactions, input validation, or state transitions.
+alwaysApply: false
+---
+
+# Interaction Patterns
+
+## Form Design Principles
+
+Forms are where users exchange value with your product. Every unnecessary field, confusing label, or unhelpful error message is friction between the user and their goal. The research on form design is extensive and remarkably consistent.
+
+### One Thing Per Page
+
+The Government Digital Service (GDS) pattern, validated across millions of transactions: each screen asks one question or collects one piece of information. Not one form field — one conceptual unit.
+
+**Why it works:** Reduces cognitive load. Each page has a clear purpose. Error recovery is simpler — the error is on this page, about this thing. Progress feels tangible. Mobile performance improves (less content per load). Analytics are more granular (you know exactly where drop-off occurs).
+
+**When to bend it:** Closely related fields that users think of as one concept (first name + last name, city + state + zip). Editing flows where users need to see multiple fields to understand context. Expert tools where speed matters more than guidance.
+
+**When not to bend it:** Checkout flows. Registration. Any flow where drop-off is a risk. Any flow used on mobile.
+
+### Inline Validation Timing
+
+When to validate is as important as how to validate. Get the timing wrong and validation becomes harassment.
+
+**Validate on blur (leaving a field), not on keystroke.** Validating while the user is still typing is hostile — they haven't finished their input and you're already telling them it's wrong. Luke Wroblewski's research (2009) confirmed that inline validation improves completion rates, but only when triggered after the user leaves the field.
+
+**Exception: password strength.** Real-time feedback on password requirements is one of the few cases where keystroke-level validation helps, because the user is building toward a goal and needs to know the criteria as they type.
+
+**Exception: character counts.** If a field has a maximum length, show the remaining count as the user types. Don't wait until they've written a paragraph to tell them the limit is 140 characters.
+
+**Validate once, then validate on change.** After a field shows an error, re-validate on every change so the error disappears the moment the input becomes valid. Don't make users re-submit the form to discover they've fixed the error.
+
+### Field Grouping
+
+Related fields should be visually and semantically grouped. Ungrouped forms feel longer than they are.
+
+**Use fieldsets for conceptual groups:** Personal information, payment details, shipping address — each is a group. The `<fieldset>` element with a `<legend>` provides both visual grouping and accessibility structure.
+
+**Limit visible fields.** If a form has 20 fields but only 6 are relevant based on previous answers, show 6. Conditional visibility reduces perceived complexity without hiding options. The user sees a short form that adapts, not a long form that wastes their time.
+
+**Single-column layout.** Matteo Penzo's eye-tracking research (2006) and Baymard Institute's studies consistently show that single-column forms outperform multi-column forms. Users scan vertically; multi-column layouts create ambiguous reading order and increase completion time.
+
+### Smart Defaults
+
+Default values should serve the user's most likely intent, not the business's preferred outcome.
+
+**Good defaults:** Country pre-filled from IP geolocation. Date pre-filled to today. Quantity defaulting to 1. Shipping address copied from billing address with one click.
+
+**Bad defaults:** Pre-selected premium tier. Pre-checked marketing consent. Default to most expensive option. Privacy settings defaulting to "share with everyone."
+
+**The test:** If 80% of users would choose this value, it's a good default. If the default primarily benefits the business, it's manipulation (see the anti-pattern catalog).
+
+---
+
+## State Machines for UI
+
+Every interactive component exists in multiple states. Enumerating those states before building prevents the most common class of UI bugs: the states nobody designed for.
+
+### Universal Component States
+
+**Default/Resting** — The component as it appears before any interaction. This is what the user sees first. It must communicate: what is this, and what can I do with it?
+
+**Hover** — Mouse cursor is over the component. Must communicate: this is interactive, something will happen if you click. Not applicable to touch interfaces — never put essential information in hover states.
+
+**Focus** — Component has keyboard focus. Must be visually distinct from hover AND default. This is a hard accessibility requirement — users navigating by keyboard need to know where they are.
+
+**Active/Pressed** — User is in the process of activating (mouse down, touch start). Must provide immediate tactile feedback that the action is registering.
+
+**Disabled** — Component exists but can't be activated. Must communicate: this exists, but you can't use it right now (and ideally, why). Disabled states that provide no explanation for why they're disabled are a common frustration.
+
+**Loading** — Component is processing. Must communicate: your action was received, we're working on it, here's how long it might take.
+
+**Success** — Action completed successfully. Must communicate: it worked, here's the result.
+
+**Error** — Action failed. Must communicate: it didn't work, here's why, here's what to do about it.
+
+**Empty** — Component has no content to display. Must communicate: this is where [thing] will appear, here's how to add the first one. Empty states are one of the most neglected states in product design.
+
+### Form Field States
+
+Form fields add additional states:
+
+**Placeholder** — Hint text visible when the field is empty. Use for format examples ("DD/MM/YYYY"), not labels. Placeholder text disappears on focus, so if the user needs the information while typing, it's in the wrong place.
+
+**Filled** — Field contains user input. This should look different from placeholder — users need to distinguish "I typed this" from "this is a hint."
+
+**Read-only** — Field displays a value that can't be edited. Different from disabled — read-only values are informational; disabled fields are temporarily unavailable.
+
+**Valid** — Input passes validation. Whether to show positive validation is a design choice — showing green checkmarks after every field can feel patronizing. Reserve positive validation for fields where success isn't obvious (password strength, username availability).
+
+**Invalid** — Input fails validation. Must show what's wrong and how to fix it. "Invalid input" is not an error message. "Email must include an @ symbol" is.
+
+### Button States
+
+**Primary action** — The main action the user is here to perform. Visually prominent. One primary action per screen (or per form section in long forms).
+
+**Secondary action** — Alternative actions (Cancel, Save Draft, Reset). Visually subordinate to primary. Should not be styled in a way that makes them easy to confuse with the primary action.
+
+**Destructive action** — Actions that can't be undone (Delete, Remove, Revoke). Visually distinct — red is conventional but not sufficient. Should require confirmation proportional to the consequence.
+
+---
+
+## Validation Patterns
+
+### When to Validate
+
+| Timing | Use when | Example |
+|--------|----------|---------|
+| **On blur** | Most fields. Validate when the user leaves the field. | Email format, required fields |
+| **On change (after first error)** | After an error is shown, re-validate on each change so the error clears immediately when fixed. | Password requirements |
+| **On submit** | Complex cross-field validation that depends on multiple fields together. | "End date must be after start date" |
+| **Real-time** | User is building toward a visible goal. | Password strength meter, character count |
+| **Server-side (async)** | Validation requires a network call. | Username availability, address verification |
+
+### Error Message Design
+
+**Structure:** What went wrong + how to fix it. Always both. Never just one.
+
+- Bad: "Invalid input"
+- Bad: "Error in field 3"
+- Good: "Email address must include an @ symbol — for example: name@company.com"
+- Good: "This username is taken. Try adding numbers or try: maria_designer, maria.d"
+
+**Position:** Adjacent to the field, not at the top of the form. If the user has to scroll to find which field has an error, the error message has failed its purpose.
+
+**Timing:** Appear when the error is detected. Disappear when the error is fixed. Don't wait for form submission to clear resolved errors.
+
+**Tone:** Neutral and helpful. Never blame the user. "You entered an invalid email" puts fault on the user. "Please enter an email address in the format name@example.com" puts focus on the solution.
+
+**Accessibility:** Error messages must be programmatically associated with their fields (aria-describedby). Screen readers need to announce errors when they appear (use aria-live regions or role="alert" for form-level summaries).
+
+---
+
+## Feedback Loops
+
+Users need to know that the system heard them and is responding. Silence is the enemy of trust.
+
+### Optimistic UI
+
+Update the interface immediately as if the action succeeded, then reconcile with the server. If the server rejects the action, roll back gracefully.
+
+**When to use:** Low-stakes actions with high success rates. Toggling a favorite, sending a chat message, reordering a list. The action will almost certainly succeed, and the 200ms delay for server confirmation feels sluggish.
+
+**When not to use:** Financial transactions. Actions that affect other users. Anything where the rollback would be confusing or harmful. If "oops, that didn't actually work" would cause real problems, wait for confirmation.
+
+**Rollback design:** If the optimistic update needs to be reversed, explain what happened. "Message couldn't be sent — tap to retry" is clear. Silently removing the message the user thought they sent is not.
+
+### Skeleton Screens
+
+Show the structure of the page before the content loads. Placeholder shapes in the positions where content will appear.
+
+**Why they work:** Luke Wroblewski and Google's research shows skeleton screens reduce perceived load time compared to spinners. Users see progress — the page is "filling in" — rather than waiting for a blank-then-full transition.
+
+**When to use:** Content pages, feeds, dashboards — anywhere the layout is predictable but the content is dynamic. Not appropriate for forms or transactional pages where the structure itself is unknown.
+
+**Implementation detail:** Skeleton shapes should match the actual content layout. A skeleton that looks nothing like the loaded page creates a jarring transition that's worse than no skeleton.
+
+### Progress Indicators
+
+**Determinate** (you know how long it will take): Use a progress bar with percentage. Show the user how far through the process they are and, ideally, how long remains.
+
+**Indeterminate** (you don't know how long): Use a spinner or pulsing animation. Be honest — if you don't know how long, don't fake a progress bar. But do provide context: "Uploading your file..." is better than a naked spinner.
+
+**Multi-step** (sequential process): Show the steps and highlight the current one. Users need to know: how many steps are there, which one am I on, can I go back, can I save and continue later?
+
+---
+
+## Progressive Disclosure
+
+Show what's needed now. Reveal what's needed next. Hide what's rarely needed but make it findable.
+
+### Patterns
+
+**Stepped flows:** Break complex tasks into sequential steps. Each step focuses on one decision or one type of information. The user sees only the current step, with awareness of the overall process (step indicator, progress bar).
+
+**Expandable sections:** Group advanced or optional information behind expand/collapse controls. The label should be descriptive enough that users know what's inside without expanding. "Advanced options" is better than "More."
+
+**Contextual help:** Tooltips, info icons, and inline help that provide explanation on demand. Good for technical concepts or unusual fields. Bad when used as a substitute for clear labels.
+
+**Feature disclosure:** In complex tools, show core features by default and surface advanced features as the user demonstrates proficiency. This is distinct from hiding features — the path to discovery should be visible.
+
+### Anti-Patterns in Progressive Disclosure
+
+**Mystery meat navigation:** Icons or labels so abstract that users can't predict what they'll find. Progressive disclosure requires clear signals about what's hidden.
+
+**Required information behind disclosure:** If the user needs the information to complete their task, it shouldn't be behind a "show more" toggle. Progressive disclosure is for optional and contextual information.
+
+**Inconsistent depth:** Some sections expand to reveal one item; others reveal 15. Users build expectations about the depth behind disclosure controls. Consistency matters.
+
+---
+
+## Undo/Redo Patterns
+
+Undo is not a feature. It's a safety net that makes every other interaction less stressful.
+
+### Implementation Approaches
+
+**Immediate undo (toast/snackbar):** For quick, low-stakes actions. "Message archived — Undo." The undo window is typically 5-10 seconds. After that, the action becomes permanent. Gmail's undo-send is the canonical example.
+
+**History-based undo:** For document editing and creative tools. Maintain a stack of actions. Users can undo sequentially (Ctrl+Z) or browse the history. Each state should be named descriptively ("Changed font to Helvetica," not "Action 47").
+
+**Version history:** For long-lived documents and collaborative work. Periodic snapshots with timestamps and authorship. Users can browse, compare, and restore previous versions. Google Docs' version history is well-implemented; the key is that versions are named by time and author, not arbitrary version numbers.
+
+**Trash/Archive:** For deletion. Move items to a recoverable location rather than deleting permanently. Provide a clear emptying schedule ("Trash empties after 30 days") so users understand the safety window.
+
+### Design Principles for Undo
+
+- Make it discoverable. If users don't know undo exists, it doesn't function as a safety net.
+- Make the window clear. If undo expires, tell users when.
+- Make the scope clear. Does undo reverse the last action? The last 5 actions? Everything since last save?
+- In collaborative contexts, undo should affect only the user's own actions, not other collaborators'.
+
+---
+
+## Destructive Action Safeguards
+
+Actions that can't be undone need friction proportional to their consequences.
+
+### Friction Hierarchy
+
+**Level 1 — Visual distinction:** Make the destructive button red or otherwise visually distinct from safe actions. This is the minimum — necessary but not sufficient for important actions.
+
+**Level 2 — Confirmation dialog:** "Are you sure you want to delete this project? This action cannot be undone." Include what will be lost. A generic "Are you sure?" carries no information.
+
+**Level 3 — Deliberate action:** Require the user to type a confirmation phrase. "Type DELETE to permanently remove this repository." GitHub's repository deletion uses this pattern. Reserve for actions with severe consequences.
+
+**Level 4 — Cooling period:** For the most consequential actions (account deletion, data export for deletion), implement a waiting period. "Your account will be deleted in 14 days. You can cancel deletion any time before then." GDPR supports this pattern — the right to erasure doesn't require instant deletion.
+
+### Safeguard Design Principles
+
+- Name the consequence. "Delete project" is less clear than "Delete project and all 47 files inside it."
+- Show what will be lost. A preview of the data being destroyed makes the decision concrete.
+- Offer alternatives. "You can also archive this project, which hides it without deleting it."
+- Don't ask for confirmation on reversible actions. Confirming "are you sure?" on every action trains users to click through without reading. Save confirmation for genuinely destructive actions. For everything else, provide undo.

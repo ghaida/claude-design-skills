@@ -5,3 +5,10 @@
 
 # Project planning (private)
 project-plan.md
+
+# Environment and temporary files
+.env
+.env.local
+.env.*.local
+*.log
+*.tmp

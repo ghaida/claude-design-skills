@@ -6,18 +6,18 @@ Intent gives AI the context to approach design decisions with depth. Where visua
 
 ## The agents
 
-Six named agents, each a specialist you can deploy in Claude Projects or paste as custom instructions:
+Six named agents, each combining multiple skills into a specialist persona:
 
-| Agent | Name | What it does |
-|-------|------|-------------|
-| Entry point | **Noor** | Orients the project, holds UX principles and the anti-pattern catalog, routes to specialists |
-| Strategy + Research | **Ember** | Frames problems, demands evidence, refuses to build on assumptions |
-| Experience Design | **Wren** | Shapes user flows, structures information, designs the words |
-| Quality + Resilience | **Vigil** | Evaluates UX quality, hardens for edge cases, ensures accessibility |
-| Handoff | **Rune** | Carries design intent faithfully into engineering specs |
-| Philosopher | **Sage** | Sits with problems before solving them — a cognitive mode any agent can enter |
+| Domain | Agent | Skills it combines |
+|--------|-------|--------------------|
+| Entry point | **Noor** | `/intent` — orients the project, holds UX principles and the anti-pattern catalog, routes to specialists |
+| Strategy + Research | **Ember** | `/strategize` + `/investigate` — frames problems, demands evidence, refuses to build on assumptions |
+| Experience Design | **Wren** | `/journey` + `/organize` + `/articulate` — shapes user flows, structures information, designs the words |
+| Quality + Resilience | **Vigil** | `/evaluate` + `/fortify` + `/include` — evaluates UX quality, hardens for edge cases, ensures accessibility |
+| Handoff | **Rune** | `/specify` — carries design intent faithfully into engineering specs |
+| Philosopher | **Sage** | `/philosopher` — sits with problems before solving them, a cognitive mode any agent can enter |
 
-See `agents/HOW-TO-USE.md` for deployment options, decision trees, and project lifecycle examples.
+For larger projects, chain agents in sequence: Ember to frame the problem, Wren to design the experience, Vigil to ensure quality and accessibility, Rune to hand off to engineering. Sage can be entered at any point when the problem needs more exploration.
 
 ## The skills
 
@@ -67,25 +67,19 @@ See `agents/HOW-TO-USE.md` for deployment options, decision trees, and project l
 
 **Claude Code (plugin):**
 ```
-/plugin marketplace add ghaida/claude-design-skills
+/plugin marketplace add ghaida/intent
 ```
 Then open `/plugin` in Claude Code to install. Skills become available as `/intent:strategize`, `/intent:evaluate`, etc.
 
-**Cursor:** Download the latest [Cursor release zip](https://github.com/ghaida/claude-design-skills/releases) and extract `.cursor/rules/` to your project root.
+**Cursor:** Download the latest [Cursor release zip](https://github.com/ghaida/intent/releases) and extract `.cursor/rules/` to your project root.
 
-**VS Code Copilot:** Download the latest [Copilot release zip](https://github.com/ghaida/claude-design-skills/releases) and extract `.github/` to your project root.
-
-**Claude Projects:** Download individual agent files from `agents/` and paste as project custom instructions.
+**VS Code Copilot:** Download the latest [Copilot release zip](https://github.com/ghaida/intent/releases) and extract `.github/` to your project root.
 
 **Manual (any platform):** Clone the repo and run `./build.sh` to generate distributions for all platforms.
 
 ## How to use
 
-**In Claude Projects:** Upload an agent file as the project instruction. For deeper work, also upload the matching skill files as project knowledge. Start with Noor to orient, or go directly to the specialist you need.
-
 **In Claude Code:** After installing the plugin, skills are available as slash commands — `/intent:strategize`, `/intent:journey`, `/intent:evaluate`, etc.
-
-**Chaining agents:** For larger projects, run agents in sequence — Ember to frame the problem, Wren to design the experience, Vigil to ensure quality and accessibility, Rune to hand off to engineering. Sage can be entered from any agent when the problem needs more exploration.
 
 **Quick decision tree:**
 
@@ -93,22 +87,22 @@ Then open `/plugin` in Claude Code to install. Skills become available as `/inte
 I have a design challenge
 │
 ├─ "I don't know what problem we're solving"
-│  └─ Ember (strategy + research)
+│  └─ /strategize
 │
 ├─ "I need to design the experience"
-│  └─ Wren (flows + structure + content)
+│  └─ /journey + /organize + /articulate
 │
 ├─ "Does this actually work? For everyone?"
-│  └─ Vigil (evaluation + resilience + accessibility)
+│  └─ /evaluate + /fortify + /include
 │
 ├─ "Ready for engineering"
-│  └─ Rune (specs + handoff)
+│  └─ /specify
 │
 ├─ "I'm stuck / brainstorm / sit with this"
-│  └─ Sage (philosopher)
+│  └─ /philosopher
 │
 └─ "I need to set up context for the project"
-   └─ Noor (entry point)
+   └─ /intent
 ```
 
 ## The anti-pattern catalog

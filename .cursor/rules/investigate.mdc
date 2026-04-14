@@ -415,4 +415,3 @@ Research involves real people giving you their time, attention, and trust. Treat
 - Visual design direction. Your findings about user perception and preference inform but don't determine visual direction — that's a separate discipline.
 
 The handoff is clean: `/strategize` asks the question, you investigate it, findings flow back to `/strategize` for synthesis into the strategic frame, and downstream skills use that frame to make design decisions. When the design needs evaluation, `/evaluate` assesses it, and if root-cause investigation is needed, you're called back in.
-

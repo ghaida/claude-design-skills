@@ -19,7 +19,7 @@ Specialized design skills are available in .github/copilot/skills/:
 - **organize** —  Structure information so people can find what they need, understand where they are, and navigate confidently.
 - **philosopher** —  A cross-cutting cognitive mode for sitting with design problems before rushing to solve them.
 - **specify** —  Bridges design and engineering by producing detailed specs, organized handoff packages, asset inventories, and cross-functional documentation.
-- **strategize** — Frames product design problems before solutions exist.
+- **strategize** —  Frames product design problems before solutions exist.
 - **transpose** —  Rethinks experiences for different platforms and contexts — not just resizing, but reconceiving.
 
 ## Core Principles

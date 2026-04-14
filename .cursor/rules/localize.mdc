@@ -289,4 +289,3 @@ Design for localization from day one. The cost of retrofitting i18n support is o
 - Visual adaptation details (visual design)
 - Accessibility implementation per market (`/include`)
 - Legal compliance decisions (legal team — this skill flags requirements, not interprets law)
-

@@ -1,0 +1,224 @@
+---
+description: Intent reference: navigation patterns and trade-offs, taxonomy design, mental model theory, wayfinding principles, search behavior models. Load when designing navigation, site structure, taxonomy, or information hierarchy.
+alwaysApply: false
+---
+
+# Information Architecture
+
+## Navigation Patterns
+
+Every navigation pattern is a trade-off between findability, scalability, and cognitive load. There is no universally correct pattern — there's the right pattern for your content, users, and context.
+
+### Hierarchical (Tree)
+
+The most common pattern. Content is organized in nested categories: top-level → subcategory → item.
+
+**When it works:** Large content sets with clear categorical relationships. Users have a general sense of what category their item belongs to. Content creators can maintain consistent categorization.
+
+**When it fails:** When categories overlap significantly (is a "wireless mouse" in Accessories, Computers, or Peripherals?). When the hierarchy is deeper than 3-4 levels — users lose orientation quickly. When the hierarchy reflects organizational structure rather than user mental models ("Products" → "Business Unit A" → "Division 2" → "Team Alpha's Output").
+
+**Watch for:** The "miscellaneous" drawer. If you have a category called "Other" or "General" that keeps growing, your hierarchy isn't working. Also: category names that mean something to the organization but nothing to users.
+
+### Hub-and-Spoke
+
+A central hub connects to independent sections. Each section is largely self-contained. Users return to the hub to navigate between sections.
+
+**When it works:** Mobile apps with distinct functional areas (Messages, Camera, Profile). Products where tasks are independent — you don't need to combine search results with your shopping cart. Kiosk interfaces and set-top boxes where the input model favors focused navigation.
+
+**When it fails:** When users need to move fluidly between sections. When tasks span multiple sections. When the "hub" becomes a dumping ground for everything that doesn't fit in a spoke.
+
+**Watch for:** The desire to add cross-links between spokes. Once spokes start linking to each other extensively, the hub-and-spoke model is fighting the user's actual workflow. Consider switching to a different pattern.
+
+### Flat
+
+All content is at the same level. No hierarchy. Often paired with powerful search/filter.
+
+**When it works:** Homogeneous content sets (a photo gallery, a list of transactions, a feed of posts). Content that doesn't have natural categories. Products with excellent search infrastructure.
+
+**When it fails:** Diverse content types. Large content sets without strong search/filter. Users who browse rather than search.
+
+**Watch for:** The illusion of flatness. Many "flat" architectures are actually filtered hierarchies — the user selects filters that create ad-hoc categories. That's fine, but the filter design is now your navigation design.
+
+### Faceted
+
+Multiple independent dimensions for filtering the same content set. Users combine facets freely (color + size + price + brand).
+
+**When it works:** E-commerce, search results, large databases with multiple attributes. When different users want to slice the same content differently. When the content has natural, independent attributes.
+
+**When it fails:** When facets aren't independent (selecting "red" and "small" leaves zero results because small items don't come in red). When there are too many facets — 15 filter dimensions overwhelm rather than help. When the vocabulary is inconsistent across facets.
+
+**Watch for:** Empty states. Faceted navigation creates combinatorial explosion — many facet combinations will return zero results. Design for graceful degradation: show result counts per facet before selection, disable facets that would return zero.
+
+### Dashboard
+
+Multiple content types displayed simultaneously, typically with summary views that link to detail.
+
+**When it works:** Monitoring and analytics products. Executive overviews. Products where users need to scan multiple information streams quickly. Return-visit products where users want a status snapshot.
+
+**When it fails:** When the dashboard becomes the entire product — dashboards that require scrolling through 15 widgets have become a flat architecture by accident. When every stakeholder demands their metric on the dashboard, resulting in information overload. When the dashboard shows data but doesn't enable action.
+
+**Watch for:** Dashboard-driven design, where every new feature gets a widget on the dashboard instead of its own proper location. Also: dashboards that show the same data to everyone when different roles need different views.
+
+---
+
+## Taxonomy Design
+
+Taxonomy is the art of naming and grouping things so that users can find them. Get taxonomy wrong and no amount of visual design will save the navigation.
+
+### Top-Down vs. Bottom-Up
+
+**Top-down** starts with organizational logic: What are the major categories? How do they subdivide? This approach works when domain experts understand the structure well and users share that understanding. Risk: imposing a structure that makes sense internally but not to users.
+
+**Bottom-up** starts with content items: What do we have? How do users group these things? What labels do they use? Card sorting is the primary method. This approach discovers the taxonomy users actually want. Risk: producing categories that are too specific or too numerous to function as navigation.
+
+**Best practice:** Start bottom-up (card sorting to understand user mental models), then refine top-down (using domain expertise to fill gaps and resolve edge cases). Neither approach alone produces good taxonomy.
+
+### MECE Principle
+
+Mutually Exclusive, Collectively Exhaustive. Every item belongs in exactly one category, and every item has a category to belong to.
+
+**Mutually Exclusive:** If a user could reasonably place an item in two categories, the categories overlap. Fix by: making categories more specific, merging overlapping categories, or moving to faceted navigation where items can exist on multiple dimensions.
+
+**Collectively Exhaustive:** If items exist that don't fit any category, the taxonomy has gaps. The test: take 50 random content items and try to categorize each one. If you hesitate on more than 10%, the taxonomy needs work.
+
+**Reality:** True MECE is often unachievable for complex domains. When items genuinely belong in multiple categories, consider cross-referencing (the item lives in one place with links from others) or polyhierarchy.
+
+### Polyhierarchy
+
+An item can appear in multiple places in the hierarchy. "Wireless Mouse" appears under both "Computer Accessories" and "Wireless Devices."
+
+**When to use:** When card sorting consistently shows items being placed in multiple categories by different users. When the cost of "missing" an item (user can't find it) is higher than the cost of duplication.
+
+**Risks:** Maintenance complexity (update in one place, forget the other). User confusion if the same item has different metadata or behavior in different locations. Navigation that feels unreliable — "I saw this somewhere else, which is the real one?"
+
+**Mitigation:** Make one location canonical. Other appearances are clearly marked as cross-references. Maintain through automation, not manual duplication.
+
+---
+
+## Mental Models
+
+A mental model is the user's internal representation of how a system works. It doesn't need to match the actual system model — but the interface needs to match the user's mental model, or the user will fail.
+
+### Applied Mental Model Theory
+
+**Don Norman's "The Design of Everyday Things" (1988)** distinguishes three models:
+1. **Design model** — How the designer thinks the system works
+2. **System model** — How the system actually works
+3. **User model** — How the user thinks the system works
+
+The interface is the bridge between design model and user model. When they align, the product feels intuitive. When they don't, the product feels broken — even if it works perfectly from a technical standpoint.
+
+**Common misalignments:**
+- Users think "deleting" removes something permanently; the system moves it to trash. (Mild — the system is more forgiving than expected.)
+- Users think "saving" preserves their work; the system auto-saves and "save" does nothing visible. (Confusing — the action has no visible effect.)
+- Users think each browser tab is independent; the system shares session state across tabs. (Dangerous — changes in one tab silently affect another.)
+
+**Design implication:** Research mental models before designing navigation, naming, or interaction patterns. Card sorting reveals categorical mental models. Think-aloud usability testing reveals procedural mental models. Both are necessary.
+
+---
+
+## Wayfinding
+
+Romedi Passini and Paul Arthur's "Wayfinding: People, Signs, and Architecture" (1992) established principles for spatial navigation that translate directly to digital environments.
+
+### Core Wayfinding Principles
+
+**Orientation:** Users must always know where they are. In physical space: "You Are Here" maps, visible landmarks, floor numbers. In digital space: breadcrumbs, highlighted navigation items, page titles, URL structure. A user who doesn't know where they are can't decide where to go next.
+
+**Route decision:** At every decision point, users need enough information to choose correctly. In physical space: directional signs at intersections. In digital space: navigation labels, preview text, descriptions. If a user must click to learn whether a link leads somewhere useful, the wayfinding has failed.
+
+**Closure:** Users need feedback that they've arrived. In physical space: room numbers, door labels, reception desks. In digital space: page headings that match the link they clicked, content that delivers what the label promised. The disorienting feeling of clicking "Privacy Settings" and landing on a page titled "Account Management" is a closure failure.
+
+**Progressive disclosure of the environment:** Don't show the entire map at once. Show what's relevant at each decision point. In physical space: building directories show floors, not individual rooms. In digital space: top-level navigation shows categories, not subcategories. Reveal depth as the user navigates deeper.
+
+### Lynch's Spatial Elements
+
+Kevin Lynch's "The Image of the City" (1960) identified five elements people use to navigate physical space. All five apply to digital products:
+
+1. **Paths** — Routes through the environment. In digital: navigation flows, breadcrumbs, sequential processes.
+2. **Edges** — Boundaries between regions. In digital: section dividers, navigation group boundaries, sidebar edges.
+3. **Districts** — Areas with identifiable character. In digital: distinct product sections with consistent visual treatment (the "settings" area looks different from the "content" area).
+4. **Nodes** — Strategic focus points. In digital: landing pages, dashboards, search results pages — places users pass through to reach destinations.
+5. **Landmarks** — Reference points for orientation. In digital: logos, persistent headers, unique page layouts that users remember and navigate by.
+
+---
+
+## Search Behavior Models
+
+Not all search is the same. Marcia Bates' research and Gary Marchionini's framework identify fundamentally different search behaviors that require different design responses.
+
+### Known-Item Search
+
+The user knows what they want and knows what it's called. They type a specific query and expect a specific result. Example: searching for "AirPods Pro" on an electronics site.
+
+**Design for:** Speed. Autocomplete. Exact match ranking. Typo tolerance. The user's success metric is: did I find the exact thing, fast?
+
+### Exploratory Search
+
+The user has a need but doesn't know the exact solution. They're browsing, comparing, learning. Example: searching for "wireless earbuds" to learn what options exist.
+
+**Design for:** Browsing. Faceted filtering. Comparison. Rich result previews. Related items. The user's success metric is: did I learn enough to make a decision?
+
+### Re-finding
+
+The user found something before and wants to find it again. Example: "I saw a pair of earbuds last week, they were around $150, I think they were Sony..."
+
+**Design for:** History. Recently viewed. Favorites/bookmarks. Fuzzy search that handles partial recall. The user's success metric is: did I find that thing I saw before?
+
+### Don't-Know-What-I-Don't-Know
+
+The user doesn't know the domain well enough to formulate a useful query. Example: a first-time investor searching a financial platform with no idea what terminology to use.
+
+**Design for:** Guided discovery. Popular searches. Category browsing. Plain-language interpretation. "Did you mean..." suggestions that educate, not just correct.
+
+---
+
+## Card Sort and Tree Test Methodology
+
+### Running a Card Sort
+
+**Preparation:**
+1. Select 30-60 content items that represent the full breadth of your content. Too few misses important distinctions; too many fatigues participants.
+2. Write each item on a card (physical or digital — tools like OptimalSort, Maze, or UXtweak work well for remote sorts).
+3. Use real content labels, not internal jargon. If the sort reveals that users don't understand a label, that's a finding.
+
+**Open sort protocol:**
+1. Ask participants to group cards in whatever way makes sense to them. No right answer.
+2. After grouping, ask them to name each group.
+3. Ask about any cards they found difficult to place.
+4. Note: some participants will create many small groups; others will create few large groups. Both patterns are informative.
+
+**Closed sort protocol:**
+1. Provide pre-defined categories.
+2. Ask participants to place each card in the category where they'd expect to find it.
+3. Record placement and confidence. Low-confidence placements indicate taxonomy problems.
+
+**Analysis:**
+- Generate a similarity matrix showing how often items were grouped together.
+- Use dendrograms or cluster analysis to identify natural groupings.
+- Look for items that consistently end up alone or oscillate between groups — these are your taxonomy's problem children.
+- Compare sort results with your proposed architecture. Where they diverge, the user is right and your architecture needs to adjust.
+
+### Running a Tree Test
+
+**Preparation:**
+1. Create a text-only representation of your navigation hierarchy. No visual design, no icons, no color.
+2. Write 8-12 tasks that represent common user goals. Example: "Where would you find information about changing your password?"
+3. Each task should have exactly one correct destination.
+
+**Protocol:**
+1. Show the top level of the tree.
+2. Present a task.
+3. Participant clicks into categories, drilling deeper until they think they've found the right place.
+4. Record: path taken, success/failure, directness (did they backtrack?), time to completion.
+
+**Key metrics:**
+- **Success rate:** What percentage of participants found the correct answer? Below 70% for a task indicates a structural problem.
+- **Directness:** What percentage went straight to the answer without backtracking? Low directness with high eventual success means the label worked but the location wasn't intuitive — users found it by elimination.
+- **First click:** Where did participants click first? If the majority's first click is wrong, the top-level labels or categories are the problem.
+
+**Interpreting results:**
+- High success + high directness = the structure works for this task
+- High success + low directness = findable but not intuitive; users had to hunt
+- Low success + varied paths = structural problem; the item isn't where users expect it
+- Low success + consistent wrong path = the item is in the wrong category, and users agree about where it should be (which tells you where to move it)

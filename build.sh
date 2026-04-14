@@ -92,19 +92,44 @@ for skill_dir in "$SKILLS_DIR"/*/; do
         printing { print }
     ' "$skill_file")
 
-    # If this skill has reference docs, append them
-    ref_content=""
+    # If this skill has reference docs, emit each as its own .mdc file
+    # instead of inlining them (prevents context bloat in Cursor)
     if [ -d "$skill_dir/references" ]; then
         for ref_file in "$skill_dir/references"/*.md; do
             if [ -f "$ref_file" ]; then
                 ref_name=$(basename "$ref_file" .md)
-                ref_content="$ref_content
+                ref_content=$(cat "$ref_file")
 
+                # Generate a trigger description from the reference name
+                case "$ref_name" in
+                    accessibility-foundations)
+                        ref_desc="Intent reference: WCAG 2.2 for designers, screen reader design, keyboard navigation, cognitive and motor accessibility, inclusive design principles and testing methodology. Load when working on accessibility, a11y audits, inclusive design, or assistive technology." ;;
+                    content-strategy)
+                        ref_desc="Intent reference: voice framework methodology, tone matrices, content modeling, microcopy patterns, terminology governance, readability scoring. Load when working on UX writing, voice and tone, content models, or copy strategy." ;;
+                    ethical-design)
+                        ref_desc="Intent reference: anti-pattern remediation, dark pattern alternatives, consent design, design ethics frameworks, regulatory compliance patterns. Load when fixing dark patterns, designing consent flows, or reviewing ethical concerns." ;;
+                    information-architecture)
+                        ref_desc="Intent reference: navigation patterns and trade-offs, taxonomy design, mental model theory, wayfinding principles, search behavior models. Load when designing navigation, site structure, taxonomy, or information hierarchy." ;;
+                    interaction-patterns)
+                        ref_desc="Intent reference: form design, state management, validation patterns, feedback loops, progressive disclosure, error recovery, undo/redo. Load when designing forms, interactions, input validation, or state transitions." ;;
+                    measurement-frameworks)
+                        ref_desc="Intent reference: HEART framework, Goal-Signal-Metric mapping, A/B test design, statistical literacy for designers, ethical measurement. Load when defining metrics, designing experiments, or building measurement plans." ;;
+                    research-methods)
+                        ref_desc="Intent reference: method selection matrix, sample size guidance, interview techniques, usability testing, survey design, synthesis frameworks. Load when planning or conducting user research." ;;
+                    service-design)
+                        ref_desc="Intent reference: service blueprinting methodology, frontstage/backstage mapping, touchpoint analysis, moment-of-truth design, channel orchestration. Load when mapping services, systems, or cross-channel experiences." ;;
+                    *)
+                        ref_desc="Intent reference document: $ref_name" ;;
+                esac
+
+                cat > "$CURSOR_DIR/intent-ref-$ref_name.mdc" << ENDOFREF
+---
+description: $ref_desc
+alwaysApply: false
 ---
 
-## Reference: $ref_name
-
-$(cat "$ref_file")"
+$ref_content
+ENDOFREF
             fi
         done
     fi
@@ -124,7 +149,6 @@ alwaysApply: $always_apply
 ---
 
 $content
-$ref_content
 ENDOFMDC
 
 done
@@ -143,13 +167,16 @@ echo -e "${GREEN}[3/3] VS Code Copilot (.github/)${NC}"
 GITHUB_DIR="$SCRIPT_DIR/.github"
 COPILOT_SKILLS_DIR="$GITHUB_DIR/copilot/skills"
 # Preserve workflows directory during rebuild
+WORKFLOWS_BACKUP=""
 if [ -d "$GITHUB_DIR/workflows" ]; then
-    cp -r "$GITHUB_DIR/workflows" /tmp/_intent_workflows_backup
+    WORKFLOWS_BACKUP=$(mktemp -d)
+    cp -r "$GITHUB_DIR/workflows" "$WORKFLOWS_BACKUP/workflows"
 fi
 rm -rf "$GITHUB_DIR"
 mkdir -p "$COPILOT_SKILLS_DIR"
-if [ -d /tmp/_intent_workflows_backup ]; then
-    mv /tmp/_intent_workflows_backup "$GITHUB_DIR/workflows"
+if [ -n "$WORKFLOWS_BACKUP" ] && [ -d "$WORKFLOWS_BACKUP/workflows" ]; then
+    mv "$WORKFLOWS_BACKUP/workflows" "$GITHUB_DIR/workflows"
+    rmdir "$WORKFLOWS_BACKUP"
 fi
 
 # Generate the main copilot-instructions.md from the intent skill

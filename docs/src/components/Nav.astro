@@ -4,33 +4,33 @@ const base = raw.endsWith('/') ? raw : raw + '/';
 ---
 
 <nav class="nav" aria-label="Main navigation">
-  <div class="nav__inner page">
-    <a href={base} class="nav__wordmark">Intent</a>
-    <span class="nav__tagline">Design strategy AI skills</span>
+  <div class="nav-inner page">
+    <a href={base} class="nav-wordmark">Intent</a>
+    <span class="nav-tagline">Design strategy AI skills</span>
 
-    <div class="nav__links">
+    <div class="nav-links">
       <a href={`${base}skills/`}>Skills</a>
       <a href={`${base}patterns/`}>Anti-Patterns</a>
       <a href={`${base}agents/`}>Agents</a>
-      <a href={`${base}skills#install`} class="nav__install">Install</a>
+      <a href={`${base}skills#install`} class="nav-install">Install</a>
     </div>
 
-    <div class="nav__actions">
+    <div class="nav-actions">
       <button
         class="theme-toggle"
         type="button"
         aria-label="Toggle dark mode"
       >
-        <svg class="theme-toggle__sun" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+        <svg class="theme-toggle-sun" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
           <circle cx="12" cy="12" r="5"/>
           <path d="M12 1v2M12 21v2M4.22 4.22l1.42 1.42M18.36 18.36l1.42 1.42M1 12h2M21 12h2M4.22 19.78l1.42-1.42M18.36 5.64l1.42-1.42"/>
         </svg>
-        <svg class="theme-toggle__moon" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+        <svg class="theme-toggle-moon" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
           <path d="M21 12.79A9 9 0 1 1 11.21 3 7 7 0 0 0 21 12.79z"/>
         </svg>
       </button>
 
-      <button class="nav__hamburger" type="button" aria-label="Open menu" aria-expanded="false">
+      <button class="nav-hamburger" type="button" aria-label="Open menu" aria-expanded="false">
         <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" aria-hidden="true">
           <line x1="3" y1="6" x2="21" y2="6"/>
           <line x1="3" y1="12" x2="21" y2="12"/>
@@ -40,7 +40,7 @@ const base = raw.endsWith('/') ? raw : raw + '/';
     </div>
   </div>
 
-  <div class="nav__mobile-menu" hidden>
+  <div class="nav-mobile-menu" hidden>
     <a href={`${base}skills/`}>Skills</a>
     <a href={`${base}patterns/`}>Patterns</a>
     <a href={`${base}agents/`}>Agents</a>

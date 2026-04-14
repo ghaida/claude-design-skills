@@ -20,11 +20,19 @@ const base = import.meta.env.BASE_URL;
   <meta name="description" content={description} />
   <title>{title}</title>
 
-  <!-- Fonts -->
+  <!-- Fonts: preconnect to all origins, non-blocking load -->
   <link rel="preconnect" href="https://api.fontshare.com" crossorigin />
+  <link rel="preconnect" href="https://cdn.fontshare.com" crossorigin />
+  <link rel="preconnect" href="https://fonts.googleapis.com" crossorigin />
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
-  <link href="https://api.fontshare.com/v2/css?f[]=general-sans@700&display=swap" rel="stylesheet" />
-  <link href="https://fonts.googleapis.com/css2?family=Hanken+Grotesk:wght@300;400;500;600&display=swap" rel="stylesheet" />
+  <link rel="preload" href="https://api.fontshare.com/v2/css?f[]=general-sans@700&display=swap" as="style" />
+  <link rel="preload" href="https://fonts.googleapis.com/css2?family=Hanken+Grotesk:wght@300;400;500;600&display=swap" as="style" />
+  <link href="https://api.fontshare.com/v2/css?f[]=general-sans@700&display=swap" rel="stylesheet" media="print" onload="this.media='all'" />
+  <link href="https://fonts.googleapis.com/css2?family=Hanken+Grotesk:wght@300;400;500;600&display=swap" rel="stylesheet" media="print" onload="this.media='all'" />
+  <noscript>
+    <link href="https://api.fontshare.com/v2/css?f[]=general-sans@700&display=swap" rel="stylesheet" />
+    <link href="https://fonts.googleapis.com/css2?family=Hanken+Grotesk:wght@300;400;500;600&display=swap" rel="stylesheet" />
+  </noscript>
 
   <!-- Theme: respect system preference, then localStorage -->
   <script is:inline>

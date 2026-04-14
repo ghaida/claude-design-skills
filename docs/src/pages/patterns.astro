@@ -19,10 +19,10 @@ const stats = patternStats(categories);
     </section>
 
     <!-- Filter Tabs -->
-    <div class="filter-tabs" role="tablist" aria-label="Filter by category">
+    <div class="filter-tabs" aria-label="Filter by category">
       <button
         class="filter-tab active"
-        role="tab"
+        role="button"
         aria-pressed="true"
         data-category="all"
       >
@@ -31,7 +31,7 @@ const stats = patternStats(categories);
       {categories.map((cat) => (
         <button
           class="filter-tab"
-          role="tab"
+          role="button"
           aria-pressed="false"
           data-category={cat.slug}
         >

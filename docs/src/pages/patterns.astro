@@ -45,8 +45,8 @@ const stats = patternStats(categories);
       <table>
         <thead>
           <tr>
-            <th style="width: 100px;">Severity</th>
             <th>Pattern</th>
+            <th style="width: 100px;">Severity</th>
             <th>Description</th>
             <th class="hide-mobile" style="width: 160px;">Category</th>
           </tr>
@@ -54,12 +54,12 @@ const stats = patternStats(categories);
         <tbody>
           {patterns.map((p) => (
             <tr data-category={p.categorySlug}>
+              <td class="pattern-name">{p.name}</td>
               <td>
                 <span class={`severity severity--${p.severity.toLowerCase()}`}>
                   {p.severity}
                 </span>
               </td>
-              <td class="pattern-name">{p.name}</td>
               <td class="pattern-desc muted">{p.description}</td>
               <td class="hide-mobile">
                 <span class="pattern-cat mono small muted">{p.category}</span>

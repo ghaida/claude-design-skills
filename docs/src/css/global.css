@@ -573,7 +573,6 @@ details[open] > summary::after {
   display: flex;
   align-items: baseline;
   height: 56px;
-  gap: var(--s8);
 }
 
 .nav-wordmark {
@@ -595,6 +594,7 @@ details[open] > summary::after {
   display: flex;
   align-items: center;
   gap: var(--s8);
+  margin-left: var(--s8);
 }
 
 .nav-links a {

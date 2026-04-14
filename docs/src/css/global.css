@@ -624,6 +624,7 @@ details[open] > summary::after {
 .nav-actions {
   display: flex;
   align-items: center;
+  align-self: center;
   gap: 0;
 }
 

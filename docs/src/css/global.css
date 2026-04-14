@@ -602,10 +602,9 @@ details[open] > summary::after {
 
 .nav-brand {
   display: flex;
-  align-items: last baseline;
+  align-items: center;
   gap: var(--s3);
   margin-right: auto;
-  line-height: 1;
 }
 
 .nav-wordmark {

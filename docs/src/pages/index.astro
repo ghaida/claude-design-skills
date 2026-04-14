@@ -123,20 +123,20 @@ const principles = [
           <table>
             <thead>
               <tr>
-                <th>Severity</th>
                 <th>Pattern</th>
+                <th>Severity</th>
                 <th class="hide-mobile">Category</th>
               </tr>
             </thead>
             <tbody>
               {samplePatterns.map((p) => (
                 <tr>
+                  <td>{p!.name}</td>
                   <td>
                     <span class={`severity severity--${p!.severity.toLowerCase()}`}>
                       {p!.severity}
                     </span>
                   </td>
-                  <td>{p!.name}</td>
                   <td class="hide-mobile muted small">{p!.category}</td>
                 </tr>
               ))}

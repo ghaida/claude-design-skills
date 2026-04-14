@@ -657,11 +657,15 @@ details[open] > summary::after {
 }
 
 .nav-mobile-menu {
-  display: flex;
+  display: none;
   flex-direction: column;
   gap: var(--s1);
   padding: var(--s4) var(--page-pad) var(--s6);
   border-bottom: 1px solid var(--border);
+}
+
+.nav-mobile-menu:not([hidden]) {
+  display: flex;
 }
 
 .nav-mobile-menu a {

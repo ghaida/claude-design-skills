@@ -24,7 +24,7 @@ const samplePatterns = [
 
 const principles = [
   { title: 'The problem comes first', desc: 'When you understand the problem, you can measure every solution against it. Skip this, and you have no way to know if what you built actually works.' },
-  { title: 'Protect user autonomy', desc: 'Dark patterns exploit psychological vulnerabilities to make people act against their own interests. The goal is to recognize these patterns while you\'re still designing, before they reach anyone.' },
+  { title: 'Protect user autonomy', desc: 'Dark patterns exploit psychological vulnerabilities to make people act against their own interests. Recognize these patterns while you\'re still designing, before they reach anyone.' },
   { title: 'Ground decisions in evidence', desc: 'Your assumptions about users are usually wrong. Evidence lets you find out before you build, instead of after you ship.' },
   { title: 'Systems over screens', desc: 'The purpose of a system is what it does. If your system produces a confusing experience, that confusion is the design. Fixing screens without fixing the system underneath changes nothing.' },
   { title: 'Design for everyone', desc: 'A billion people worldwide have a disability. When accessibility shapes decisions from the start, the product works better for all users.' },
@@ -63,9 +63,8 @@ const principles = [
           Every design decision should have a reason.
         </p>
         <p class="philosophy__body">
-          A reason rooted in research about the people who will use what
-          you build. Intent exists to help AI find those reasons, test them,
-          and carry them through to what gets shipped.
+          The people who use what you build deserve that rigor. Intent
+          gives AI the methodology to deliver it.
         </p>
       </div>
     </section>
@@ -97,14 +96,14 @@ const principles = [
               <span class="skill-category__label mono">{cat.label}</span>
               <div class="skill-category__tags">
                 {cat.skills.map((s) => (
-                  <a href={`${base}skills#${s.slug}`} class="skill-tag">/{s.slug}</a>
+                  <a href={`${base}skills/#${s.slug}`} class="skill-tag">/{s.slug}</a>
                 ))}
               </div>
             </div>
           ))}
         </div>
         <p class="section-footer muted small">
-          <a href={`${base}skills`} class="link">View all skills with details →</a>
+          <a href={`${base}skills/`} class="link">View all skills with details →</a>
         </p>
       </div>
     </section>
@@ -143,7 +142,7 @@ const principles = [
           </table>
         </div>
         <p class="section-footer muted small">
-          <a href={`${base}patterns`} class="link">Browse all anti-patterns →</a>
+          <a href={`${base}patterns/`} class="link">Browse all anti-patterns →</a>
         </p>
       </div>
     </section>
@@ -183,144 +182,3 @@ const principles = [
     </section>
   </div>
 </Base>
-
-<style>
-  /* Hero */
-  .hero {
-    padding: var(--s24) 0 var(--s16);
-    /* Align with content column */
-    padding-left: calc(var(--label-col) + var(--col-gap));
-  }
-
-  .hero h1 {
-    font-size: clamp(2.75rem, 6vw, 4.5rem);
-    letter-spacing: -0.03em;
-    margin-bottom: var(--s6);
-  }
-
-  .hero__accent {
-    color: var(--accent);
-  }
-
-  .hero__lede {
-    max-width: 55ch;
-    color: var(--fg-muted);
-    margin-bottom: var(--s8);
-  }
-
-  .hero__install-group {
-    display: flex;
-    flex-direction: column;
-    gap: var(--s2);
-    align-items: flex-start;
-  }
-
-  .hero__install {
-    display: inline-block;
-  }
-
-  .hero__platforms {
-    font-size: 0.75rem;
-  }
-
-  /* Philosophy */
-  .philosophy__body {
-    margin-top: var(--s4);
-    max-width: 60ch;
-    color: var(--fg-muted);
-  }
-
-  /* Principles Grid */
-  .principles-grid {
-    display: grid;
-    grid-template-columns: repeat(2, 1fr);
-    gap: var(--s8) var(--s12);
-  }
-
-  .principle__title {
-    font-family: var(--display);
-    font-size: var(--text-sm);
-    font-weight: 700;
-    margin-bottom: var(--s1);
-  }
-
-  .principle__desc {
-    font-size: var(--text-xs);
-    line-height: var(--lh-small);
-  }
-
-  /* Skills Categories */
-  .skill-categories {
-    display: flex;
-    flex-direction: column;
-    gap: var(--s6);
-  }
-
-  .skill-category {
-    display: flex;
-    align-items: baseline;
-    gap: var(--s6);
-  }
-
-  .skill-category__label {
-    font-size: var(--text-xs);
-    color: var(--accent);
-    min-width: 160px;
-    flex-shrink: 0;
-  }
-
-  .skill-category__tags {
-    display: flex;
-    flex-wrap: wrap;
-    gap: var(--s2);
-  }
-
-  .section-footer {
-    margin-top: var(--s6);
-  }
-
-  /* Install */
-  .install-methods {
-    display: flex;
-    flex-direction: column;
-    gap: var(--s8);
-  }
-
-  .install-method__name {
-    font-size: var(--text-xs);
-    color: var(--accent);
-    margin-bottom: var(--s2);
-    font-weight: 600;
-  }
-
-  .install-method p {
-    font-size: var(--text-xs);
-    line-height: var(--lh-body);
-  }
-
-  /* Responsive */
-  .hide-mobile {
-    display: table-cell;
-  }
-
-  @media (max-width: 768px) {
-    .hero {
-      padding-left: 0;
-      padding-top: var(--s16);
-      padding-bottom: var(--s12);
-    }
-
-    .principles-grid {
-      grid-template-columns: 1fr;
-    }
-
-    .skill-category {
-      flex-direction: column;
-      gap: var(--s2);
-    }
-
-    .hide-mobile {
-      display: none;
-    }
-  }
-</style>

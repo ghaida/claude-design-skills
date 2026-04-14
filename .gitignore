@@ -6,6 +6,10 @@
 # Project planning (private)
 project-plan.md
 
+# Project config (local only)
+CLAUDE.md
+.impeccable.md
+
 # Internal design docs and visual companion sessions
 design-docs/
 .superpowers/

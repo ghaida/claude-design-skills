@@ -1,0 +1,184 @@
+---
+import Base from '../layouts/Base.astro';
+import SectionLabel from '../components/SectionLabel.astro';
+import { loadSkills, groupByCategory } from '../lib/skills';
+
+const categories = groupByCategory(loadSkills());
+const base = import.meta.env.BASE_URL;
+---
+
+<Base title="Skills — Intent" description="15 specialized UX design skills organized by discipline. Each skill represents deep expertise in a distinct area of product design.">
+  <div class="page">
+    <section class="skills-hero" aria-labelledby="skills-heading">
+      <h1 id="skills-heading">Skills</h1>
+      <p class="subtext muted">
+        15 specialized skills organized by discipline. Each one represents
+        deep expertise in a distinct area of product design — not a role to
+        roleplay, but a methodology to follow.
+      </p>
+    </section>
+
+    {categories.map((cat) => (
+      <section class="section" aria-labelledby={`cat-${cat.skills[0].category.toLowerCase().replace(/\s+/g, '-')}`}>
+        <div class="section-label" aria-hidden="true">
+          <span class="skill-cat-label">{cat.label}</span>
+          <span class="section-label__annotation">{cat.skills.length} {cat.skills.length === 1 ? 'skill' : 'skills'}</span>
+        </div>
+        <div class="section-content">
+          <h2
+            id={`cat-${cat.skills[0].category.toLowerCase().replace(/\s+/g, '-')}`}
+            class="visually-hidden"
+          >
+            {cat.label}
+          </h2>
+
+          {cat.skills.map((skill) => (
+            <details id={skill.slug}>
+              <summary>
+                <div class="skill-header">
+                  <h3 class="skill-name">/{skill.slug}</h3>
+                  <p class="skill-desc muted">{skill.description}</p>
+                </div>
+              </summary>
+              <div class="details-content">
+                {skill.overview && (
+                  <div class="skill-detail">
+                    <span class="skill-detail__label mono muted">What it does</span>
+                    <p>{skill.overview}</p>
+                  </div>
+                )}
+                {skill.triggers && (
+                  <div class="skill-detail">
+                    <span class="skill-detail__label mono muted">When to use it</span>
+                    <p>{skill.triggers}</p>
+                  </div>
+                )}
+              </div>
+            </details>
+          ))}
+        </div>
+      </section>
+    ))}
+
+    <!-- Install -->
+    <section class="section" id="install" aria-labelledby="install-heading">
+      <SectionLabel label="INSTALL" annotation="4 platforms" icon="terminal" />
+      <div class="section-content">
+        <h2 id="install-heading" class="visually-hidden">Install</h2>
+        <div class="install-methods">
+          <div class="install-method">
+            <h3 class="install-method__name mono">Claude Code</h3>
+            <div class="code-block">
+              <code>claude install-skill ghaida/intent</code>
+            </div>
+          </div>
+          <div class="install-method">
+            <h3 class="install-method__name mono">Cursor</h3>
+            <p class="muted small">
+              Download from <a href="https://github.com/ghaida/intent/releases" class="link">releases</a> → add to <code class="mono">.cursor/rules/</code>
+            </p>
+          </div>
+          <div class="install-method">
+            <h3 class="install-method__name mono">VS Code Copilot</h3>
+            <p class="muted small">
+              Download from <a href="https://github.com/ghaida/intent/releases" class="link">releases</a> → add to <code class="mono">.github/copilot/</code>
+            </p>
+          </div>
+          <div class="install-method">
+            <h3 class="install-method__name mono">Manual</h3>
+            <p class="muted small">
+              Clone the repo. Copy <code class="mono">skills/</code> into your project.
+            </p>
+          </div>
+        </div>
+      </div>
+    </section>
+  </div>
+</Base>
+
+<style>
+  .skills-hero {
+    padding: var(--s16) 0 var(--s8);
+    padding-left: calc(var(--label-col) + var(--col-gap));
+  }
+
+  .skills-hero h1 {
+    font-size: clamp(1.75rem, 3.5vw, 2.5rem);
+    margin-bottom: var(--s4);
+  }
+
+  .skills-hero p {
+    max-width: 55ch;
+  }
+
+  .skill-cat-label {
+    font-family: var(--mono);
+    font-size: var(--text-xs);
+    text-transform: uppercase;
+    letter-spacing: 0.08em;
+    color: var(--accent);
+  }
+
+  /* Skill entries */
+  .skill-header {
+    flex: 1;
+    min-width: 0;
+  }
+
+  .skill-name {
+    font-family: var(--display);
+    font-size: var(--text-lg);
+    font-weight: 700;
+    letter-spacing: -0.01em;
+    margin-bottom: var(--s1);
+  }
+
+  .skill-desc {
+    font-size: var(--text-xs);
+    line-height: var(--lh-body);
+    max-width: 60ch;
+  }
+
+  /* Skill detail panel */
+  .skill-detail {
+    margin-bottom: var(--s4);
+  }
+
+  .skill-detail:last-child {
+    margin-bottom: 0;
+  }
+
+  .skill-detail__label {
+    display: block;
+    font-size: 0.75rem;
+    text-transform: uppercase;
+    letter-spacing: 0.06em;
+    margin-bottom: var(--s1);
+  }
+
+  .skill-detail p {
+    font-size: var(--text-xs);
+    line-height: var(--lh-body);
+    max-width: 60ch;
+  }
+
+  /* Install */
+  .install-methods {
+    display: flex;
+    flex-direction: column;
+    gap: var(--s8);
+  }
+
+  .install-method__name {
+    font-size: var(--text-xs);
+    color: var(--accent);
+    margin-bottom: var(--s2);
+    font-weight: 600;
+  }
+
+  @media (max-width: 768px) {
+    .skills-hero {
+      padding-left: 0;
+    }
+  }
+</style>

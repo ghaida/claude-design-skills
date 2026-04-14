@@ -1,0 +1,276 @@
+---
+import Base from '../layouts/Base.astro';
+import { loadAgents } from '../lib/agents';
+
+const agents = loadAgents();
+const base = import.meta.env.BASE_URL;
+---
+
+<Base title="Agents — Intent" description="6 named agents that combine Intent's skills into specialist personas. Each agent owns a domain of the design practice.">
+  <div class="page">
+    <section class="agents-hero" aria-labelledby="agents-heading">
+      <h1 id="agents-heading">Agents</h1>
+      <p class="subtext muted">
+        6 named agents that combine Intent's skills into specialist personas.
+        Each agent owns a domain of the design practice and knows when to
+        hand off to another.
+      </p>
+    </section>
+
+    <!-- Agent Table -->
+    <section class="agents-table-section" aria-labelledby="agents-table-heading">
+      <h2 id="agents-table-heading" class="visually-hidden">Agent roster</h2>
+      <div class="table-wrap">
+        <table>
+          <thead>
+            <tr>
+              <th>Domain</th>
+              <th>Agent</th>
+              <th>Skills</th>
+              <th class="hide-mobile">Role</th>
+            </tr>
+          </thead>
+          <tbody>
+            {agents.map((agent) => (
+              <tr>
+                <td class="agent-domain mono small muted">{agent.domain}</td>
+                <td>
+                  <span class="agent-name">{agent.name}</span>
+                </td>
+                <td>
+                  <div class="agent-skills">
+                    {agent.skills.map((s) => (
+                      <a href={`${base}skills#${s}`} class="skill-tag">/{s}</a>
+                    ))}
+                  </div>
+                </td>
+                <td class="hide-mobile">
+                  <span class="agent-tagline muted small">{agent.tagline}</span>
+                </td>
+              </tr>
+            ))}
+          </tbody>
+        </table>
+      </div>
+    </section>
+
+    <!-- Lifecycle Flow -->
+    <section class="lifecycle-section" aria-labelledby="lifecycle-heading">
+      <h2 id="lifecycle-heading" class="lifecycle-title">Project Lifecycle</h2>
+      <p class="lifecycle-desc muted">
+        Agents follow a natural progression through the design process.
+        Sage enters at any point — the cross-cutting advisor.
+      </p>
+
+      <div class="lifecycle" role="img" aria-label="Agent lifecycle: Noor sets context, Ember researches, Wren designs, Vigil evaluates, Rune adapts. Sage advises at any stage.">
+        <div class="lifecycle__flow">
+          <div class="lifecycle__node">
+            <span class="lifecycle__agent">Noor</span>
+            <span class="lifecycle__role mono small muted">Context</span>
+          </div>
+          <span class="lifecycle__arrow" aria-hidden="true">→</span>
+          <div class="lifecycle__node">
+            <span class="lifecycle__agent">Ember</span>
+            <span class="lifecycle__role mono small muted">Research</span>
+          </div>
+          <span class="lifecycle__arrow" aria-hidden="true">→</span>
+          <div class="lifecycle__node">
+            <span class="lifecycle__agent">Wren</span>
+            <span class="lifecycle__role mono small muted">Design</span>
+          </div>
+          <span class="lifecycle__arrow" aria-hidden="true">→</span>
+          <div class="lifecycle__node">
+            <span class="lifecycle__agent">Vigil</span>
+            <span class="lifecycle__role mono small muted">Quality</span>
+          </div>
+          <span class="lifecycle__arrow" aria-hidden="true">→</span>
+          <div class="lifecycle__node">
+            <span class="lifecycle__agent">Rune</span>
+            <span class="lifecycle__role mono small muted">Adapt</span>
+          </div>
+        </div>
+
+        <div class="lifecycle__sage">
+          <div class="lifecycle__sage-line" aria-hidden="true"></div>
+          <div class="lifecycle__sage-node">
+            <span class="lifecycle__agent">Sage</span>
+            <span class="lifecycle__role mono small muted">Advisor — enters anywhere</span>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- Note -->
+    <section class="agents-note">
+      <p class="muted small">
+        Agents are included when you install Intent via Claude Code.
+        They live in <code class="mono">agents/</code> and can be loaded
+        into Claude Projects or used as standalone prompts.
+      </p>
+    </section>
+  </div>
+</Base>
+
+<style>
+  .agents-hero {
+    padding: var(--s16) 0 var(--s8);
+  }
+
+  .agents-hero h1 {
+    font-size: clamp(1.75rem, 3.5vw, 2.5rem);
+    margin-bottom: var(--s4);
+  }
+
+  .agents-hero p {
+    max-width: 55ch;
+  }
+
+  .agents-table-section {
+    padding: var(--s8) 0;
+  }
+
+  .agent-domain {
+    white-space: nowrap;
+    letter-spacing: 0.04em;
+  }
+
+  .agent-name {
+    font-family: var(--display);
+    font-weight: 700;
+    font-size: var(--text-sm);
+  }
+
+  .agent-skills {
+    display: flex;
+    flex-wrap: wrap;
+    gap: var(--s1);
+  }
+
+  .agent-tagline {
+    line-height: var(--lh-body);
+    max-width: 30ch;
+    display: inline-block;
+  }
+
+  .hide-mobile {
+    display: table-cell;
+  }
+
+  /* Lifecycle */
+  .lifecycle-section {
+    padding: var(--s16) 0 var(--s8);
+    border-top: 1px solid var(--border);
+  }
+
+  .lifecycle-title {
+    font-size: var(--text-xl);
+    margin-bottom: var(--s3);
+  }
+
+  .lifecycle-desc {
+    margin-bottom: var(--s10);
+    max-width: 50ch;
+  }
+
+  .lifecycle {
+    position: relative;
+  }
+
+  .lifecycle__flow {
+    display: flex;
+    align-items: center;
+    gap: var(--s4);
+    flex-wrap: wrap;
+  }
+
+  .lifecycle__node {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: var(--s1);
+    padding: var(--s4) var(--s6);
+    border: 1px solid var(--border);
+    border-radius: 6px;
+    background: var(--surface);
+    min-width: 88px;
+    text-align: center;
+  }
+
+  .lifecycle__agent {
+    font-family: var(--display);
+    font-weight: 700;
+    font-size: var(--text-sm);
+  }
+
+  .lifecycle__role {
+    font-size: 0.75rem;
+    letter-spacing: 0.04em;
+  }
+
+  .lifecycle__arrow {
+    color: var(--fg-muted);
+    font-size: var(--text-lg);
+    flex-shrink: 0;
+  }
+
+  .lifecycle__sage {
+    margin-top: var(--s8);
+    display: flex;
+    align-items: center;
+    gap: var(--s4);
+  }
+
+  .lifecycle__sage-line {
+    flex: 1;
+    height: 1px;
+    background: repeating-linear-gradient(
+      to right,
+      var(--accent) 0,
+      var(--accent) 4px,
+      transparent 4px,
+      transparent 8px
+    );
+    max-width: 460px;
+  }
+
+  .lifecycle__sage-node {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: var(--s1);
+    padding: var(--s4) var(--s6);
+    border: 1px solid var(--accent);
+    border-radius: 6px;
+    background: var(--accent-subtle);
+    text-align: center;
+    flex-shrink: 0;
+  }
+
+  .lifecycle__sage-node .lifecycle__agent {
+    color: var(--accent);
+  }
+
+  .agents-note {
+    padding: var(--s8) 0;
+    border-top: 1px solid var(--border);
+  }
+
+  @media (max-width: 768px) {
+    .hide-mobile {
+      display: none;
+    }
+
+    .lifecycle__flow {
+      gap: var(--s2);
+    }
+
+    .lifecycle__node {
+      padding: var(--s3) var(--s4);
+      min-width: 72px;
+    }
+
+    .lifecycle__arrow {
+      font-size: var(--text-sm);
+    }
+  }
+</style>

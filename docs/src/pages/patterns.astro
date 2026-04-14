@@ -1,0 +1,165 @@
+---
+import Base from '../layouts/Base.astro';
+import { loadPatterns, allPatterns, patternStats } from '../lib/patterns';
+
+const categories = loadPatterns();
+const patterns = allPatterns(categories);
+const stats = patternStats(categories);
+---
+
+<Base title="Anti-Pattern Catalog — Intent" description={`${stats.total} named UX anti-patterns across ${stats.categories} categories. Deceptive design, dark patterns, and common UX failures — identified, categorized, and rated by severity.`}>
+  <div class="page">
+    <section class="patterns-hero" aria-labelledby="patterns-heading">
+      <h1 id="patterns-heading">Anti-Pattern Catalog</h1>
+      <p class="subtext muted">
+        {stats.total} named patterns across {stats.categories} categories.
+        Deceptive design, addictive mechanics, accessibility weaponization,
+        and common UX failures — identified, categorized, and rated by severity.
+      </p>
+    </section>
+
+    <!-- Filter Tabs -->
+    <div class="filter-tabs" role="tablist" aria-label="Filter by category">
+      <button
+        class="filter-tab active"
+        role="tab"
+        aria-pressed="true"
+        data-category="all"
+      >
+        All ({stats.total})
+      </button>
+      {categories.map((cat) => (
+        <button
+          class="filter-tab"
+          role="tab"
+          aria-pressed="false"
+          data-category={cat.slug}
+        >
+          {cat.name} ({cat.patterns.length})
+        </button>
+      ))}
+    </div>
+
+    <!-- Pattern Table -->
+    <div class="table-wrap">
+      <table>
+        <thead>
+          <tr>
+            <th style="width: 100px;">Severity</th>
+            <th>Pattern</th>
+            <th>Description</th>
+            <th class="hide-mobile" style="width: 160px;">Category</th>
+          </tr>
+        </thead>
+        <tbody>
+          {patterns.map((p) => (
+            <tr data-category={p.categorySlug}>
+              <td>
+                <span class={`severity severity--${p.severity.toLowerCase()}`}>
+                  {p.severity}
+                </span>
+              </td>
+              <td class="pattern-name">{p.name}</td>
+              <td class="pattern-desc muted">{p.description}</td>
+              <td class="hide-mobile">
+                <span class="pattern-cat mono small muted">{p.category}</span>
+              </td>
+            </tr>
+          ))}
+        </tbody>
+      </table>
+    </div>
+  </div>
+</Base>
+
+<script is:inline>
+  // Category filter
+  const tabs = document.querySelectorAll('.filter-tab');
+  const rows = document.querySelectorAll('tbody tr[data-category]');
+
+  function filterByCategory(slug) {
+    tabs.forEach(t => {
+      t.classList.toggle('active', t.dataset.category === slug);
+      t.setAttribute('aria-pressed', String(t.dataset.category === slug));
+    });
+
+    rows.forEach(row => {
+      if (slug === 'all' || row.dataset.category === slug) {
+        row.removeAttribute('hidden');
+      } else {
+        row.setAttribute('hidden', '');
+      }
+    });
+
+    // Update URL hash
+    if (slug === 'all') {
+      history.replaceState(null, '', location.pathname);
+    } else {
+      history.replaceState(null, '', '#' + slug);
+    }
+  }
+
+  tabs.forEach(tab => {
+    tab.addEventListener('click', () => filterByCategory(tab.dataset.category));
+  });
+
+  // Apply hash filter on load
+  const hash = location.hash.replace('#', '');
+  if (hash) {
+    const matchingTab = [...tabs].find(t => t.dataset.category === hash);
+    if (matchingTab) filterByCategory(hash);
+  }
+</script>
+
+<style>
+  .patterns-hero {
+    padding: var(--s16) 0 var(--s8);
+  }
+
+  .patterns-hero h1 {
+    font-size: clamp(1.75rem, 3.5vw, 2.5rem);
+    margin-bottom: var(--s4);
+  }
+
+  .patterns-hero p {
+    max-width: 60ch;
+  }
+
+  .pattern-name {
+    font-weight: 600;
+    white-space: nowrap;
+  }
+
+  .pattern-desc {
+    font-size: var(--text-xs);
+    line-height: var(--lh-body);
+    max-width: 45ch;
+  }
+
+  .pattern-cat {
+    font-size: 0.75rem;
+    letter-spacing: 0.04em;
+  }
+
+  .hide-mobile {
+    display: table-cell;
+  }
+
+  tr[hidden] {
+    display: none;
+  }
+
+  @media (max-width: 768px) {
+    .hide-mobile {
+      display: none;
+    }
+
+    .pattern-desc {
+      max-width: none;
+    }
+
+    .pattern-name {
+      white-space: normal;
+    }
+  }
+</style>

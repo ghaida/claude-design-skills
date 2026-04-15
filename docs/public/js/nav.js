@@ -36,16 +36,34 @@ document.addEventListener('DOMContentLoaded', () => {
       svg.appendChild(path);
     }
   }
+  function copyText(text) {
+    if (navigator.clipboard && navigator.clipboard.writeText) {
+      return navigator.clipboard.writeText(text);
+    }
+    // Fallback for browsers that block clipboard API
+    const ta = document.createElement('textarea');
+    ta.value = text;
+    ta.style.position = 'fixed';
+    ta.style.opacity = '0';
+    document.body.appendChild(ta);
+    ta.select();
+    document.execCommand('copy');
+    document.body.removeChild(ta);
+    return Promise.resolve();
+  }
+
   document.querySelectorAll('.code-copy').forEach(btn => {
     btn.addEventListener('click', () => {
       const text = btn.getAttribute('data-copy');
-      navigator.clipboard.writeText(text).then(() => {
+      copyText(text).then(() => {
         btn.classList.add('copied');
         setSvgContent(btn, 'check');
         setTimeout(() => {
           btn.classList.remove('copied');
           setSvgContent(btn, 'copy');
         }, 2000);
+      }).catch(() => {
+        // Silent fail — button stays as-is
       });
     });
   });

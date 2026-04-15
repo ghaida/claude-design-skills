@@ -20,6 +20,19 @@ const base = import.meta.env.BASE_URL;
   <meta name="description" content={description} />
   <title>{title}</title>
 
+  <!-- Open Graph -->
+  <meta property="og:type" content="website" />
+  <meta property="og:title" content={title} />
+  <meta property="og:description" content={description} />
+  <meta property="og:image" content="https://designwithintent.ai/og-image.png" />
+  <meta property="og:url" content="https://designwithintent.ai" />
+
+  <!-- Twitter -->
+  <meta name="twitter:card" content="summary_large_image" />
+  <meta name="twitter:title" content={title} />
+  <meta name="twitter:description" content={description} />
+  <meta name="twitter:image" content="https://designwithintent.ai/og-image.png" />
+
   <!-- Fonts: preconnect to all origins, non-blocking load -->
   <link rel="preconnect" href="https://api.fontshare.com" crossorigin />
   <link rel="preconnect" href="https://cdn.fontshare.com" crossorigin />

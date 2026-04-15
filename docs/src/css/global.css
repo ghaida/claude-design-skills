@@ -1386,8 +1386,3 @@ tr[hidden] {
   }
 }
 
-@media (min-width: 1024px) {
-  .hero {
-    padding-left: calc(var(--label-col) + var(--col-gap));
-  }
-}

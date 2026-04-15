@@ -11,7 +11,7 @@ Specialized design skills are available in .github/copilot/skills/:
 - **evaluate** —  Structured UX evaluation that produces quantitative assessments, identifies specific issues, and routes to the right Intent skill for resolution.
 - **fortify** —  Harden designs for real-world use by systematically identifying and designing for every condition outside the happy path.
 - **include** —  Design for everyone by treating accessibility as a first-class design discipline, not a compliance checklist.
-- **intent** —  The gravity center of a comprehensive UX and design strategy system.
+- **intent** —  The entry point for Intent, a UX and design strategy system.
 - **investigate** —  Guide and conduct user research — from planning through synthesis.
 - **journey** —  Design any user-facing experience end-to-end: task flows, multi-step workflows, navigation structures, onboarding, settings, search, content creation, collaboration, signup, checkout, dashboards, notifications, error recovery, and more.
 - **localize** —  Adapts experiences across cultures and languages — not just translation, but cultural reconception.

@@ -1,15 +1,13 @@
 ---
 name: intent
 description: >
-  The gravity center of a comprehensive UX and design strategy system.
-  Design with intent. Intent gives AI the context to approach design
-  decisions with depth — research, strategy, systems, flows, content,
-  ethics, and measurement. Activate this skill when starting any UX or
-  product design engagement, when setting project context, when routing
-  to specialized design skills, when evaluating an existing product's UX,
-  or when the user asks about design intent, user experience strategy,
-  ethical design, dark patterns, or design systems thinking. This is the
-  entry point for all design reasoning work.
+  The entry point for Intent, a UX and design strategy system. Sets
+  project context, routes to specialized skills, and loads foundational
+  UX knowledge. Activate when starting any UX or product design work,
+  setting project context, routing to other skills, evaluating an
+  existing product's UX, or when the user asks about design intent,
+  user experience strategy, ethical design, dark patterns, or design
+  systems thinking.
 version: 1.0.0
 user-invocable: true
 ---

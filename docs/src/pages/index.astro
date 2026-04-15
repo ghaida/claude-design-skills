@@ -44,12 +44,34 @@ const principles = [
         strategy, flows, content, accessibility, ethics, and measurement.
       </p>
       <div class="hero-install-group">
-        <div class="code-block hero-install">
+        <div class="code-block">
+          <span class="code-block-hint">All platforms</span>
+          <div class="code-block-row">
+            <code>npx skills add ghaida/intent --all</code>
+            <button class="code-copy" type="button" aria-label="Copy to clipboard" data-copy="npx skills add ghaida/intent --all">
+              <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+                <rect x="9" y="9" width="13" height="13" rx="2" ry="2"/>
+                <path d="M5 15H4a2 2 0 0 1-2-2V4a2 2 0 0 1 2-2h9a2 2 0 0 1 2 2v1"/>
+              </svg>
+            </button>
+          </div>
+          <span class="code-block-followup muted small mono">Works with Cursor, Claude Code, Codex CLI, and more</span>
+        </div>
+        <div class="code-block">
           <span class="code-block-hint">Claude Code</span>
-          <code>claude install-skill ghaida/intent</code>
+          <div class="code-block-row">
+            <code>/plugin marketplace add ghaida/intent</code>
+            <button class="code-copy" type="button" aria-label="Copy to clipboard" data-copy="/plugin marketplace add ghaida/intent">
+              <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+                <rect x="9" y="9" width="13" height="13" rx="2" ry="2"/>
+                <path d="M5 15H4a2 2 0 0 1-2-2V4a2 2 0 0 1 2-2h9a2 2 0 0 1 2 2v1"/>
+              </svg>
+            </button>
+          </div>
+          <span class="code-block-followup muted small mono">Then open <code class="mono">/plugin</code> in Claude Code</span>
         </div>
         <p class="hero-platforms muted small mono">
-          Also available for <a href="#install" class="link">Cursor, VS Code Copilot, and manual install</a>
+          Or <a href="#install" class="link">download manually</a>
         </p>
       </div>
     </section>
@@ -148,33 +170,52 @@ const principles = [
 
     <!-- Install -->
     <section class="section" id="install" aria-labelledby="install-heading">
-      <SectionLabel label="INSTALL" annotation="4 platforms" icon="terminal" />
+      <SectionLabel label="INSTALL" annotation="3 methods" icon="terminal" />
       <div class="section-content">
         <h2 id="install-heading" class="visually-hidden">Install</h2>
         <div class="install-methods">
           <div class="install-method">
-            <h3 class="install-method-name mono">Claude Code</h3>
+            <h3 class="install-method-name mono">All platforms</h3>
             <div class="code-block">
-              <code>claude install-skill ghaida/intent</code>
+              <div class="code-block-row">
+                <code>npx skills add ghaida/intent --all</code>
+                <button class="code-copy" type="button" aria-label="Copy to clipboard" data-copy="npx skills add ghaida/intent --all">
+                  <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+                    <rect x="9" y="9" width="13" height="13" rx="2" ry="2"/>
+                    <path d="M5 15H4a2 2 0 0 1-2-2V4a2 2 0 0 1 2-2h9a2 2 0 0 1 2 2v1"/>
+                  </svg>
+                </button>
+              </div>
+              <span class="code-block-followup muted small mono">Works with Cursor, Claude Code, Codex CLI, and more</span>
             </div>
           </div>
           <div class="install-method">
-            <h3 class="install-method-name mono">Cursor</h3>
-            <p class="muted">
-              Download the <a href="https://github.com/ghaida/intent/releases" class="link" target="_blank" rel="noopener noreferrer">.cursor rules</a> and add to your project's <code class="mono">.cursor/rules/</code> directory.
-            </p>
+            <h3 class="install-method-name mono">Claude Code plugin</h3>
+            <div class="code-block">
+              <div class="code-block-row">
+                <code>/plugin marketplace add ghaida/intent</code>
+                <button class="code-copy" type="button" aria-label="Copy to clipboard" data-copy="/plugin marketplace add ghaida/intent">
+                  <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+                    <rect x="9" y="9" width="13" height="13" rx="2" ry="2"/>
+                    <path d="M5 15H4a2 2 0 0 1-2-2V4a2 2 0 0 1 2-2h9a2 2 0 0 1 2 2v1"/>
+                  </svg>
+                </button>
+              </div>
+              <span class="code-block-followup muted small mono">Then open <code class="mono">/plugin</code> in Claude Code</span>
+            </div>
           </div>
           <div class="install-method">
-            <h3 class="install-method-name mono">VS Code Copilot</h3>
-            <p class="muted">
-              Download the <a href="https://github.com/ghaida/intent/releases" class="link" target="_blank" rel="noopener noreferrer">copilot instructions</a> and add to <code class="mono">.github/copilot/</code>.
-            </p>
-          </div>
-          <div class="install-method">
-            <h3 class="install-method-name mono">Manual</h3>
-            <p class="muted">
-              Clone the repo and copy <code class="mono">skills/</code> into your project. Each skill is a standalone markdown file.
-            </p>
+            <h3 class="install-method-name mono">Manual download</h3>
+            <div class="install-downloads">
+              <a href="https://github.com/ghaida/intent/releases/latest" class="install-download-link link mono" target="_blank" rel="noopener noreferrer">
+                <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+                  <path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4"/>
+                  <polyline points="7 10 12 15 17 10"/>
+                  <line x1="12" y1="15" x2="12" y2="3"/>
+                </svg>
+                All releases
+              </a>
+            </div>
           </div>
         </div>
       </div>

@@ -602,7 +602,7 @@ details[open] > summary::after {
 
 .nav-brand {
   display: inline-flex;
-  align-items: baseline;
+  align-items: center;
   gap: var(--s3);
   margin-right: auto;
 }
@@ -616,8 +616,10 @@ details[open] > summary::after {
 }
 
 .nav-tagline {
+  display: none;
   font-size: var(--text-xs);
   color: var(--fg-muted);
+  padding-top: var(--s1);
 }
 
 .nav-links {
@@ -631,6 +633,7 @@ details[open] > summary::after {
   font-size: var(--text-xs);
   font-weight: 500;
   color: var(--fg-muted);
+  padding-top: var(--s1);
   transition: color var(--duration) var(--ease-out);
 }
 
@@ -652,6 +655,7 @@ details[open] > summary::after {
   align-items: center;
   gap: 0;
   margin-left: var(--s8);
+  padding-top: var(--s1);
 }
 
 .nav-github {
@@ -1136,10 +1140,11 @@ tr[hidden] {
   }
 
   /* Nav */
+  .nav-tagline { display: inline; }
   .nav-links { display: flex; }
   .nav-hamburger { display: none; }
   .nav-mobile-menu { display: none !important; }
-  .nav-actions { gap: var(--s8); }
+  .nav-actions { gap: 0; }
 
   /* Shared */
   .hide-mobile {

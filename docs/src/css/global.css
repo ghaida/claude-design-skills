@@ -1341,6 +1341,12 @@ tr[hidden] {
     gap: var(--s6);
   }
 
+  .skill-category-label {
+    width: 28%;
+    min-width: auto;
+    flex-shrink: 0;
+  }
+
   /* Skills */
   .skills-hero {
     padding-left: calc(var(--label-col) + var(--col-gap));

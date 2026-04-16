@@ -1506,15 +1506,15 @@ tr[hidden] {
 }
 
 /* Journey flow */
-.flow-track {
-  display: flex;
+.flow-grid {
+  display: grid;
+  grid-template-columns: auto 16px 1fr 16px 1fr 16px 1fr 16px 1fr 16px 1fr;
   align-items: center;
-  gap: 0;
   padding: var(--s3) 0;
+  row-gap: var(--s2);
 }
 
 .flow-node {
-  flex: 1;
   padding: var(--s2) var(--s2);
   background: var(--bg);
   border: 1px solid var(--border);
@@ -1553,7 +1553,6 @@ tr[hidden] {
 .flow-start {
   border-color: var(--accent);
   border-width: 2px;
-  flex: 0 0 auto;
   padding: var(--s2) var(--s3);
 }
 
@@ -1563,11 +1562,8 @@ tr[hidden] {
 }
 
 .flow-arrow {
-  width: 16px;
-  min-width: 16px;
   height: 1px;
   background: var(--border);
-  flex-shrink: 0;
   position: relative;
 }
 
@@ -1581,15 +1577,9 @@ tr[hidden] {
   border-bottom: 3px solid transparent;
 }
 
-.flow-gates {
-  display: flex;
-  padding-top: var(--s2);
-  gap: var(--s6);
-  padding-left: 15%;
-}
-
 .flow-gate {
   text-align: center;
+  padding-top: var(--s1);
 }
 
 .flow-gate-connector {

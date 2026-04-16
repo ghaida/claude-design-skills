@@ -1,67 +1,56 @@
 ---
 // Journey flow diagram: Posting an Item (5 steps + decision gates)
+// Grid layout: 13 columns (7 nodes + 6 arrows) so gates align to node columns
 ---
 
 <div class="visual-diagram journey-flow">
   <div class="visual-label">Flow 1: Posting an Item</div>
 
-  <div class="flow-track">
+  <div class="flow-grid">
+    <!-- Row 1: flow nodes and arrows -->
     <div class="flow-node flow-start">
       <div class="flow-node-icon">+</div>
       <div class="flow-node-label">Tap "+"</div>
     </div>
-
     <div class="flow-arrow"></div>
-
     <div class="flow-node">
       <div class="flow-node-step">1</div>
       <div class="flow-node-label">Capture</div>
       <div class="flow-node-detail">Camera opens immediately</div>
     </div>
-
     <div class="flow-arrow"></div>
-
     <div class="flow-node">
       <div class="flow-node-step">2</div>
       <div class="flow-node-label">Confirm</div>
       <div class="flow-node-detail">AI suggests title</div>
     </div>
-
     <div class="flow-arrow"></div>
-
     <div class="flow-node">
       <div class="flow-node-step">3</div>
       <div class="flow-node-label">Details</div>
       <div class="flow-node-detail">Price / Free / Trade</div>
     </div>
-
     <div class="flow-arrow"></div>
-
     <div class="flow-node">
       <div class="flow-node-step">4</div>
       <div class="flow-node-label">Pickup</div>
       <div class="flow-node-detail">Porch / Meet / Flexible</div>
     </div>
-
     <div class="flow-arrow"></div>
-
     <div class="flow-node flow-end">
       <div class="flow-node-step">5</div>
       <div class="flow-node-label">Publish</div>
       <div class="flow-node-detail">"Live in your neighborhood"</div>
     </div>
-  </div>
 
-  <!-- Decision gates below the main track -->
-  <div class="flow-gates">
-    <div class="flow-gate" style="margin-left: 18%;">
+    <!-- Row 2: decision gates aligned to Capture (col 3) and Details (col 7) -->
+    <div class="flow-gate" style="grid-column: 3; grid-row: 2;">
       <div class="flow-gate-connector"></div>
       <div class="flow-gate-diamond"></div>
       <div class="flow-gate-label">Photo flagged?</div>
       <div class="flow-gate-action">Retake or edit</div>
     </div>
-
-    <div class="flow-gate" style="margin-left: 14%;">
+    <div class="flow-gate" style="grid-column: 7; grid-row: 2;">
       <div class="flow-gate-connector"></div>
       <div class="flow-gate-diamond"></div>
       <div class="flow-gate-label">Price anomaly?</div>

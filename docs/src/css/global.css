@@ -898,6 +898,35 @@ details[open] > summary::after {
   margin-bottom: var(--s8);
 }
 
+.hero-how-to-use {
+  display: inline-flex;
+  align-items: center;
+  gap: var(--s2);
+  font-size: var(--text-sm);
+  font-weight: 600;
+  color: var(--accent);
+  text-decoration: none;
+  padding: var(--s3) var(--s5);
+  background: color-mix(in srgb, var(--accent) 8%, transparent);
+  border: 1px solid color-mix(in srgb, var(--accent) 25%, transparent);
+  border-radius: 6px;
+  margin-bottom: var(--s8);
+  transition: background var(--duration) var(--ease-out), border-color var(--duration) var(--ease-out);
+}
+
+.hero-how-to-use:hover {
+  background: color-mix(in srgb, var(--accent) 14%, transparent);
+  border-color: color-mix(in srgb, var(--accent) 40%, transparent);
+}
+
+.hero-how-to-use svg {
+  transition: transform var(--duration) var(--ease-out);
+}
+
+.hero-how-to-use:hover svg {
+  transform: translateX(3px);
+}
+
 .hero-install-group {
   display: grid;
   grid-template-columns: 1fr;

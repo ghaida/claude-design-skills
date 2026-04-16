@@ -9,7 +9,7 @@ description: >
   tree testing, information findability problems, or when users report they can't find things.
   Use this skill any time the structural organization of information is the problem — not the
   flow through it, not the words in it, not the visual presentation of it.
-version: 1.0.0
+version: 1.1.0
 user-invocable: true
 ---
 

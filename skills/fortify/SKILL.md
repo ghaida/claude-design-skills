@@ -12,7 +12,7 @@ description: >
   modes", zero states, timeout handling, or any question about how a design
   behaves outside ideal conditions. The happy path is a fantasy — this skill
   designs for the world your users actually live in.
-version: 1.0.0
+version: 1.1.0
 user-invocable: true
 ---
 

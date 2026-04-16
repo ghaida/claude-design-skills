@@ -11,7 +11,7 @@ description: >
   says "how do we know if this worked," "what should we measure,"
   "let's run a test," or "the numbers look good but something feels off."
   Also trigger for ethical measurement reviews and counter-metric definition.
-version: 1.0.0
+version: 1.1.0
 user-invocable: true
 ---
 

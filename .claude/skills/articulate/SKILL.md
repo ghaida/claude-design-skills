@@ -9,7 +9,7 @@ description: >
   microcopy patterns, inclusive language guidance, or asking "what should this say?" and
   "how should we sound?" Use this skill any time the words in an interface are the problem —
   not the flow they live in, not the structure they navigate, not the visual presentation.
-version: 1.0.0
+version: 1.1.0
 user-invocable: true
 ---
 

@@ -1,0 +1,94 @@
+---
+// Organize: Site map tree + navigation tab bar
+---
+
+<div class="visual-diagram sitemap-diagram">
+  <div class="visual-label">Information Architecture: Nearby</div>
+
+  <!-- Tab bar mockup -->
+  <div class="sitemap-tabbar">
+    <div class="sitemap-tab sitemap-tab-active">
+      <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0 1 18 0z"/><circle cx="12" cy="10" r="3"/></svg>
+      <span>Explore</span>
+    </div>
+    <div class="sitemap-tab">
+      <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><line x1="8" y1="6" x2="21" y2="6"/><line x1="8" y1="12" x2="21" y2="12"/><line x1="8" y1="18" x2="21" y2="18"/><line x1="3" y1="6" x2="3.01" y2="6"/><line x1="3" y1="12" x2="3.01" y2="12"/><line x1="3" y1="18" x2="3.01" y2="18"/></svg>
+      <span>List</span>
+    </div>
+    <div class="sitemap-tab sitemap-tab-post">
+      <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><line x1="12" y1="5" x2="12" y2="19"/><line x1="5" y1="12" x2="19" y2="12"/></svg>
+    </div>
+    <div class="sitemap-tab">
+      <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M18 8A6 6 0 0 0 6 8c0 7-3 9-3 9h18s-3-2-3-9"/><path d="M13.73 21a2 2 0 0 1-3.46 0"/></svg>
+      <span>Activity</span>
+    </div>
+    <div class="sitemap-tab">
+      <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M20 21v-2a4 4 0 0 0-4-4H8a4 4 0 0 0-4 4v2"/><circle cx="12" cy="7" r="4"/></svg>
+      <span>You</span>
+    </div>
+  </div>
+
+  <!-- Site map tree -->
+  <div class="sitemap-tree">
+    <div class="sitemap-root">
+      <span class="sitemap-node-label">Nearby</span>
+    </div>
+
+    <div class="sitemap-branches">
+      <div class="sitemap-branch">
+        <div class="sitemap-node sitemap-node-primary">
+          <span>Map</span>
+          <span class="sitemap-node-tag">default</span>
+        </div>
+        <div class="sitemap-children">
+          <div class="sitemap-leaf">Item pins</div>
+          <div class="sitemap-leaf">Radius controls</div>
+          <div class="sitemap-leaf">Item detail (sheet)</div>
+        </div>
+      </div>
+
+      <div class="sitemap-branch">
+        <div class="sitemap-node">
+          <span>Feed</span>
+          <span class="sitemap-node-tag">toggle</span>
+        </div>
+        <div class="sitemap-children">
+          <div class="sitemap-leaf">Distance groups</div>
+          <div class="sitemap-leaf">Filter chips</div>
+          <div class="sitemap-leaf">Search (pull-down)</div>
+        </div>
+      </div>
+
+      <div class="sitemap-branch">
+        <div class="sitemap-node sitemap-node-action">
+          <span>Post (+)</span>
+        </div>
+        <div class="sitemap-children">
+          <div class="sitemap-leaf">Camera → Details → Preview → Publish</div>
+        </div>
+      </div>
+
+      <div class="sitemap-branch">
+        <div class="sitemap-node">
+          <span>Activity</span>
+        </div>
+        <div class="sitemap-children">
+          <div class="sitemap-leaf">My Listings</div>
+          <div class="sitemap-leaf">My Interests</div>
+          <div class="sitemap-leaf">Pickup Coordination</div>
+        </div>
+      </div>
+
+      <div class="sitemap-branch">
+        <div class="sitemap-node">
+          <span>Profile</span>
+        </div>
+        <div class="sitemap-children">
+          <div class="sitemap-leaf">Neighborhood identity</div>
+          <div class="sitemap-leaf">Settings</div>
+          <div class="sitemap-leaf">Help</div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>

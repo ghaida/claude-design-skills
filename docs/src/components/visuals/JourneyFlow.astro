@@ -1,0 +1,76 @@
+---
+// Journey flow diagram: Posting an Item (5 steps + decision gates)
+---
+
+<div class="visual-diagram journey-flow">
+  <div class="visual-label">Flow 1: Posting an Item</div>
+
+  <div class="flow-track">
+    <div class="flow-node flow-start">
+      <div class="flow-node-icon">+</div>
+      <div class="flow-node-label">Tap "+"</div>
+    </div>
+
+    <div class="flow-arrow"></div>
+
+    <div class="flow-node">
+      <div class="flow-node-step">1</div>
+      <div class="flow-node-label">Capture</div>
+      <div class="flow-node-detail">Camera opens immediately</div>
+    </div>
+
+    <div class="flow-arrow"></div>
+
+    <div class="flow-node">
+      <div class="flow-node-step">2</div>
+      <div class="flow-node-label">Confirm</div>
+      <div class="flow-node-detail">AI suggests title</div>
+    </div>
+
+    <div class="flow-arrow"></div>
+
+    <div class="flow-node">
+      <div class="flow-node-step">3</div>
+      <div class="flow-node-label">Details</div>
+      <div class="flow-node-detail">Price / Free / Trade</div>
+    </div>
+
+    <div class="flow-arrow"></div>
+
+    <div class="flow-node">
+      <div class="flow-node-step">4</div>
+      <div class="flow-node-label">Pickup</div>
+      <div class="flow-node-detail">Porch / Meet / Flexible</div>
+    </div>
+
+    <div class="flow-arrow"></div>
+
+    <div class="flow-node flow-end">
+      <div class="flow-node-step">5</div>
+      <div class="flow-node-label">Publish</div>
+      <div class="flow-node-detail">"Live in your neighborhood"</div>
+    </div>
+  </div>
+
+  <!-- Decision gates below the main track -->
+  <div class="flow-gates">
+    <div class="flow-gate" style="margin-left: 18%;">
+      <div class="flow-gate-connector"></div>
+      <div class="flow-gate-diamond"></div>
+      <div class="flow-gate-label">Photo flagged?</div>
+      <div class="flow-gate-action">Retake or edit</div>
+    </div>
+
+    <div class="flow-gate" style="margin-left: 14%;">
+      <div class="flow-gate-connector"></div>
+      <div class="flow-gate-diamond"></div>
+      <div class="flow-gate-label">Price anomaly?</div>
+      <div class="flow-gate-action">Soft warning, no block</div>
+    </div>
+  </div>
+
+  <div class="flow-metric">
+    <span class="flow-metric-value">4 taps</span>
+    <span class="flow-metric-label">to post · under 30 seconds</span>
+  </div>
+</div>

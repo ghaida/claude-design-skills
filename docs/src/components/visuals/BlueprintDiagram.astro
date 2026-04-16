@@ -1,0 +1,133 @@
+---
+// Service blueprint: Item Exchange — frontstage/backstage/support layers
+---
+
+<div class="visual-diagram blueprint-diagram">
+  <div class="visual-label">Service Blueprint: Item Exchange</div>
+
+  <!-- Frontstage: Seller -->
+  <div class="blueprint-lane">
+    <div class="blueprint-lane-label">
+      <span class="blueprint-lane-title">Frontstage</span>
+      <span class="blueprint-lane-sub">Seller</span>
+    </div>
+    <div class="blueprint-lane-nodes">
+      <div class="blueprint-node">
+        <div class="blueprint-node-step">1</div>
+        <div class="blueprint-node-label">Post item</div>
+      </div>
+      <div class="blueprint-connector"></div>
+      <div class="blueprint-node">
+        <div class="blueprint-node-step">2</div>
+        <div class="blueprint-node-label">Set details</div>
+      </div>
+      <div class="blueprint-connector"></div>
+      <div class="blueprint-node">
+        <div class="blueprint-node-step">3</div>
+        <div class="blueprint-node-label">Receive interest</div>
+      </div>
+      <div class="blueprint-connector"></div>
+      <div class="blueprint-node">
+        <div class="blueprint-node-step">4</div>
+        <div class="blueprint-node-label">Accept</div>
+      </div>
+      <div class="blueprint-connector"></div>
+      <div class="blueprint-node blueprint-node-end">
+        <div class="blueprint-node-step">5</div>
+        <div class="blueprint-node-label">Exchange</div>
+      </div>
+    </div>
+  </div>
+
+  <div class="blueprint-line-of-interaction">
+    <span>Line of interaction</span>
+  </div>
+
+  <!-- Frontstage: Buyer -->
+  <div class="blueprint-lane">
+    <div class="blueprint-lane-label">
+      <span class="blueprint-lane-title">Frontstage</span>
+      <span class="blueprint-lane-sub">Buyer</span>
+    </div>
+    <div class="blueprint-lane-nodes">
+      <div class="blueprint-node">
+        <div class="blueprint-node-step">1</div>
+        <div class="blueprint-node-label">Browse map</div>
+      </div>
+      <div class="blueprint-connector"></div>
+      <div class="blueprint-node">
+        <div class="blueprint-node-step">2</div>
+        <div class="blueprint-node-label">View item</div>
+      </div>
+      <div class="blueprint-connector"></div>
+      <div class="blueprint-node">
+        <div class="blueprint-node-step">3</div>
+        <div class="blueprint-node-label">"I want this"</div>
+      </div>
+      <div class="blueprint-connector"></div>
+      <div class="blueprint-node">
+        <div class="blueprint-node-step">4</div>
+        <div class="blueprint-node-label">Coordinate</div>
+      </div>
+      <div class="blueprint-connector"></div>
+      <div class="blueprint-node blueprint-node-end">
+        <div class="blueprint-node-step">5</div>
+        <div class="blueprint-node-label">Pick up</div>
+      </div>
+    </div>
+  </div>
+
+  <div class="blueprint-line-of-visibility">
+    <span>Line of visibility</span>
+  </div>
+
+  <!-- Backstage -->
+  <div class="blueprint-lane blueprint-lane-backstage">
+    <div class="blueprint-lane-label">
+      <span class="blueprint-lane-title">Backstage</span>
+    </div>
+    <div class="blueprint-lane-nodes blueprint-lane-services">
+      <div class="blueprint-service">
+        <div class="blueprint-service-name">Neighborhood Graph</div>
+        <div class="blueprint-service-detail">Walking radius + barriers</div>
+      </div>
+      <div class="blueprint-service">
+        <div class="blueprint-service-name">Trust Engine</div>
+        <div class="blueprint-service-detail">Tenure, exchanges, connections</div>
+      </div>
+      <div class="blueprint-service">
+        <div class="blueprint-service-name">Moderation</div>
+        <div class="blueprint-service-detail">Photo + text classification</div>
+      </div>
+      <div class="blueprint-service">
+        <div class="blueprint-service-name">Notifications</div>
+        <div class="blueprint-service-detail">15-min batching</div>
+      </div>
+    </div>
+  </div>
+
+  <div class="blueprint-line-of-support">
+    <span>Line of support</span>
+  </div>
+
+  <!-- Support -->
+  <div class="blueprint-lane blueprint-lane-support">
+    <div class="blueprint-lane-label">
+      <span class="blueprint-lane-title">Support</span>
+    </div>
+    <div class="blueprint-lane-nodes blueprint-lane-services">
+      <div class="blueprint-service blueprint-service-infra">
+        <div class="blueprint-service-name">Geolocation API</div>
+      </div>
+      <div class="blueprint-service blueprint-service-infra">
+        <div class="blueprint-service-name">Street Network</div>
+      </div>
+      <div class="blueprint-service blueprint-service-infra">
+        <div class="blueprint-service-name">Photo CDN</div>
+      </div>
+      <div class="blueprint-service blueprint-service-infra">
+        <div class="blueprint-service-name">Push Service</div>
+      </div>
+    </div>
+  </div>
+</div>

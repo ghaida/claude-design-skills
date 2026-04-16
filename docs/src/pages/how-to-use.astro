@@ -1,6 +1,9 @@
 ---
 import Base from '../layouts/Base.astro';
 import SectionLabel from '../components/SectionLabel.astro';
+import JourneyFlow from '../components/visuals/JourneyFlow.astro';
+import BlueprintDiagram from '../components/visuals/BlueprintDiagram.astro';
+import SiteMap from '../components/visuals/SiteMap.astro';
 import { loadShowcase } from '../lib/showcase';
 
 const showcase = loadShowcase();
@@ -104,7 +107,12 @@ const base = raw.endsWith('/') ? raw : raw + '/';
   <div hidden>
     {showcase.steps.map((step) => (
       step.output && (
-        <div id={`output-${step.skill}`} set:html={step.output} />
+        <div id={`output-${step.skill}`}>
+          {step.skill === 'journey' && <JourneyFlow />}
+          {step.skill === 'blueprint' && <BlueprintDiagram />}
+          {step.skill === 'organize' && <SiteMap />}
+          <Fragment set:html={step.output} />
+        </div>
       )
     ))}
   </div>

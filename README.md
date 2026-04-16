@@ -14,8 +14,8 @@ Six named agents, each combining multiple skills into a specialist persona:
 | Strategy + Research | **Ember** | `/strategize` + `/investigate` — frames problems, demands evidence, refuses to build on assumptions |
 | Experience Design | **Wren** | `/journey` + `/organize` + `/articulate` — shapes user flows, structures information, designs the words |
 | Quality + Resilience | **Vigil** | `/evaluate` + `/fortify` + `/include` — evaluates UX quality, hardens for edge cases, ensures accessibility |
-| Handoff | **Rune** | `/specify` — carries design intent faithfully into engineering specs |
-| Philosopher | **Sage** | `/philosopher` — sits with problems before solving them, a cognitive mode any agent can enter |
+| Adaptation + Measurement | **Rune** | `/transpose` + `/localize` + `/measure` — adapts across platforms and cultures, defines success metrics |
+| Cross-cutting Wisdom | **Sage** | `/philosopher` + `/blueprint` + `/specify` — maps systems, sits with problems, bridges design to engineering |
 
 For larger projects, chain agents in sequence: Ember to frame the problem, Wren to design the experience, Vigil to ensure quality and accessibility, Rune to hand off to engineering. Sage can be entered at any point when the problem needs more exploration.
 
@@ -32,12 +32,12 @@ For larger projects, chain agents in sequence: Ember to frame the problem, Wren 
 
 - `strategize/SKILL.md` — Problem framing through the Five Foundational Questions (problem validation, audience definition, solution fit, feature validation, competitive landscape). Research synthesis, opportunity sizing, hypothesis definition, competitive analysis.
 - `investigate/SKILL.md` — Primary research execution and synthesis. Interview guide construction, usability test planning, survey design, diary studies, card sorts, tree tests. Synthesis frameworks: affinity mapping, thematic analysis, insight statements with evidence strength indicators.
-- `blueprint/SKILL.md` — Service blueprints, ecosystem maps, process architecture, dependency diagrams, system state and failure mode analysis, scalability planning.
+- `blueprint/SKILL.md` — Service blueprints, ecosystem maps, process architecture, dependency diagrams, system state and failure mode analysis, scalability planning. Offers visual companion output: rendered HTML diagrams, Pencil files, or structured specs for your design tool.
 
 ### Experience Design
 
-- `journey/SKILL.md` — End-to-end user flow design. Task analysis, decision points, entry-to-outcome paths, device-aware design, context variation handling, multi-channel journey mapping.
-- `organize/SKILL.md` — Information architecture. Navigation patterns, taxonomy design, labeling systems, wayfinding, search and browse models, card sort and tree test methodology.
+- `journey/SKILL.md` — End-to-end user flow design. Task analysis, decision points, entry-to-outcome paths, device-aware design, context variation handling, multi-channel journey mapping. Offers visual companion output: rendered HTML flow diagrams, Pencil files, or structured specs for your design tool.
+- `organize/SKILL.md` — Information architecture. Navigation patterns, taxonomy design, labeling systems, wayfinding, search and browse models, card sort and tree test methodology. Offers visual companion output: rendered HTML site maps and navigation mockups, Pencil files, or structured specs for your design tool.
 - `articulate/SKILL.md` — UX writing and content strategy. Voice and tone frameworks, error message design, empty states, CTA hierarchy, microcopy patterns, content models, inclusive language.
 
 ### Quality & Evaluation

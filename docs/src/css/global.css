@@ -1302,20 +1302,112 @@ tr[hidden] {
   margin-bottom: var(--s4);
 }
 
-.step-output-label {
+.step-output-trigger {
+  display: inline-flex;
+  align-items: center;
+  gap: var(--s2);
+  background: none;
+  border: none;
+  padding: 0;
+  font-family: var(--body);
   font-size: var(--text-sm);
+  color: var(--fg);
+  cursor: pointer;
+}
+
+.step-output-trigger:hover {
+  color: var(--accent);
+}
+
+.step-output-trigger svg {
+  transition: transform var(--duration) var(--ease-out);
+}
+
+.step-output-trigger:hover svg {
+  transform: translateX(2px);
 }
 
 .step-output-label code {
   font-size: var(--text-xs);
 }
 
+/* Output panel */
+.output-panel {
+  position: fixed;
+  top: 0;
+  right: 0;
+  width: 100%;
+  max-width: 640px;
+  height: 100vh;
+  background: var(--bg);
+  border-left: 1px solid var(--border);
+  transform: translateX(100%);
+  transition: transform 0.3s cubic-bezier(0.16, 1, 0.3, 1);
+  z-index: 1000;
+  display: flex;
+  flex-direction: column;
+  overflow: hidden;
+}
+
+.output-panel.open {
+  transform: translateX(0);
+}
+
+.output-panel-header {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: var(--s4) var(--s6);
+  border-bottom: 1px solid var(--border);
+  flex-shrink: 0;
+}
+
+.output-panel-title {
+  font-size: var(--text-sm);
+  font-weight: 600;
+  letter-spacing: 0.04em;
+}
+
+.output-panel-close {
+  background: none;
+  border: none;
+  padding: var(--s2);
+  cursor: pointer;
+  color: var(--fg-muted);
+  border-radius: 4px;
+}
+
+.output-panel-close:hover {
+  color: var(--fg);
+  background: var(--surface);
+}
+
+.output-panel-body {
+  flex: 1;
+  overflow-y: auto;
+  padding: var(--s6);
+  -webkit-overflow-scrolling: touch;
+}
+
+.output-panel-overlay {
+  position: fixed;
+  inset: 0;
+  background: rgba(0, 0, 0, 0.3);
+  opacity: 0;
+  pointer-events: none;
+  transition: opacity 0.3s ease;
+  z-index: 999;
+}
+
+.output-panel-overlay.open {
+  opacity: 1;
+  pointer-events: auto;
+}
+
+/* Output content (shared between panel and any inline usage) */
 .step-output {
   font-size: var(--text-xs);
   line-height: var(--leading-relaxed);
-  background: var(--surface);
-  padding: var(--s4) var(--s5);
-  border-radius: 4px;
 }
 
 .step-output p {

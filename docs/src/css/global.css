@@ -246,9 +246,6 @@ h1, h2, h3 {
   border-top: 1px solid var(--border);
 }
 
-.section:first-of-type {
-  border-top: none;
-}
 
 .section-label {
   font-family: var(--mono);
@@ -989,7 +986,7 @@ details[open] > summary::after {
 /* --- Skills --- */
 
 .skills-hero {
-  padding: var(--s16) 0 var(--s8);
+  padding: var(--s16) 0;
 }
 
 .skills-hero h1 {
@@ -1053,7 +1050,7 @@ details[open] > summary::after {
 /* --- Patterns --- */
 
 .patterns-hero {
-  padding: var(--s16) 0 var(--s8);
+  padding: var(--s16) 0;
 }
 
 .patterns-hero h1 {
@@ -1062,7 +1059,7 @@ details[open] > summary::after {
 }
 
 .patterns-hero p {
-  max-width: 60ch;
+  max-width: 55ch;
 }
 
 .pattern-name {
@@ -1174,7 +1171,7 @@ tr[hidden] {
 /* --- Agents --- */
 
 .agents-hero {
-  padding: var(--s16) 0 var(--s8);
+  padding: var(--s16) 0;
 }
 
 .agents-hero h1 {
@@ -1214,7 +1211,7 @@ tr[hidden] {
 }
 
 .lifecycle-section {
-  padding: var(--s16) 0 var(--s8);
+  padding: var(--s16) 0;
   border-top: 1px solid var(--border);
 }
 
@@ -1304,7 +1301,16 @@ tr[hidden] {
 /* --- How to Use --- */
 
 .how-to-use-hero {
-  padding: var(--s16) 0 var(--s8);
+  padding: var(--s16) 0;
+}
+
+.how-to-use-hero h1 {
+  font-size: clamp(1.75rem, 3.5vw, 2.5rem);
+  margin-bottom: var(--s4);
+}
+
+.how-to-use-hero p {
+  max-width: 55ch;
 }
 
 .showcase-premise {
@@ -1998,11 +2004,6 @@ tr[hidden] {
     flex-shrink: 0;
   }
 
-  /* Skills */
-  .skills-hero {
-    padding-left: calc(var(--label-col) + var(--col-gap));
-  }
-
   /* Agents */
   .lifecycle-flow {
     gap: var(--s4);
@@ -2014,10 +2015,6 @@ tr[hidden] {
   }
 
   /* How to Use */
-  .how-to-use-hero {
-    padding-left: calc(var(--label-col) + var(--col-gap));
-  }
-
   .philosopher-callout {
     margin-left: calc(var(--label-col) + var(--col-gap));
     margin-bottom: var(--s16);

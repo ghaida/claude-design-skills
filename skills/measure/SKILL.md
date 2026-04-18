@@ -33,7 +33,7 @@ But measurement is not neutral. Every metric you choose shapes what gets optimiz
 
 Measure works alongside the full Intent skill system:
 
-- **`/strategize`**: Their hypotheses need measurable success criteria. Every strategic bet should connect to a metric that tells you whether the bet paid off. `/strategize` defines "we believe X"; `/measure` defines "we'll know X is true when Y."
+- **`/strategize`**: Their hypotheses need measurable success criteria. Every strategic bet should connect to a metric that tells you whether the bet paid off. `/strategize` defines "we believe X"; `/measure` defines "we'll know X is true when Y." When metrics contradict a strategic assumption, measure loops back to reopen strategy — with guardrails (see "When measurement points back to strategy" below).
 - **`/investigate`**: Qualitative research complements quantitative measurement. When the numbers say users drop off at step 3, investigate tells you why. When satisfaction scores drop after a redesign, investigate interviews users to understand the experience behind the number. Never make major design decisions from metrics alone.
 - **`/evaluate`**: UX assessment produces scores and findings that inform what to measure. Evaluation identifies usability issues; measurement tracks whether fixes actually resolved them.
 - **`/specify`**: Test plans and success metrics go into handoff specs. Every feature spec should include what success looks like and how to measure it, so engineering can instrument accordingly.
@@ -209,6 +209,36 @@ Measure user satisfaction, task completion, and effort alongside every business 
 - Business metric: engagement (DAU) → Paired user metric: user-reported value
 - Business metric: retention → Paired user metric: ease of cancellation
 - Business metric: revenue per user → Paired user metric: perceived value for money
+
+---
+
+## When measurement points back to strategy
+
+Measurement is not only downstream of strategy. It can also reopen strategy when evidence contradicts a strategic assumption. The triggers below are specific to measurement; the general loop-back rules — human checkpoint, loop budget, written exit condition — live in `/intent` under "Loop-backs and exit conditions."
+
+### Triggers for reopening `/strategize` from metrics
+
+- **Audience contradiction.** Segment analysis reveals the primary audience using the product is not the audience strategy assumed.
+- **Feature validation failure.** Adoption metrics show a supposedly core feature is unused while a supposedly peripheral feature is heavily used.
+- **Solution-fit failure.** The drop-off is not in the flow you optimized — it's before the flow. Users aren't reaching the product the way strategy assumed.
+- **Goodhart's Law triggered.** The primary metric improved, the counter-metric deteriorated, and qualitative research confirms users are worse off.
+- **Opportunity miscount.** Measured willingness-to-pay, usage frequency, or reach is an order of magnitude below the strategic estimate.
+
+### Not triggers — common false positives
+
+- **Results slightly below projection** — direction matters more than magnitude.
+- **Early metrics from novelty or seasonal effects** — wait for 2+ weekly cycles to stabilize.
+- **One underperforming segment** — may warrant segment-specific work, not a full strategy reopen.
+
+### How to reopen responsibly
+
+1. **Name the strategic assumption the metric contradicts.** Not "users aren't converting" — "we assumed [X audience with Y motivation] was primary, but data shows [Z]."
+2. **Bring evidence, not conclusions.** Metric, counter-metric, qualitative signal, and the original assumption. Let `/strategize` reframe — don't pre-frame it.
+3. **Ask the user to authorize the reopen.** Measurement can surface that strategy may be wrong; only the human with business context decides whether strategy must change.
+
+### Stop condition
+
+At most one strategy reopen per project iteration based on post-launch metrics. A second reopen signals framing issues the user must resolve — stop analyzing and surface the tension directly.
 
 ---
 

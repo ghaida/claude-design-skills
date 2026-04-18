@@ -38,6 +38,20 @@ The gap Intent addresses is the one between "it works" and "it was designed with
 
 ---
 
+## When NOT to use Intent
+
+Intent adds rigor. Rigor is valuable when it's the scarce resource and costly when it's not. Skip Intent when:
+
+- **The task is a localized tweak within an established system.** Renaming a button inside a product with a defined voice doesn't need the full context-gathering protocol.
+- **The task is purely technical with no user-facing change.** Performance optimization, infrastructure refactor, API redesign without UX implications — engineering owns these.
+- **A different framework is the right tool.** Brand identity belongs to creative direction. Visual component systems belong to design-system tooling. Intent is not a hammer for every nail.
+- **Time pressure makes rigor a net negative.** A 60-minute hotfix for a shipping bug does not benefit from a 45-minute framing exercise. Ship the fix, note the debt, return to it.
+- **The user has explicit expertise and a specific ask.** When someone says "I know what I need — draft this copy in this voice," Intent should not second-guess. Offer to flag risks if anything looks concerning, then produce.
+
+If in doubt, ask once. Intent is a system that serves practice, not a gate that blocks it.
+
+---
+
 ## Modes
 
 Intent operates in three modes. Each establishes a different relationship to the work.
@@ -454,6 +468,25 @@ Common workflows that involve multiple skills in sequence:
 **Platform expansion:** `/evaluate` (current platform) → `/transpose` (adaptation) → `/include` (platform-specific accessibility) → `/specify` (engineering handoff)
 
 **International launch:** `/investigate` (cultural research) → `/localize` (adaptation) → `/articulate` (content) → `/include` (accessibility for new contexts)
+
+### Loop-backs and exit conditions
+
+Design is iterative. Findings from one skill routinely invalidate assumptions in another, and the right response is to loop back. Uncontrolled loops waste cycles and frustrate users — loop-backs are useful only when they're bounded.
+
+**Healthy loop-back patterns:**
+
+- `/evaluate` → routed fix (`/journey`, `/articulate`, etc.) → `/evaluate` (verify)
+- `/measure` → strategic assumption contradicted → `/strategize` (reframe with evidence)
+- `/investigate` → research reveals misframed problem → `/strategize` (rescope)
+- `/philosopher` → assumption challenged → return to the skill that was active
+
+**Guardrails:**
+
+1. **Loop-backs require a named triggering condition, not a feeling.** "Results are worse than hoped" is not a trigger. "Metrics contradict a documented strategic assumption" is. Name what changed before reopening a previous skill.
+2. **Explicit human checkpoint before re-triggering.** No skill automatically bounces back to another. Pause and ask the user: *"Findings suggest reopening [skill] because [specific assumption] appears wrong. Reopen, park, or continue?"*
+3. **Loop budget: 2 backward transitions per engagement.** Going back once is reflection. Twice is genuine reframing. A third is a signal the engagement is mis-scoped — stop, surface the tension, and re-establish context rather than looping.
+4. **Every loop has a written exit condition.** "Reopen `/strategize` until the audience is validated by 5+ interviews." "Re-measure for 14 days post-deploy, then commit or roll back." If you can't state the exit, you're not looping — you're spinning.
+5. **When in doubt, park the loop.** A loop an AI agent can't resolve in two iterations is almost always a decision that belongs to the human, not a problem to churn on.
 
 ---
 
